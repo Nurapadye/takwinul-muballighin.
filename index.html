@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takwinul Muballighin | YAIFY Yogyakarta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --green-deep: #052e1c;
+            --green-mid: #0a5c38;
+            --gold: #c9a227;
+            --gold-light: #f5e6b0;
+            --cream: #faf9f5;
+            --white: #ffffff;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: #333; overflow-x: hidden; }
+
+        /* --- NAVBAR (Identik dengan Gambar) --- */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 5%; height: 90px; background: var(--green-deep);
+        }
+        /* Elemen Lengkung Putih & Emas di Kiri */
+        nav::before {
+            content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 230px;
+            background: var(--white); clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%); z-index: 1;
+        }
+        nav::after {
+            content: ''; position: absolute; left: 225px; top: 0; height: 100%; width: 12px;
+            background: var(--gold); clip-path: ellipse(50% 50% at 0% 50%); z-index: 0;
+        }
+
+        .nav-brand { position: relative; z-index: 2; display: flex; align-items: center; }
+        .nav-brand img { height: 70px; width: auto; object-fit: contain; }
+
+        .nav-links { display: flex; align-items: center; gap: 20px; list-style: none; }
+        .nav-links a { color: var(--white); text-decoration: none; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .btn-wa-top { background: #16a34a; padding: 10px 20px; border-radius: 8px; display: flex; align-items: center; gap: 8px; font-weight: bold; color: white !important; }
+
+        /* --- HERO (Background AQ.jpeg) --- */
+        header {
+            height: 90vh; position: relative; display: flex; align-items: center; justify-content: center;
+            text-align: center; color: var(--white); padding-top: 90px;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background: url('AQ.jpeg') center/cover no-repeat;
+            filter: brightness(0.4); z-index: -1;
+        }
+        .hero-content { max-width: 800px; padding: 20px; position: relative; z-index: 10; }
+        .badge-yaify { background: var(--green-mid); color: var(--gold-light); padding: 5px 15px; border-radius: 20px; font-size: 11px; display: inline-block; margin-bottom: 20px; border: 1px solid var(--gold); text-transform: uppercase; }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(38px, 6vw, 70px); font-weight: 900; line-height: 1.1; margin-bottom: 20px; color: var(--gold-light); }
+        .hero-quote { font-style: italic; font-size: 18px; margin-bottom: 35px; opacity: 0.9; }
+        .btn-wa-hero { background: #16a34a; color: white; text-decoration: none; padding: 14px 35px; border-radius: 50px; display: inline-flex; align-items: center; gap: 10px; font-weight: bold; transition: 0.3s; }
+        .btn-wa-hero:hover { transform: scale(1.05); background: #128c3e; }
+
+        /* --- SEJARAH (Layout Rapi) --- */
+        .sejarah-section { padding: 100px 7%; background: var(--cream); }
+        .sejarah-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .sejarah-text h2 { font-family: 'Playfair Display', serif; font-size: 42px; color: var(--green-deep); margin-bottom: 25px; }
+        .sejarah-text p { line-height: 1.9; text-align: justify; margin-bottom: 20px; color: #444; font-size: 16px; }
+        .drop-cap::first-letter { font-size: 75px; float: left; margin-right: 15px; color: var(--green-deep); font-family: 'Playfair Display'; font-weight: 900; line-height: 0.7; padding-top: 10px; }
+        .sejarah-img img { width: 100%; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+        /* --- SOSIAL MEDIA & LOKASI --- */
+        .social-location-section { padding: 80px 7%; background: white; }
+        .sl-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .sl-info h2 { font-family: 'Playfair Display', serif; font-size: 35px; color: var(--green-deep); margin-bottom: 30px; }
+        .sosmed-list { list-style: none; }
+        .sosmed-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; text-decoration: none; color: var(--green-deep); font-weight: bold; transition: 0.3s; }
+        .sosmed-item:hover { color: var(--gold); transform: translateX(5px); }
+        .sosmed-item i { width: 45px; height: 45px; background: var(--green-deep); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        
+        .map-wrapper { border-radius: 20px; overflow: hidden; height: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #ddd; }
+        .map-wrapper iframe { width: 100%; height: 100%; border: none; }
+
+        /* --- FOOTER --- */
+        footer { background: var(--green-deep); color: white; padding: 60px 5% 30px; text-align: center; border-top: 6px solid var(--gold); }
+        .footer-logo { height: 100px; margin-bottom: 25px; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            nav::before, nav::after { display: none; }
+            nav { justify-content: space-around; background: var(--green-deep); }
+            .nav-links { display: none; }
+            .sejarah-container, .sl-grid { grid-template-columns: 1fr; text-align: center; }
+            .sejarah-text p { text-align: center; }
+            header { height: auto; padding: 150px 20px 80px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-brand">
+            <img src="z-jukebox-bg-removed.png" alt="Logo Takwinul Muballighin">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#dokumentasi">Dokumentasi Santri</a></li>
+            <li><a href="#sejarah">Sejarah</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+            <li><a href="https://wa.me/6285171720040" class="btn-wa-top"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="badge-yaify">YAIFY Yogyakarta</div>
+            <h1 class="hero-title">Takwinul Muballighin</h1>
+            <p class="hero-quote">"Mencetak Kader Muballigh Profesional yang Siap Berkhidmat untuk Umat."</p>
+            <a href="https://wa.me/6285171720040" class="btn-wa-hero">
+                <i class="fab fa-whatsapp"></i> Daftar Sekarang (WhatsApp)
+            </a>
+        </div>
+    </header>
+
+    <section class="sejarah-section" id="sejarah">
+        <div class="sejarah-container">
+            <div class="sejarah-text">
+                <h2>Sejarah Singkat</h2>
+                <p class="drop-cap">Pondok Pesantren <strong>Takwinul Muballighin</strong> didirikan dengan semangat untuk melahirkan generasi pendakwah yang kompeten, moderat, dan memiliki integritas tinggi. Di bawah naungan YAIFY Yogyakarta, kami berfokus pada penguasaan kitab kuning, kemampuan retorika, dan adaptasi dakwah di era teknologi digital.</p>
+                <p>Visi kami adalah menciptakan muballigh yang tidak hanya menguasai dalil, tetapi juga mampu menjadi teladan (uswatun hasanah) bagi masyarakat di sekitarnya.</p>
+            </div>
+            <div class="sejarah-img" id="dokumentasi">
+                <img src="AQ.jpeg" alt="Dokumentasi Santri">
+                <p style="text-align: center; margin-top: 15px; font-weight: bold; color: var(--green-deep);">Dokumentasi Kegiatan Santri</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="social-location-section" id="kontak">
+        <div class="sl-grid">
+            <div class="sl-info">
+                <h2>Media Sosial Resmi</h2>
+                <p>Dapatkan informasi terbaru mengenai pendaftaran dan kegiatan santri melalui kanal resmi kami:</p>
+                
+                <div class="sosmed-list">
+                    <a href="https://www.instagram.com/takwinul_muballighin/" target="_blank" class="sosmed-item">
+                        <i class="fab fa-instagram"></i> Instagram: @takwinul_muballighin
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=NsDo2zqd3mQ" target="_blank" class="sosmed-item">
+                        <i class="fab fa-youtube"></i> YouTube: Takwinul Muballighin
+                    </a>
+                    <a href="https://www.facebook.com/100745859057478/photos/d41d8cd9/130071386124925/" target="_blank" class="sosmed-item">
+                        <i class="fab fa-facebook-f"></i> Facebook: Takwinul Muballighin
+                    </a>
+                    <a href="https://wa.me/6285171720040" target="_blank" class="sosmed-item">
+                        <i class="fab fa-whatsapp"></i> WhatsApp: 0851-7172-0040
+                    </a>
+                </div>
+            </div>
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15812.28581729352!2d110.3884849!3d-7.782247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5996696d07e9%3A0x6d853e8d77d704d2!2sCondongcatur%2C%20Sleman%2C%20Yogyakarta!5e0!3m2!1sid!2sid!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <img src="z-jukebox-bg-removed.png" alt="Footer Logo" class="footer-logo">
+        <p>© 2026 Takwinul Muballighin | YAIFY Yogyakarta</p>
+        <p style="font-size: 11px; opacity: 0.6; margin-top: 10px;">Gg. Masjid, Gandok, Condongcatur, Sleman, DIY</p>
+    </footer>
+
+</body>
+</html>
