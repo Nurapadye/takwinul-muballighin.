@@ -21,7 +21,7 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: #333; overflow-x: hidden; }
 
-        /* --- NAVBAR (Desain A) --- */
+        /* --- NAVBAR (A - Laptop) --- */
         nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             display: flex; align-items: center; justify-content: space-between;
@@ -38,6 +38,19 @@
         .nav-links a { color: var(--white); text-decoration: none; font-size: 13px; font-weight: 700; text-transform: uppercase; }
         .btn-wa-top { background: #16a34a; padding: 10px 20px; border-radius: 8px; color: white !important; display: flex; align-items: center; gap: 8px; font-weight: bold; text-decoration: none; }
 
+        /* HAMBURGER (B - HP) */
+        .menu-toggle { display: none; color: white; font-size: 28px; cursor: pointer; z-index: 1001; }
+
+        /* SIDEBAR MOBILE */
+        .mobile-nav {
+            position: fixed; top: 0; right: -100%; width: 250px; height: 100%;
+            background: var(--green-deep); z-index: 1000; padding: 100px 30px;
+            transition: 0.4s ease; display: flex; flex-direction: column; gap: 25px;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+        }
+        .mobile-nav.active { right: 0; }
+        .mobile-nav a { color: white; text-decoration: none; font-size: 18px; font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+
         /* --- HERO --- */
         header {
             height: 85vh; position: relative; display: flex; align-items: center; justify-content: center;
@@ -52,52 +65,42 @@
         .badge-yaify { background: var(--green-mid); color: var(--gold-light); padding: 5px 15px; border-radius: 20px; font-size: 11px; margin-bottom: 20px; display: inline-block; border: 1px solid var(--gold); }
         .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 6vw, 60px); color: var(--gold-light); margin-bottom: 15px; }
 
-        /* --- SEJARAH (Desain Laptop A) --- */
-        .sejarah-section { padding: 80px 7%; background: var(--cream); }
+        /* --- SEJARAH (Laptop A) --- */
+        .sejarah-section { padding: 80px 7%; }
         .sejarah-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
         .sejarah-text h2 { font-family: 'Playfair Display', serif; font-size: 40px; color: var(--green-deep); margin-bottom: 25px; }
-        .drop-cap::first-letter { font-size: 75px; float: left; margin-right: 15px; color: var(--green-deep); font-family: 'Playfair Display'; font-weight: 900; line-height: 0.7; padding-top: 10px; }
-        .sejarah-text p { line-height: 1.8; text-align: justify; margin-bottom: 15px; }
-        .sejarah-img img { width: 100%; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 5px solid white; }
+        .drop-cap::first-letter { font-size: 75px; float: left; margin-right: 15px; color: var(--green-deep); font-family: 'Playfair Display'; font-weight: 900; line-height: 0.7; }
 
-        /* --- DOKUMENTASI SANTRI (Fitur Baru) --- */
+        /* --- DOKUMENTASI (KOSONGAN) --- */
         .dokumentasi-section { padding: 60px 7%; background: white; text-align: center; }
-        .dokumentasi-section h2 { font-family: 'Playfair Display', serif; margin-bottom: 40px; color: var(--green-deep); font-size: 35px; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .gallery-item { position: relative; overflow: hidden; border-radius: 15px; height: 200px; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .gallery-item:hover img { transform: scale(1.1); }
-
-        /* --- KONTAK & SOSMED (A) --- */
-        .kontak-section { padding: 80px 7%; background: var(--green-deep); color: white; }
-        .kontak-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; max-width: 1200px; margin: 0 auto; }
-        .sosmed-list { margin-top: 30px; display: flex; flex-direction: column; gap: 15px; }
-        .sosmed-link { display: flex; align-items: center; gap: 15px; color: var(--gold-light); text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .sosmed-link:hover { transform: translateX(10px); color: white; }
-        .sosmed-link i { width: 40px; height: 40px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--gold); }
+        .dokumentasi-section h2 { font-family: 'Playfair Display', serif; margin-bottom: 30px; color: var(--green-deep); }
+        .gallery-placeholder { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; 
+            max-width: 1200px; margin: 0 auto; 
+        }
+        .box-kosong { height: 200px; background: #eee; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; border: 2px dashed #ddd; }
 
         /* --- MOBILE DESIGN (B) --- */
         @media (max-width: 768px) {
             nav::before { width: 140px; }
             .nav-links { display: none; }
-            .sejarah-container { grid-template-columns: 1fr; }
-            .kontak-grid { grid-template-columns: 1fr; }
-
-            /* Mockup HP - Bagian Warta (B) */
-            .warta-mobile { padding: 40px 20px; background: white; margin-top: 20px; }
-            .warta-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-            .badge-warta { background: #16a34a; color: white; padding: 6px 18px; border-radius: 25px; font-size: 13px; font-weight: bold; }
+            .menu-toggle { display: block; }
+            .sejarah-container { grid-template-columns: 1fr; text-align: center; }
+            .drop-cap::first-letter { float: none; display: inline-block; font-size: 60px; line-height: 1; }
             
-            /* Mockup HP - Bagian Lokasi (B) */
-            .lokasi-mobile { padding: 40px 20px; background: #f0f2f0; border-radius: 30px 30px 0 0; }
+            .warta-mobile { padding: 40px 20px; background: white; border-top: 10px solid #f0f0f0; }
+            .badge-green { background: #16a34a; color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; }
+            
+            .lokasi-mobile { padding: 40px 20px; background: #f9faf9; }
             .card-lokasi { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-            .info-item { display: flex; gap: 15px; margin-bottom: 20px; }
-            .info-item i { color: var(--green-mid); font-size: 20px; }
-            .btn-maps { display: block; background: var(--green-mid); color: white; text-align: center; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold; margin-top: 10px; }
         }
 
-        footer { background: #031a10; color: rgba(255,255,255,0.6); padding: 40px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
-        .footer-logo { height: 70px; margin-bottom: 20px; }
+        /* SOSMED SECTION */
+        .kontak-section { padding: 60px 7%; background: var(--green-deep); color: white; }
+        .sosmed-link { display: flex; align-items: center; gap: 15px; color: var(--gold-light); text-decoration: none; margin-bottom: 15px; font-weight: bold; }
+        .sosmed-link i { width: 35px; height: 35px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--gold); }
+
+        footer { background: #031a10; color: rgba(255,255,255,0.5); padding: 40px 20px; text-align: center; }
     </style>
 </head>
 <body>
@@ -112,16 +115,27 @@
             <li><a href="#dokumentasi">Dokumentasi</a></li>
             <li><a href="https://wa.me/6285171720040" class="btn-wa-top"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
         </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
     </nav>
+
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#home" onclick="toggleMenu()">Home</a>
+        <a href="#sejarah" onclick="toggleMenu()">Sejarah</a>
+        <a href="#dokumentasi" onclick="toggleMenu()">Dokumentasi</a>
+        <a href="#kontak" onclick="toggleMenu()">Kontak</a>
+        <a href="https://wa.me/6285171720040" style="color: #4ade80;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
 
     <header id="home">
         <div class="hero-bg"></div>
         <div class="hero-content">
             <div class="badge-yaify">YAIFY Yogyakarta</div>
             <h1 class="hero-title">Takwinul Muballighin</h1>
-            <p style="font-style: italic; opacity: 0.9; margin-bottom: 30px;">"Mencetak Kader Muballigh Profesional Berkhidmat untuk Umat"</p>
+            <p style="font-style: italic; opacity: 0.9; margin-bottom: 30px;">"Mencetak Kader Muballigh Profesional"</p>
             <a href="https://wa.me/6285171720040" class="btn-wa-top" style="padding: 15px 35px; border-radius: 50px; display: inline-flex;">
-                <i class="fab fa-whatsapp"></i> Hubungi Kami (WhatsApp)
+                <i class="fab fa-whatsapp"></i> Hubungi Kami
             </a>
         </div>
     </header>
@@ -130,79 +144,68 @@
         <div class="sejarah-container">
             <div class="sejarah-text">
                 <h2>Sejarah Singkat</h2>
-                <p class="drop-cap">Pondok Pesantren <strong>Takwinul Muballighin</strong> didirikan untuk menjawab tantangan dakwah modern. Kami fokus pada pembentukan karakter dai yang alim dan terampil dalam berkomunikasi di masyarakat.</p>
-                <p>Di bawah bimbingan YAIFY Yogyakarta, santri dididik untuk menguasai literatur klasik (kitab kuning) sekaligus beradaptasi dengan teknologi informasi sebagai wasilah dakwah saat ini.</p>
+                <p class="drop-cap">Pondok Pesantren <strong>Takwinul Muballighin</strong> berfokus pada pembentukan karakter dai yang alim dan terampil. Di bawah bimbingan YAIFY Yogyakarta, kami menjaga tradisi literasi klasik dan adaptasi teknologi dakwah.</p>
             </div>
             <div class="sejarah-img">
-                <img src="AQ.jpeg" alt="Kegiatan Santri">
+                <img src="AQ.jpeg" alt="Santri" style="width:100%; border-radius: 20px;">
             </div>
         </div>
     </section>
 
     <section class="dokumentasi-section" id="dokumentasi">
         <h2>Dokumentasi Santri</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item"><img src="AQ.jpeg" alt="Kegiatan 1"></div>
-            <div class="gallery-item"><img src="AQ.jpeg" alt="Kegiatan 2"></div>
-            <div class="gallery-item"><img src="AQ.jpeg" alt="Kegiatan 3"></div>
-            <div class="gallery-item"><img src="AQ.jpeg" alt="Kegiatan 4"></div>
+        <div class="gallery-placeholder">
+            <div class="box-kosong">Foto Segera</div>
+            <div class="box-kosong">Foto Segera</div>
+            <div class="box-kosong">Foto Segera</div>
+            <div class="box-kosong">Foto Segera</div>
         </div>
     </section>
 
     <section class="warta-mobile">
-        <div class="warta-header">
-            <h2 style="font-family: 'Playfair Display', serif;">Warta</h2>
-            <span class="badge-warta">Info Santri</span>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h2 style="font-family: 'Playfair Display';">Warta</h2>
+            <span class="badge-green">Kabar Terbaru</span>
         </div>
-        <p style="color: #666; font-size: 14px;">Ikuti kabar terbaru seputar kegiatan belajar mengajar dan pendaftaran santri baru Takwinul Muballighin.</p>
+        <p style="color: #666; font-size: 14px;">Update harian kegiatan santri dan informasi pendaftaran akademik.</p>
     </section>
 
-    <section class="lokasi-mobile">
-        <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 20px;">Lokasi</h2>
+    <section class="lokasi-mobile" id="kontak">
+        <h2 style="font-family: 'Playfair Display'; margin-bottom: 15px;">Lokasi</h2>
         <div class="card-lokasi">
-            <div class="info-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Gg. Masjid, Gandok, Condongcatur, Sleman, Yogyakarta</span>
-            </div>
-            <div class="info-item">
-                <i class="fas fa-phone"></i>
-                <span>0851-7172-0040</span>
-            </div>
-            <a href="https://maps.google.com" class="btn-maps">Buka Google Maps</a>
+            <p style="margin-bottom: 10px;"><i class="fas fa-map-marker-alt" style="color: var(--green-mid);"></i> Gg. Masjid, Gandok, Condongcatur, Sleman</p>
+            <a href="https://maps.google.com" class="btn-wa-top" style="display: block; text-align: center; border-radius: 12px;">Buka di Maps</a>
         </div>
     </section>
 
     <section class="kontak-section">
-        <div class="kontak-grid">
-            <div>
-                <h2>Hubungi Kami</h2>
-                <p style="margin-top: 10px; opacity: 0.8;">Silahkan ikuti media sosial resmi kami untuk informasi lebih lanjut:</p>
-                <div class="sosmed-list">
-                    <a href="https://www.instagram.com/takwinul_muballighin/" target="_blank" class="sosmed-link">
-                        <i class="fab fa-instagram"></i> Instagram: @takwinul_muballighin
-                    </a>
-                    <a href="https://www.youtube.com/watch?v=NsDo2zqd3mQ" target="_blank" class="sosmed-link">
-                        <i class="fab fa-youtube"></i> YouTube: Takwinul Muballighin
-                    </a>
-                    <a href="https://www.facebook.com/100745859057478/" target="_blank" class="sosmed-link">
-                        <i class="fab fa-facebook-f"></i> Facebook: Takwinul Muballighin
-                    </a>
-                    <a href="https://wa.me/6285171720040" target="_blank" class="sosmed-link">
-                        <i class="fab fa-whatsapp"></i> WhatsApp: 0851-7172-0040
-                    </a>
-                </div>
-            </div>
-            <div style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px;">
-                <h3 style="margin-bottom: 15px; color: var(--gold);">Alamat Pusat</h3>
-                <p>Mailing address: Condongcatur, Sleman, DIY. Kunjungi kami di jam operasional kantor setiap Senin - Sabtu.</p>
-            </div>
+        <h2 style="margin-bottom: 25px;">Ikuti Kami</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+            <a href="https://www.instagram.com/takwinul_muballighin/" target="_blank" class="sosmed-link">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://www.youtube.com/watch?v=NsDo2zqd3mQ" target="_blank" class="sosmed-link">
+                <i class="fab fa-youtube"></i> YouTube
+            </a>
+            <a href="https://www.facebook.com/100745859057478/" target="_blank" class="sosmed-link">
+                <i class="fab fa-facebook-f"></i> Facebook
+            </a>
+            <a href="https://wa.me/6285171720040" target="_blank" class="sosmed-link">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
         </div>
     </section>
 
     <footer>
-        <img src="z-jukebox-bg-removed.png" alt="Footer Logo" class="footer-logo">
+        <img src="z-jukebox-bg-removed.png" alt="Logo" style="height: 50px; margin-bottom: 10px;">
         <p>© 2026 Takwinul Muballighin | YAIFY Yogyakarta</p>
     </footer>
 
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileNav');
+            menu.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
