@@ -39,7 +39,7 @@
         .nav-links a:hover { color: var(--gold); }
         .btn-wa-top { background: #16a34a; padding: 10px 20px; border-radius: 8px; color: white !important; display: flex; align-items: center; gap: 8px; }
         
-        .menu-toggle { display: none; color: white; font-size: 24px; cursor: pointer; }
+        .menu-toggle { display: none; color: white; font-size: 24px; cursor: pointer; z-index: 1001; }
 
         /* --- HERO --- */
         header {
@@ -69,25 +69,27 @@
         .maps-wrapper { width: 100%; height: 250px; border-radius: 12px; overflow: hidden; margin-top: 10px; border: 1px solid #ddd; }
         .maps-wrapper iframe { width: 100%; height: 100%; border: 0; }
 
-        /* --- MOBILE DESIGN --- */
+        /* --- MOBILE DESIGN REVISI --- */
         @media (max-width: 768px) {
-            nav { height: 75px; }
-            nav::before { width: 160px; }
-            .nav-brand img { height: 55px; }
-            .nav-links { display: none; } 
-            .menu-toggle { display: block; z-index: 10; }
+            .menu-toggle { display: block; }
             
-            header { height: 60vh; padding-top: 75px; }
-            .sejarah-section { padding: 50px 20px; }
-            
+            .nav-links {
+                position: fixed; top: 0; right: -100%; width: 70%; height: 100vh;
+                background: var(--green-deep); flex-direction: column; justify-content: center;
+                transition: 0.4s ease-in-out; box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+            }
+            .nav-links.active { right: 0; }
+            .nav-links li { margin: 15px 0; }
+            .nav-links a { font-size: 18px; }
+
+            header { height: 65vh; }
+            .sejarah-text h2 { font-size: 28px; }
             .warta-mobile { padding: 40px 20px; background: white; border-top: 1px solid #eee; }
             .warta-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
             .warta-title { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--green-deep); }
             .badge-emot { background: #16a34a; color: white; padding: 5px 12px; border-radius: 20px; font-size: 11px; }
-
             .lokasi-mobile { padding: 40px 20px; background: var(--cream); border-radius: 30px 30px 0 0; }
-            .lokasi-card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 15px; }
-            .info-row { display: flex; gap: 15px; align-items: flex-start; }
+            .lokasi-card { background: white; padding: 20px; border-radius: 15px; display: flex; flex-direction: column; gap: 15px; }
             .btn-maps-mobile { background: var(--green-mid); color: white; text-align: center; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: bold; }
         }
 
@@ -102,14 +104,16 @@
         <div class="nav-brand">
             <img src="z-jukebox-bg-removed.png" alt="Logo">
         </div>
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
             <li><a href="#sejarah">Sejarah</a></li>
             <li><a href="#warta">Warta</a></li>
             <li><a href="#kontak">Kontak</a></li>
             <li><a href="https://wa.me/6285171720040" class="btn-wa-top"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
         </ul>
-        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
     </nav>
 
     <header id="home">
@@ -156,14 +160,10 @@
                     <p style="font-size: 14px; color: #555;">Gg. Masjid, Gandok, Condongcatur, Sleman, Yogyakarta</p>
                 </div>
             </div>
-
             <div class="maps-wrapper">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.253689408018!2d110.395163!3d-7.763488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwNDUnNDguNiJTIDExMMKwMjMnNDIuNiJF!5e0!3m2!1sid!2sid!4v1711200000000" 
-                    allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.254181673846!2d110.39564887481845!3d-7.762828092256441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a599641499999%3A0x6331a9860b29c91!2sPondok%20Pesantren%20Takwinul%20Muballighin!5e0!3m2!1sid!2sid!4v1711111111111" allowfullscreen="" loading="lazy"></iframe>
             </div>
-
-            <a href="https://maps.app.goo.gl/YourGoogleMapsLink" target="_blank" class="btn-maps-mobile">Petunjuk Jalan (Buka di Maps)</a>
+            <a href="https://maps.app.goo.gl/YourActualGoogleMapsLink" target="_blank" class="btn-maps-mobile">Petunjuk Jalan (Buka di Maps)</a>
         </div>
     </section>
 
@@ -176,6 +176,29 @@
             <i class="fab fa-facebook"></i>
         </div>
     </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // Ganti icon saat diklik (garis tiga jadi silang)
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Menutup menu otomatis saat link diklik
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+    </script>
 
 </body>
 </html>
