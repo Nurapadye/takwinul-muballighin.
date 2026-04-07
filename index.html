@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Takwinul Muballighin | YAIFY Yogyakarta</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     <style>
         :root {
@@ -18,63 +20,66 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'DM Sans', sans-serif; background: var(--cream); overflow-x: hidden; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: #333; overflow-x: hidden; }
 
-        /* --- NAVBAR --- */
+        /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; height: 80px;
             background: var(--green-deep); display: flex; align-items: center;
             justify-content: space-between; padding: 0 5%; z-index: 10000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         
-        /* Logo Area */
-        .nav-brand { position: relative; z-index: 10; }
-        .nav-brand img { height: 50px; }
+        .nav-brand img { height: 50px; width: auto; position: relative; z-index: 10002; }
 
-        /* Desktop Links */
+        /* Desktop Menu */
         .nav-links { display: flex; list-style: none; align-items: center; gap: 20px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; }
-        .btn-wa { background: #16a34a; padding: 10px 15px; border-radius: 5px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+        
+        .btn-wa { background: #16a34a; padding: 10px 18px; border-radius: 8px; display: flex; align-items: center; gap: 8px; color: white !important; }
 
-        /* Hidden Checkbox for Mobile Menu */
+        /* Mobile Toggle */
         #menu-cb { display: none; }
-        .menu-icon { display: none; color: white; font-size: 24px; cursor: pointer; z-index: 10001; }
+        .menu-icon { display: none; color: white; font-size: 30px; cursor: pointer; z-index: 10002; }
 
         /* --- HERO --- */
         header {
-            height: 70vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('AQ.jpeg') center/cover;
+            height: 75vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('AQ.jpeg') center/cover;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; color: white; padding-top: 80px;
+            text-align: center; color: white; padding: 80px 20px 0 20px;
         }
+        .hero-badge { color: var(--gold); letter-spacing: 3px; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 8vw, 55px); color: var(--gold); line-height: 1.2; }
 
         /* --- SEJARAH --- */
-        .sejarah { padding: 60px 10%; background: white; }
-        .sejarah h2 { font-family: 'Playfair Display', serif; margin-bottom: 20px; color: var(--green-deep); text-align: center; }
-        .drop-cap::first-letter { font-size: 60px; float: left; margin-right: 10px; color: var(--green-deep); font-family: 'Playfair Display'; font-weight: 900; line-height: 0.8; }
+        .section-padding { padding: 80px 10%; }
+        .sejarah { background: white; }
+        .sejarah h2 { font-family: 'Playfair Display', serif; font-size: 36px; color: var(--green-deep); margin-bottom: 25px; text-align: center; }
+        .text-content { line-height: 1.8; color: #444; text-align: justify; font-size: 16px; }
+        .drop-cap::first-letter { font-size: 65px; float: left; margin-right: 12px; color: var(--green-deep); font-family: 'Playfair Display'; font-weight: 900; line-height: 0.8; }
+
+        /* --- WARTA --- */
+        .warta-box { background: #f0f4f2; border-left: 5px solid var(--green-mid); padding: 30px; border-radius: 0 15px 15px 0; }
 
         /* --- MAPS --- */
-        .lokasi { padding: 40px 10%; }
-        .maps-box { width: 100%; height: 300px; border-radius: 15px; overflow: hidden; margin: 20px 0; border: 1px solid #ddd; }
-        .btn-maps { display: block; background: var(--green-mid); color: white; text-align: center; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; }
+        .maps-container { margin-top: 30px; border-radius: 20px; overflow: hidden; border: 1px solid #ddd; height: 350px; }
+        .btn-maps-full { display: block; width: 100%; background: var(--green-mid); color: white; text-align: center; padding: 15px; margin-top: 15px; border-radius: 12px; text-decoration: none; font-weight: 700; }
 
-        /* --- RESPONSIVE / MOBILE --- */
+        /* --- MOBILE RESPONSIVE --- */
         @media (max-width: 768px) {
             .menu-icon { display: block; }
-
             .nav-links {
                 position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
-                background: var(--green-deep); flex-direction: column; 
-                justify-content: center; transition: 0.4s; z-index: 9999;
+                background: var(--green-deep); flex-direction: column; justify-content: center;
+                transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 10001;
             }
-
-            /* Saat Checkbox dicentang (diklik), menu muncul */
             #menu-cb:checked ~ .nav-links { right: 0; }
-            #menu-cb:checked ~ .menu-icon i::before { content: "\f00d"; } /* Berubah jadi icon X */
-
-            .nav-links li { margin: 15px 0; }
-            .nav-links a { font-size: 20px; }
+            #menu-cb:checked ~ .menu-icon i::before { content: "\f62a"; } /* X icon */
             
-            header { height: 60vh; }
+            .nav-links li { margin: 15px 0; }
+            .nav-links a { font-size: 22px; }
+            .section-padding { padding: 60px 5%; }
         }
     </style>
 </head>
@@ -86,57 +91,64 @@
         </div>
 
         <input type="checkbox" id="menu-cb">
-        <label for="menu-cb" class="menu-icon"><i class="fa-solid fa-bars"></i></label>
+        <label for="menu-cb" class="menu-icon"><i class="bi bi-list"></i></label>
 
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#sejarah">Sejarah</a></li>
             <li><a href="#warta">Warta</a></li>
             <li><a href="#kontak">Kontak</a></li>
-            <li><a href="https://wa.me/6285171720040" class="btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+            <li><a href="https://wa.me/6285171720040" class="btn-wa"><i class="bi bi-whatsapp"></i> WhatsApp</a></li>
         </ul>
     </nav>
 
     <header id="home">
-        <div style="padding: 0 20px;">
-            <p style="color: var(--gold); letter-spacing: 2px; margin-bottom: 10px;">YAIFY YOGYAKARTA</p>
-            <h1 style="font-family: 'Playfair Display', serif; font-size: 40px; color: var(--gold);">Takwinul Muballighin</h1>
-            <p style="font-style: italic; margin-top: 10px;">"Mencetak Kader Muballigh Profesional"</p>
-        </div>
+        <p class="hero-badge">YAIFY Yogyakarta</p>
+        <h1 class="hero-title">Takwinul Muballighin</h1>
+        <p style="margin-top: 15px; font-style: italic; font-size: 18px; opacity: 0.9;">"Mencetak Kader Muballigh Profesional"</p>
     </header>
 
-    <section class="sejarah" id="sejarah">
+    <section class="section-padding sejarah" id="sejarah">
         <h2>Sejarah Berdirinya</h2>
-        <div style="line-height: 1.8; color: #444; text-align: justify;">
+        <div class="text-content">
             <p class="drop-cap">Pondok Pesantren <strong>Takwinul Muballighin</strong> berdiri atas dasar keprihatinan terhadap dunia dakwah Islam. Semangat umat Islam untuk mempelajari, mengamalkan, dan memperjuangkan nilai-nilai Islam semakin meningkat, namun jumlah da’i/muballigh yang tersedia tidak seimbang dengan kebutuhan dakwah.</p>
             <p>Banyaknya pembangunan masjid, musholla, Islamic Center, serta maraknya majelis taklim dan forum kajian agama belum diimbangi dengan ketersediaan khotib dan penceramah yang berkualitas.</p>
             <p>Melihat kondisi tersebut, diperlukan lembaga pengkaderan da’i yang serius dan profesional. Jika selama ini para muballigh muncul secara alami, kini perlu disiapkan da’i-da’i profesional melalui proses pendidikan dan pembinaan yang terarah. Atas dasar inilah Yayasan Amal Ihsan Fisabilillah Yogyakarta (YAIFY) mendirikan Pondok Pesantren Takwinul Muballighin sebagai pusat pengkaderan muballigh yang siap berkiprah di tengah masyarakat.</p>
         </div>
     </section>
 
-    <section id="warta" style="padding: 40px 10%; background: #f9f9f9;">
-        <h2 style="font-family: 'Playfair Display', serif; color: var(--green-deep);">Warta</h2>
-        <p style="margin-top: 10px; color: #666;">Update kegiatan harian dan pengumuman terbaru santri Takwinul Muballighin Yogyakarta.</p>
+    <section class="section-padding" id="warta">
+        <div class="warta-box">
+            <h2 style="font-family: 'Playfair Display', serif; color: var(--green-deep); margin-bottom: 10px;">Warta Pondok</h2>
+            <p>Dapatkan update harian mengenai kegiatan santri, jadwal kajian, dan pengumuman penting lainnya langsung dari kompleks Takwinul Muballighin Yogyakarta.</p>
+        </div>
     </section>
 
-    <section class="lokasi" id="kontak">
-        <h2 style="font-family: 'Playfair Display', serif; color: var(--green-deep);">Lokasi Kami</h2>
-        <p style="margin-top: 10px;"><i class="fas fa-map-marker-alt" style="color: var(--green-mid);"></i> Gg. Masjid, Gandok, Condongcatur, Sleman, Yogyakarta</p>
+    <section class="section-padding" id="kontak">
+        <h2 style="font-family: 'Playfair Display', serif; color: var(--green-deep); text-align: center;">Lokasi & Kontak</h2>
+        <div style="margin: 20px 0; text-align: center;">
+            <p><i class="bi bi-geo-alt-fill" style="color: var(--green-mid);"></i> Gg. Masjid, Gandok, Condongcatur, Sleman, Yogyakarta</p>
+            <p style="margin-top: 5px;"><i class="bi bi-telephone-fill" style="color: var(--green-mid);"></i> +62 851-7172-0040</p>
+        </div>
         
-        <div class="maps-box">
+        <div class="maps-container">
             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.3101254303964!2d110.39239867500465!3d-7.756914592262145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a590059c38863%3A0xc4802521e64984!2sCondongcatur%2C%20Sleman%20Regency%2C%20Special%20Region%20of%20Yogyakarta!5e0!3m2!1sen!2sid!4v1711100000000!5m2!1sen!2sid" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.254143228491!2d110.39564617500438!3d-7.762828692256257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5978f69f886d%3A0xc3d297a760c239d!2sTakwinul%20Muballighin!5e0!3m2!1sid!2sid!4v1711234567890" 
                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
         
-        <a href="https://maps.app.goo.gl/YpGkG7Pz2R8oW9p6A" target="_blank" class="btn-maps">Buka di Aplikasi Maps</a>
+        <a href="https://maps.app.goo.gl/z6hJq" target="_blank" class="btn-maps-full">
+            <i class="bi bi-signpost-2"></i> Buka Petunjuk Jalan (Google Maps)
+        </a>
     </section>
 
-    <footer style="background: var(--green-deep); color: white; padding: 30px; text-align: center;">
-        <p>© 2026 Takwinul Muballighin Yogyakarta</p>
+    <footer style="background: var(--green-deep); color: white; padding: 40px 20px; text-align: center;">
+        <img src="z-jukebox-bg-removed.png" alt="Logo" style="height: 60px; margin-bottom: 15px; filter: brightness(1.2);">
+        <p style="font-size: 14px; opacity: 0.8;">© 2026 Pondok Pesantren Takwinul Muballighin Yogyakarta</p>
     </footer>
 
     <script>
+        // Otomatis tutup menu saat link diklik (khusus mobile)
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('menu-cb').checked = false;
