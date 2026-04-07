@@ -32,7 +32,6 @@
         
         .nav-brand img { height: 50px; width: auto; position: relative; z-index: 10002; }
 
-        /* Desktop Menu */
         .nav-links { display: flex; list-style: none; align-items: center; gap: 20px; }
         .nav-links a { color: white; text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--gold); }
@@ -66,6 +65,12 @@
         .maps-container { margin-top: 30px; border-radius: 20px; overflow: hidden; border: 1px solid #ddd; height: 350px; }
         .btn-maps-full { display: block; width: 100%; background: var(--green-mid); color: white; text-align: center; padding: 15px; margin-top: 15px; border-radius: 12px; text-decoration: none; font-weight: 700; }
 
+        /* --- FOOTER & SOSMED --- */
+        footer { background: var(--green-deep); color: white; padding: 50px 20px; text-align: center; }
+        .social-links { display: flex; justify-content: center; gap: 25px; margin: 20px 0; }
+        .social-links a { color: white; font-size: 28px; transition: 0.3s; text-decoration: none; }
+        .social-links a:hover { color: var(--gold); transform: translateY(-3px); display: inline-block; }
+
         /* --- MOBILE RESPONSIVE --- */
         @media (max-width: 768px) {
             .menu-icon { display: block; }
@@ -75,7 +80,6 @@
                 transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 10001;
             }
             #menu-cb:checked ~ .nav-links { right: 0; }
-            #menu-cb:checked ~ .menu-icon i::before { content: "\f62a"; } /* X icon */
             
             .nav-links li { margin: 15px 0; }
             .nav-links a { font-size: 22px; }
@@ -128,27 +132,32 @@
         <h2 style="font-family: 'Playfair Display', serif; color: var(--green-deep); text-align: center;">Lokasi & Kontak</h2>
         <div style="margin: 20px 0; text-align: center;">
             <p><i class="bi bi-geo-alt-fill" style="color: var(--green-mid);"></i> Gg. Masjid, Gandok, Condongcatur, Sleman, Yogyakarta</p>
-            <p style="margin-top: 5px;"><i class="bi bi-telephone-fill" style="color: var(--green-mid);"></i> +62 851-7172-0040</p>
         </div>
         
         <div class="maps-container">
             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.254143228491!2d110.39564617500438!3d-7.762828692256257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5978f69f886d%3A0xc3d297a760c239d!2sTakwinul%20Muballighin!5e0!3m2!1sid!2sid!4v1711234567890" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.32454559104!2d110.3954316!3d-7.7553531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a590740a6e343%3A0x6d900407153d162!2sPondok%20Pesantren%20Takwinul%20Muballighin!5e0!3m2!1sid!2sid!4v1711234567890" 
                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
         
-        <a href="https://maps.app.goo.gl/z6hJq" target="_blank" class="btn-maps-full">
+        <a href="https://maps.app.goo.gl/YourGoogleMapsLink" target="_blank" class="btn-maps-full">
             <i class="bi bi-signpost-2"></i> Buka Petunjuk Jalan (Google Maps)
         </a>
     </section>
 
-    <footer style="background: var(--green-deep); color: white; padding: 40px 20px; text-align: center;">
+    <footer>
         <img src="z-jukebox-bg-removed.png" alt="Logo" style="height: 60px; margin-bottom: 15px; filter: brightness(1.2);">
-        <p style="font-size: 14px; opacity: 0.8;">© 2026 Pondok Pesantren Takwinul Muballighin Yogyakarta</p>
+        
+        <div class="social-links">
+            <a href="https://instagram.com/takwinul_muballighin" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://youtube.com/@takwinulmuballighin" target="_blank" title="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="https://facebook.com/takwinulmuballighin" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
+        </div>
+
+        <p style="font-size: 14px; opacity: 0.8; margin-top: 15px;">© 2026 Pondok Pesantren Takwinul Muballighin Yogyakarta</p>
     </footer>
 
     <script>
-        // Otomatis tutup menu saat link diklik (khusus mobile)
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('menu-cb').checked = false;
