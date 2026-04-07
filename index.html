@@ -21,7 +21,7 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: #333; overflow-x: hidden; }
 
-        /* --- NAVBAR (Desain A) --- */
+        /* --- NAVBAR --- */
         nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             display: flex; align-items: center; justify-content: space-between;
@@ -31,29 +31,19 @@
             content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 230px;
             background: var(--white); clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%); z-index: 1;
         }
-        .nav-brand { position: relative; z-index: 2; }
-        .nav-brand img { height: 65px; }
+        .nav-brand { position: relative; z-index: 2; display: flex; align-items: center; }
+        .nav-brand img { height: 65px; width: auto; }
 
         .nav-links { display: flex; align-items: center; gap: 20px; list-style: none; }
-        .nav-links a { color: var(--white); text-decoration: none; font-size: 13px; font-weight: 700; text-transform: uppercase; }
-        .btn-wa-top { background: #16a34a; padding: 10px 20px; border-radius: 8px; color: white !important; display: flex; align-items: center; gap: 8px; font-weight: bold; text-decoration: none; transition: 0.3s; }
-
-        /* HAMBURGER MENU (B - HP) */
-        .menu-toggle { display: none; color: white; font-size: 28px; cursor: pointer; z-index: 1001; }
-
-        /* SIDEBAR MOBILE */
-        .mobile-nav {
-            position: fixed; top: 0; right: -100%; width: 260px; height: 100%;
-            background: var(--green-deep); z-index: 1000; padding: 100px 30px;
-            transition: 0.4s ease-in-out; display: flex; flex-direction: column; gap: 25px;
-            box-shadow: -5px 0 25px rgba(0,0,0,0.4);
-        }
-        .mobile-nav.active { right: 0; }
-        .mobile-nav a { color: white; text-decoration: none; font-size: 18px; font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .nav-links a { color: var(--white); text-decoration: none; font-size: 13px; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+        .btn-wa-top { background: #16a34a; padding: 10px 20px; border-radius: 8px; color: white !important; display: flex; align-items: center; gap: 8px; }
+        
+        .menu-toggle { display: none; color: white; font-size: 24px; cursor: pointer; }
 
         /* --- HERO --- */
         header {
-            height: 85vh; position: relative; display: flex; align-items: center; justify-content: center;
+            height: 80vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;
             text-align: center; color: var(--white); padding-top: 90px;
         }
         .hero-bg {
@@ -64,67 +54,46 @@
         .hero-content { max-width: 800px; padding: 20px; z-index: 10; }
         .badge-yaify { background: var(--green-mid); color: var(--gold-light); padding: 5px 15px; border-radius: 20px; font-size: 11px; margin-bottom: 20px; display: inline-block; border: 1px solid var(--gold); }
         .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 6vw, 60px); color: var(--gold-light); margin-bottom: 15px; }
+        
+        .stats-bar { background: var(--gold); width: 100%; position: absolute; bottom: 0; height: 5px; }
 
-        /* --- SEJARAH (Laptop A) --- */
-        .sejarah-section { padding: 80px 7%; background: var(--cream); }
-        .sejarah-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
-        .sejarah-text h2 { font-family: 'Playfair Display', serif; font-size: 40px; color: var(--green-deep); margin-bottom: 25px; }
-        .drop-cap::first-letter { font-size: 75px; float: left; margin-right: 15px; color: var(--green-deep); font-family: 'Playfair Display'; font-weight: 900; line-height: 0.7; }
+        /* --- SEJARAH --- */
+        .sejarah-section { padding: 80px 7%; background: white; }
+        .sejarah-container { max-width: 1100px; margin: 0 auto; }
+        .sejarah-text h2 { font-family: 'Playfair Display', serif; font-size: 38px; color: var(--green-deep); margin-bottom: 30px; text-align: center; }
+        .sejarah-content { line-height: 1.8; color: #444; font-size: 16px; text-align: justify; }
+        .sejarah-content p { margin-bottom: 20px; }
+        .drop-cap::first-letter { font-size: 70px; float: left; margin-right: 12px; color: var(--green-deep); font-family: 'Playfair Display'; font-weight: 900; line-height: 0.8; }
 
-        /* --- DOKUMENTASI (KOSONGAN) --- */
-        .dokumentasi-section { padding: 60px 7%; background: white; text-align: center; }
-        .dokumentasi-section h2 { font-family: 'Playfair Display', serif; margin-bottom: 30px; color: var(--green-deep); }
-        .gallery-placeholder { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; 
-            max-width: 1200px; margin: 0 auto; 
-        }
-        .box-kosong { height: 220px; background: #f0f0f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #ccc; border: 2px dashed #ddd; font-weight: bold; }
+        /* --- LOKASI & MAPS --- */
+        .maps-wrapper { width: 100%; height: 250px; border-radius: 12px; overflow: hidden; margin-top: 10px; border: 1px solid #ddd; }
+        .maps-wrapper iframe { width: 100%; height: 100%; border: 0; }
 
-        /* --- LOKASI MAPS (DESAIN A & B) --- */
-        .map-section { padding: 80px 7%; background: white; }
-        .map-container { 
-            max-width: 1200px; margin: 0 auto; 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; 
-        }
-        .map-info h2 { font-family: 'Playfair Display', serif; color: var(--green-deep); margin-bottom: 20px; font-size: 35px; }
-        .map-frame { 
-            width: 100%; height: 400px; border-radius: 20px; overflow: hidden; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee;
-        }
-        .map-frame iframe { width: 100%; height: 100%; border: none; }
-
-        /* --- RESPONSIVE MOBILE (B) --- */
+        /* --- MOBILE DESIGN --- */
         @media (max-width: 768px) {
-            nav::before { width: 140px; }
-            .nav-links { display: none; }
-            .menu-toggle { display: block; }
+            nav { height: 75px; }
+            nav::before { width: 160px; }
+            .nav-brand img { height: 55px; }
+            .nav-links { display: none; } 
+            .menu-toggle { display: block; z-index: 10; }
             
-            .sejarah-container, .map-container { grid-template-columns: 1fr; text-align: center; }
-            .drop-cap::first-letter { float: none; display: inline-block; font-size: 60px; line-height: 1; }
+            header { height: 60vh; padding-top: 75px; }
+            .sejarah-section { padding: 50px 20px; }
+            
+            .warta-mobile { padding: 40px 20px; background: white; border-top: 1px solid #eee; }
+            .warta-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+            .warta-title { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--green-deep); }
+            .badge-emot { background: #16a34a; color: white; padding: 5px 12px; border-radius: 20px; font-size: 11px; }
 
-            /* Bagian Warta HP (B) */
-            .warta-mobile { padding: 40px 20px; background: white; border-top: 8px solid #f2f2f2; }
-            .badge-green { background: #16a34a; color: white; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: bold; }
-
-            /* Lokasi HP (B) */
-            .lokasi-mobile-card { 
-                background: white; padding: 30px; border-radius: 25px; 
-                box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-top: -50px; position: relative; z-index: 5;
-            }
-            .map-frame { height: 300px; margin-top: 20px; }
+            .lokasi-mobile { padding: 40px 20px; background: var(--cream); border-radius: 30px 30px 0 0; }
+            .lokasi-card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 15px; }
+            .info-row { display: flex; gap: 15px; align-items: flex-start; }
+            .btn-maps-mobile { background: var(--green-mid); color: white; text-align: center; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: bold; }
         }
 
-        /* SOSMED FOOTER */
-        .sosmed-area { background: var(--green-deep); color: white; padding: 60px 7%; }
-        .sosmed-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-        .sosmed-box { 
-            display: flex; align-items: center; gap: 12px; color: var(--gold-light); 
-            text-decoration: none; padding: 12px 20px; background: rgba(255,255,255,0.05); 
-            border-radius: 12px; border: 1px solid rgba(201, 162, 39, 0.3); transition: 0.3s;
-        }
-        .sosmed-box:hover { background: var(--gold); color: var(--green-deep); }
-
-        footer { background: #031a10; color: rgba(255,255,255,0.4); padding: 40px 20px; text-align: center; }
+        /* --- FOOTER --- */
+        footer { background: var(--green-deep); color: white; padding: 40px 20px; text-align: center; }
+        .footer-logo { height: 80px; margin-bottom: 15px; }
     </style>
 </head>
 <body>
@@ -136,112 +105,77 @@
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#sejarah">Sejarah</a></li>
-            <li><a href="#dokumentasi">Dokumentasi</a></li>
-            <li><a href="#lokasi">Lokasi</a></li>
+            <li><a href="#warta">Warta</a></li>
+            <li><a href="#kontak">Kontak</a></li>
             <li><a href="https://wa.me/6285171720040" class="btn-wa-top"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
         </ul>
-        <div class="menu-toggle" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
+        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
     </nav>
-
-    <div class="mobile-nav" id="mobileNav">
-        <a href="#home" onclick="toggleMenu()">Home</a>
-        <a href="#sejarah" onclick="toggleMenu()">Sejarah</a>
-        <a href="#dokumentasi" onclick="toggleMenu()">Dokumentasi</a>
-        <a href="#lokasi" onclick="toggleMenu()">Kontak & Lokasi</a>
-        <a href="https://wa.me/6285171720040" style="color: #4ade80;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-    </div>
 
     <header id="home">
         <div class="hero-bg"></div>
         <div class="hero-content">
             <div class="badge-yaify">YAIFY Yogyakarta</div>
             <h1 class="hero-title">Takwinul Muballighin</h1>
-            <p style="font-style: italic; opacity: 0.9; margin-bottom: 30px;">"Mencetak Kader Muballigh Profesional & Berintegritas"</p>
-            <a href="https://wa.me/6285171720040" class="btn-wa-top" style="padding: 16px 38px; border-radius: 50px; font-size: 16px;">
-                <i class="fab fa-whatsapp"></i> Daftar Sekarang
+            <p style="margin-bottom: 25px; font-style: italic;">"Mencetak Kader Muballigh Profesional"</p>
+            <a href="https://wa.me/6285171720040" class="btn-wa-top" style="display: inline-flex; width: auto; padding: 15px 30px; border-radius: 50px;">
+                <i class="fab fa-whatsapp"></i> WhatsApp Kami
             </a>
         </div>
+        <div class="stats-bar"></div>
     </header>
 
     <section class="sejarah-section" id="sejarah">
         <div class="sejarah-container">
             <div class="sejarah-text">
-                <h2>Sejarah Singkat</h2>
-                <p class="drop-cap">Pondok Pesantren <strong>Takwinul Muballighin</strong> berkomitmen melahirkan generasi pendakwah yang moderat. Berdiri di bawah naungan YAIFY Yogyakarta untuk penguatan dakwah Islamiyah di Sleman.</p>
-                <p>Kami memadukan kurikulum pesantren salaf dengan keahlian retorika modern untuk menjawab kebutuhan umat di zaman sekarang.</p>
-            </div>
-            <div class="sejarah-img">
-                <img src="AQ.jpeg" alt="Santri" style="width:100%; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);">
-            </div>
-        </div>
-    </section>
-
-    <section class="dokumentasi-section" id="dokumentasi">
-        <h2>Dokumentasi Santri</h2>
-        <div class="gallery-placeholder">
-            <div class="box-kosong">Segera Hadir</div>
-            <div class="box-kosong">Segera Hadir</div>
-            <div class="box-kosong">Segera Hadir</div>
-            <div class="box-kosong">Segera Hadir</div>
-        </div>
-    </section>
-
-    <section class="warta-mobile">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-            <h2 style="font-family: 'Playfair Display';">Warta</h2>
-            <span class="badge-green">Pendidikan</span>
-        </div>
-        <p style="color: #666; font-size: 14px; line-height: 1.6;">Dapatkan informasi terkini mengenai agenda tahunan dan kegiatan harian para santri di Yogyakarta.</p>
-    </section>
-
-    <section class="map-section" id="lokasi">
-        <div class="map-container">
-            <div class="map-info">
-                <h2>Lokasi Kami</h2>
-                <p style="margin-bottom: 20px; color: #555;"><i class="fas fa-map-marker-alt" style="color: var(--green-mid);"></i> Gg. Masjid, Gandok, Condongcatur, Sleman, DIY</p>
-                <div class="lokasi-mobile-card">
-                    <p style="font-weight: bold; margin-bottom: 10px;">Akses Cepat:</p>
-                    <a href="https://maps.google.com/?q=Takwinul+Muballighin+YAIFY+Yogyakarta" target="_blank" class="btn-wa-top" style="display: block; text-align: center; border-radius: 12px;">
-                        <i class="fas fa-directions"></i> Navigasi Maps
-                    </a>
+                <h2>Sejarah Berdirinya</h2>
+                <div class="sejarah-content">
+                    <p class="drop-cap">Pondok Pesantren <strong>Takwinul Muballighin</strong> berdiri atas dasar keprihatinan terhadap dunia dakwah Islam. Semangat umat Islam untuk mempelajari, mengamalkan, dan memperjuangkan nilai-nilai Islam semakin meningkat, namun jumlah da’i/muballigh yang tersedia tidak seimbang dengan kebutuhan dakwah.</p>
+                    <p>Banyaknya pembangunan masjid, musholla, Islamic Center, serta maraknya majelis taklim dan forum kajian agama belum diimbangi dengan ketersediaan khotib dan penceramah yang berkualitas.</p>
+                    <p>Melihat kondisi tersebut, diperlukan lembaga pengkaderan da’i yang serius dan profesional. Jika selama ini para muballigh muncul secara alami, kini perlu disiapkan da’i-da’i profesional melalui proses pendidikan dan pembinaan yang terarah. Atas dasar inilah Yayasan Amal Ihsan Fisabilillah Yogyakarta (YAIFY) mendirikan Pondok Pesantren Takwinul Muballighin sebagai pusat pengkaderan muballigh yang siap berkiprah di tengah masyarakat.</p>
                 </div>
             </div>
-            <div class="map-frame">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.284566710493!2d110.3929424!3d-7.7596238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a59074811f58b%3A0x6299446d655f462a!2sTakwinul%20Muballighin!5e0!3m2!1sid!2sid!4v1712000000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
-            </div>
         </div>
     </section>
 
-    <section class="sosmed-area">
-        <h2 style="text-align: center; margin-bottom: 40px; font-family: 'Playfair Display';">Hubungi Media Resmi</h2>
-        <div class="sosmed-grid">
-            <a href="https://www.instagram.com/takwinul_muballighin/" target="_blank" class="sosmed-box">
-                <i class="fab fa-instagram"></i> @takwinul_muballighin
-            </a>
-            <a href="https://www.youtube.com/watch?v=NsDo2zqd3mQ" target="_blank" class="sosmed-box">
-                <i class="fab fa-youtube"></i> YouTube
-            </a>
-            <a href="https://www.facebook.com/100745859057478/" target="_blank" class="sosmed-box">
-                <i class="fab fa-facebook-f"></i> Facebook
-            </a>
-            <a href="https://wa.me/6285171720040" target="_blank" class="sosmed-box">
-                <i class="fab fa-whatsapp"></i> 0851-7172-0040
-            </a>
+    <section class="warta-mobile" id="warta">
+        <div class="warta-header">
+            <h2 class="warta-title">Warta</h2>
+            <span class="badge-emot">Pendidikan</span>
+        </div>
+        <p style="color: #666; font-size: 14px;">Update kegiatan harian dan pengumuman terbaru santri Takwinul Muballighin Yogyakarta.</p>
+    </section>
+
+    <section class="lokasi-mobile" id="kontak">
+        <h2 class="warta-title" style="margin-bottom: 20px;">Lokasi</h2>
+        <div class="lokasi-card">
+            <div class="info-row">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <p><strong>Alamat Kami:</strong></p>
+                    <p style="font-size: 14px; color: #555;">Gg. Masjid, Gandok, Condongcatur, Sleman, Yogyakarta</p>
+                </div>
+            </div>
+
+            <div class="maps-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.253689408018!2d110.395163!3d-7.763488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwNDUnNDguNiJTIDExMMKwMjMnNDIuNiJF!5e0!3m2!1sid!2sid!4v1711200000000" 
+                    allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+            <a href="https://maps.app.goo.gl/YourGoogleMapsLink" target="_blank" class="btn-maps-mobile">Petunjuk Jalan (Buka di Maps)</a>
         </div>
     </section>
 
     <footer>
-        <img src="z-jukebox-bg-removed.png" alt="Logo" style="height: 60px; margin-bottom: 15px;">
-        <p>© 2026 Takwinul Muballighin | YAIFY Yogyakarta</p>
+        <img src="z-jukebox-bg-removed.png" alt="Footer Logo" class="footer-logo">
+        <p>© 2026 Takwinul Muballighin</p>
+        <div style="margin-top: 15px; display: flex; justify-content: center; gap: 15px;">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-youtube"></i>
+            <i class="fab fa-facebook"></i>
+        </div>
     </footer>
 
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobileNav');
-            menu.classList.toggle('active');
-        }
-    </script>
 </body>
 </html>
