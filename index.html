@@ -25,23 +25,36 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: #333; overflow-x: hidden; }
 
-        /* --- NAVIGATION MUBALLIGHIN --- */
+        /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; height: 80px;
             background: var(--green-deep); display: flex; align-items: center;
-            justify-content: space-between; padding: 0 5%; z-index: 10000;
+            justify-content: space-between; padding: 0 4%; z-index: 10000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         
-        .nav-brand img { height: 50px; width: auto; position: relative; z-index: 10002; }
+        .nav-brand-area { display: flex; align-items: center; gap: 15px; }
+        .nav-brand-area img { height: 45px; width: auto; position: relative; z-index: 10002; }
+        
+        /* Kotak Pencarian Global di Atas (Navbar) */
+        .nav-search-container { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 6px 14px; width: 220px; transition: 0.3s; }
+        .nav-search-container:focus-within { background: rgba(255,255,255,0.2); width: 260px; border-color: var(--gold); }
+        .nav-search-container input { background: transparent; border: none; outline: none; font-size: 13px; color: white; width: 100%; }
+        .nav-search-container input::placeholder { color: rgba(255,255,255,0.6); }
+        .nav-search-container i { color: rgba(255,255,255,0.7); font-size: 14px; cursor: pointer; }
+
+        /* Menu Links */
         .nav-links { display: flex; list-style: none; align-items: center; gap: 20px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; transition: 0.3s; position: relative; padding: 5px 0; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold); transition: 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
         .nav-links a:hover { color: var(--gold); }
         .btn-wa { background: #16a34a; padding: 10px 18px; border-radius: 8px; display: flex; align-items: center; gap: 8px; color: white !important; }
+        .btn-wa::after { display: none !important; }
 
-        /* Mobile Toggle */
+        /* Mobile Controls Toggle */
         #menu-cb { display: none; }
-        .menu-icon { display: none; color: white; font-size: 30px; cursor: pointer; z-index: 10002; }
+        .menu-icon { display: none; color: white; font-size: 28px; cursor: pointer; z-index: 10005; position: relative; width: 40px; height: 40px; text-align: center; line-height: 40px; }
 
         /* --- HERO --- */
         header {
@@ -59,39 +72,30 @@
         .text-content { line-height: 1.8; color: #444; text-align: justify; font-size: 16px; }
         .drop-cap::first-letter { font-size: 65px; float: left; margin-right: 12px; color: var(--green-deep); font-family: 'Playfair Display'; font-weight: 900; line-height: 0.8; }
 
-        /* --- WARTA STYLE PORTAL BERITA MUBALLIGHIN --- */
+        /* --- WARTA PORTAL STYLE --- */
         .warta-section { background: #ffffff; padding: 80px 0; border-top: 1px solid var(--nu-light-gray); border-bottom: 1px solid var(--nu-light-gray); }
         .nu-list-container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
         
-        /* Bar Atas: Pencarian dan Judul */
-        .warta-header-bar { display: table; width: 100%; margin-bottom: 25px; border-bottom: 2px solid var(--nu-green); padding-bottom: 15px; }
-        .warta-title-cell { display: table-cell; vertical-align: bottom; }
-        .warta-search-cell { display: table-cell; vertical-align: bottom; text-align: right; width: 280px; }
+        .warta-header-bar { border-bottom: 2px solid var(--nu-green); padding-bottom: 15px; margin-bottom: 25px; }
         .section-title-nu { font-family: 'Playfair Display', serif; font-size: 30px; color: var(--nu-dark); font-weight: 900; }
         
-        /* Input Kotak Pencarian */
-        .search-box-wrapper { display: inline-flex; align-items: center; background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 20px; padding: 6px 14px; width: 100%; }
-        .search-box-wrapper input { background: transparent; border: none; outline: none; font-size: 13px; width: 100%; color: #333; }
-        .search-box-wrapper i { color: #6b7280; font-size: 14px; margin-left: 5px; }
-
-        /* Status Bar Pilihan / Kategori */
+        /* Status Bar Filter Kategori */
         .nu-status-bar { display: block; white-space: nowrap; overflow-x: auto; padding: 10px 0; margin-bottom: 30px; border-bottom: 1px solid var(--nu-light-gray); -webkit-overflow-scrolling: touch; }
-        .nu-status-bar::-webkit-scrollbar { display: none; } /* Menyembunyikan scrollbar di Chrome/Safari */
-        .nu-status-item { display: inline-block; padding: 8px 16px; font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--nu-gray); text-decoration: none; border-radius: 20px; margin-right: 8px; cursor: pointer; transition: 0.2s; }
-        .nu-status-item:hover { color: var(--nu-green); background: #f3f4f6; }
-        .nu-status-item.active { background: var(--nu-green); color: white; }
+        .nu-status-bar::-webkit-scrollbar { display: none; }
+        .nu-status-item { display: inline-block; padding: 8px 18px; font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--nu-gray); text-decoration: none; border-radius: 20px; margin-right: 8px; cursor: pointer; transition: 0.2s; border: 1px solid #e5e7eb; background: #f9fafb; }
+        .nu-status-item:hover { color: var(--nu-green); border-color: var(--nu-green); }
+        .nu-status-item.active { background: var(--nu-green); color: white; border-color: var(--nu-green); box-shadow: 0 2px 8px rgba(13,92,58,0.2); }
 
-        /* Item Berita dalam List */
+        /* Item Berita dalam List Halaman Depan */
         .nu-news-item { display: block; border-bottom: 1px solid var(--nu-light-gray); padding: 25px 0; }
         .nu-news-item:last-child { border-bottom: none; }
         
-        /* Layout Susunan Gambar di Samping */
         .nu-news-row { display: table; width: 100%; table-layout: fixed; }
         .nu-news-col-text { display: table-cell; width: 65%; vertical-align: top; padding-right: 25px; }
         .nu-news-col-img { display: table-cell; width: 35%; vertical-align: top; }
         
         .nu-item-cat { font-size: 11px; text-transform: uppercase; font-weight: 700; color: var(--nu-green); letter-spacing: 1px; margin-bottom: 8px; display: block; }
-        .nu-item-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--nu-dark); font-weight: 700; line-height: 1.3; margin-bottom: 10px; text-decoration: none; display: block; cursor: pointer; }
+        .nu-item-title { font-family: 'Playfair Display', serif; font-size: 21px; color: var(--nu-dark); font-weight: 700; line-height: 1.35; margin-bottom: 10px; text-decoration: none; display: block; cursor: pointer; }
         .nu-item-title:hover { color: var(--nu-green); }
         
         .nu-item-meta { font-size: 12px; color: #888; margin-bottom: 12px; display: block; }
@@ -100,28 +104,33 @@
         .nu-btn-read { font-size: 13px; color: var(--nu-green); text-decoration: none; font-weight: 700; display: inline-block; cursor: pointer; }
         .nu-btn-read:hover { text-decoration: underline; }
         
-        .nu-item-thumb { width: 100%; height: 160px; object-fit: cover; border-radius: 4px; display: block; cursor: pointer; }
+        .nu-item-thumb { width: 100%; height: 160px; object-fit: cover; border-radius: 4px; display: block; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
 
-        /* --- MODAL POPUP MEMBACA FULL TEXT --- */
-        .nu-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 99999; display: none; overflow-y: auto; padding: 40px 20px; }
-        .nu-modal-content { background: #ffffff; max-width: 780px; margin: 0 auto; border-radius: 8px; padding: 40px; position: relative; box-shadow: 0 4px 25px rgba(0,0,0,0.2); }
+        /* --- MODAL DETAL POPUP FULL TEXT --- */
+        .nu-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5,46,28,0.7); backdrop-filter: blur(8px); z-index: 99999; display: none; overflow-y: auto; padding: 40px 20px; }
+        .nu-modal-content { background: #ffffff; max-width: 780px; margin: 0 auto; border-radius: 16px; padding: 40px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         
-        /* Tombol Cakra Keluar Melayang Tetap Konsisten */
-        .nu-modal-close-circle { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; background: #f3f4f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #333; cursor: pointer; border: none; transition: 0.2s; line-height: 1; font-weight: bold; }
-        .nu-modal-close-circle:hover { background: #e5e7eb; color: #000; transform: scale(1.05); }
+        /* Tombol Cakra Premium */
+        .nu-modal-close-circle { position: absolute; top: 25px; right: 25px; width: 45px; height: 45px; background: #f3f4f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; color: #333; cursor: pointer; border: none; transition: 0.2s; }
+        .nu-modal-close-circle:hover { background: #e5e7eb; color: #000; transform: rotate(90deg); }
         
-        /* Style Detail Berita di dalam Modal */
-        .nu-modal .nu-category { font-size: 12px; text-transform: uppercase; font-weight: 700; color: var(--nu-green); letter-spacing: 1.5px; margin-bottom: 12px; display: inline-block; }
-        .nu-modal .nu-title { font-family: 'Playfair Display', serif; font-size: clamp(24px, 4vw, 36px); color: var(--nu-dark); font-weight: 900; line-height: 1.3; margin-bottom: 15px; text-align: left; padding-right: 30px; }
+        /* Style Detail Artikel di Dalam Modal */
+        #modalCategory { font-size: 12px; text-transform: uppercase; font-weight: 700; color: var(--nu-green); letter-spacing: 1.5px; margin-bottom: 12px; display: inline-block; }
+        #modalTitle { font-family: 'Playfair Display', serif; font-size: clamp(24px, 4vw, 34px); color: var(--nu-dark); font-weight: 900; line-height: 1.3; margin-bottom: 15px; text-align: left; padding-right: 45px; }
         .nu-modal .nu-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 13px; color: var(--nu-gray); border-bottom: 1px solid var(--nu-light-gray); padding-bottom: 15px; margin-bottom: 30px; }
-        .nu-modal .nu-img-container { margin-bottom: 30px; }
-        .nu-modal .nu-img-container img { width: 100%; height: auto; border-radius: 4px; display: block; }
-        .nu-modal .nu-caption { font-size: 13px; color: #555; margin-top: 10px; text-align: left; line-height: 1.5; border-left: 3px solid var(--nu-green); padding-left: 12px; font-style: italic; }
+        
+        .nu-modal-images { margin-bottom: 30px; }
+        .nu-modal-img-wrapper { margin-bottom: 20px; }
+        .nu-modal-img-wrapper img { width: 100%; height: auto; border-radius: 8px; display: block; }
+        .nu-modal-caption { font-size: 13px; color: #555; margin-top: 10px; text-align: left; line-height: 1.5; border-left: 3px solid var(--nu-green); padding-left: 12px; font-style: italic; }
+        
         .nu-modal .nu-body { font-size: 17px; line-height: 1.85; color: #2c2c2c; text-align: justify; }
         .nu-modal .nu-body p { margin-bottom: 20px; }
-        .nu-modal .nu-hadits-box { background: #fcfcfc; border-top: 1px solid var(--nu-green); border-bottom: 1px solid var(--nu-green); padding: 25px; margin: 35px 0; }
-        .nu-modal .nu-hadits-arabic { font-family: 'Noto Naskh Arabic', serif; font-size: 24px; line-height: 2.2; text-align: right; color: var(--nu-dark); margin-bottom: 15px; direction: rtl; }
-        .nu-modal .nu-hadits-translation { font-family: 'DM Sans', sans-serif; font-style: italic; font-size: 15px; color: #444; line-height: 1.6; text-align: left; }
+        
+        /* Box Hadits */
+        .nu-hadits-box { background: #fcfcfc; border-top: 1px solid var(--nu-green); border-bottom: 1px solid var(--nu-green); padding: 25px; margin: 35px 0; display: none; }
+        .nu-hadits-arabic { font-family: 'Noto Naskh Arabic', serif; font-size: 24px; line-height: 2.2; text-align: right; color: var(--nu-dark); margin-bottom: 15px; direction: rtl; }
+        .nu-hadits-translation { font-family: 'DM Sans', sans-serif; font-style: italic; font-size: 15px; color: #444; line-height: 1.6; text-align: left; }
 
         /* --- MAPS --- */
         .maps-container { margin-top: 30px; border-radius: 20px; overflow: hidden; border: 1px solid #ddd; height: 350px; }
@@ -133,44 +142,48 @@
         .social-links a { color: white; font-size: 28px; transition: 0.3s; text-decoration: none; }
         .social-links a:hover { color: var(--gold); transform: translateY(-3px); display: inline-block; }
 
-        /* Responsive Mobile Layout */
+        /* --- MOBILE RESPONSIVE --- */
         @media (max-width: 768px) {
             .menu-icon { display: block; }
             .nav-links {
-                position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
-                background: var(--green-deep); flex-direction: column; justify-content: center;
-                transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 10001;
+                position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
+                background: rgba(5, 46, 28, 0.96); backdrop-filter: blur(15px);
+                flex-direction: column; justify-content: center; gap: 30px;
+                transition: 0.4s ease; z-index: 10004; box-shadow: -5px 0 25px rgba(0,0,0,0.3);
+                padding: 0 10%; align-items: flex-start;
             }
             #menu-cb:checked ~ .nav-links { right: 0; }
-            .nav-links li { margin: 15px 0; }
-            .nav-links a { font-size: 22px; }
+            .nav-links a { font-size: 20px; width: 100%; display: block; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            
+            .nav-search-container { position: absolute; left: 50%; transform: translateX(-50%); width: 40%; max-width: 180px; height: 34px; padding: 4px 10px; }
+            .nav-search-container input { font-size: 11px; }
+
             .section-padding { padding: 60px 5%; }
-            
-            /* Penyesuaian Bar Judul & Cari di Mobile */
-            .warta-header-bar { display: block; }
-            .warta-title-cell { display: block; margin-bottom: 15px; }
-            .warta-search-cell { display: block; width: 100%; text-align: left; }
-            
             .nu-news-row { display: block; }
             .nu-news-col-text { display: block; width: 100%; padding-right: 0; margin-bottom: 15px; }
             .nu-news-col-img { display: block; width: 100%; }
             .nu-item-thumb { height: 200px; }
             
             .nu-modal { padding: 10px; }
-            .nu-modal-content { padding: 35px 15px 25px 15px; }
-            .nu-modal-close-circle { top: 10px; right: 10px; width: 35px; height: 35px; font-size: 20px; }
+            .nu-modal-content { padding: 35px 20px 25px 20px; }
+            .nu-modal-close-circle { top: 15px; right: 15px; width: 36px; height: 36px; font-size: 22px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-brand">
+        <div class="nav-brand-area">
             <img src="z-jukebox-bg-removed.png" alt="Logo">
         </div>
 
+        <div class="nav-search-container">
+            <input type="text" id="globalSearch" placeholder="Cari warta...">
+            <i class="bi bi-search"></i>
+        </div>
+
         <input type="checkbox" id="menu-cb">
-        <label for="menu-cb" class="menu-icon"><i class="bi bi-list"></i></label>
+        <label for="menu-cb" class="menu-icon"><i class="bi bi-list" id="menuBtnIcon"></i></label>
 
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
@@ -198,95 +211,41 @@
 
     <section class="warta-section" id="warta">
         <div class="nu-list-container">
-            
             <div class="warta-header-bar">
-                <div class="warta-title-cell">
-                    <h2 class="section-title-nu">Warta Pondok</h2>
-                </div>
-                <div class="warta-search-cell">
-                    <div class="search-box-wrapper">
-                        <input type="text" placeholder="Cari warta berita pesantren...">
-                        <i class="bi bi-search"></i>
-                    </div>
-                </div>
+                <h2 class="section-title-nu">Warta Pondok</h2>
             </div>
 
-            <div class="nu-status-bar">
-                <span class="nu-status-item active">Semua Warta</span>
-                <span class="nu-status-item">Kegiatan</span>
-                <span class="nu-status-item">Kajian</span>
-                <span class="nu-status-item">Pengumuman</span>
+            <div class="nu-status-bar" id="statusBar">
+                <span class="nu-status-item active" onclick="filterKategori('Semua Warta')">Semua Warta</span>
+                <span class="nu-status-item" onclick="filterKategori('Kegiatan')">Kegiatan</span>
+                <span class="nu-status-item" onclick="filterKategori('Kajian')">Kajian</span>
+                <span class="nu-status-item" onclick="filterKategori('Pengumuman')">Pengumuman</span>
             </div>
 
-            <div class="nu-news-item">
-                <div class="nu-news-row">
-                    <div class="nu-news-col-text">
-                        <span class="nu-item-cat">Kegiatan</span>
-                        <h3 class="nu-item-title" onclick="openWarta()">Kunjungan Jamaah Patran dalam Agenda Kajian dan Silaturahmi Pondok Pesantren</h3>
-                        <span class="nu-item-meta">Ahad, 12 Juli 2026 | Oleh: Redaktur TM</span>
-                        <p class="nu-item-excerpt">
-                            Pondok Pesantren Takwinul Muballighin mendapat kehormatan besar dengan kedatangan rombongan jamaah dari wilayah Patran. Rangkaian kunjungan ini diisi dengan kajian keagamaan bersama serta silaturahmi...
-                        </p>
-                        <span class="nu-btn-read" onclick="openWarta()">Baca Selengkapnya →</span>
-                    </div>
-                    <div class="nu-news-col-img">
-                        <img src="IA.jpg" alt="Thumbnail Kajian" class="nu-item-thumb" onclick="openWarta()">
-                    </div>
-                </div>
-            </div>
-
+            <div id="wartaNewsList"></div>
         </div>
     </section>
 
     <div id="wartaModal" class="nu-modal">
         <div class="nu-modal-content">
-            <button class="nu-modal-close-circle" onclick="closeWarta()" title="Tutup Halaman Baca">×</button>
+            <button class="nu-modal-close-circle" onclick="closeWarta()">×</button>
             
-            <span class="nu-category">Kegiatan</span>
-            <h2 class="nu-title">Kunjungan Jamaah Patran dalam Agenda Kajian dan Silaturahmi Pondok Pesantren</h2>
+            <span id="modalCategory"></span>
+            <h2 id="modalTitle"></h2>
             
             <div class="nu-meta">
-                <span class="author">Redaktur TM</span>
-                <span><i class="bi bi-calendar3"></i> Ahad, 12 Juli 2026</span>
-                <span><i class="bi bi-clock"></i> 18:00 WIB</span>
+                <span id="modalAuthor"></span>
+                <span><i class="bi bi-calendar3"></i> <span id="modalDate"></span></span>
             </div>
 
-            <div class="nu-img-container">
-                <img src="IA.jpg" alt="Kajian Jamaah Patran">
-                <div class="nu-caption">
-                    Suasana penuh kekhusyukan para jamaah Patran saat menyimak penyampaian kajian keagamaan di aula Pondok Pesantren Takwinul Muballighin, Sleman, Yogyakarta, Ahad (12/7/2026).
-                </div>
+            <div id="modalImagesContainer" class="nu-modal-images"></div>
+
+            <div id="modalHaditsBox" class="nu-hadits-box">
+                <div id="modalHaditsArabic" class="nu-hadits-arabic"></div>
+                <div id="modalHaditsTranslation" class="nu-hadits-translation"></div>
             </div>
 
-            <div class="nu-img-container">
-                <img src="IB.jpg" alt="Silaturahmi Jamaah Patran">
-                <div class="nu-caption">
-                    Momentum hangat dan penuh ukhuwah saat jajaran pengurus pondok pesantren menyambut dan bersilaturahmi langsung dengan rombongan jamaah Patran.
-                </div>
-            </div>
-
-            <div class="nu-body">
-                <p><strong>Alhamdulillāhirabbil 'ālamīn.</strong> Segala puji bagi Allah SWT yang senantiasa melimpahkan rahmat, taufik, dan hidayah-Nya kepada kita semua.</p>
-
-                <p>Pada hari Ahad, 12 Juli 2026, Pondok Pesantren kami mendapat kehormatan dengan kedatangan rombongan jamaah dari wilayah Patran. Kehadiran beliau-beliau disambut dengan penuh rasa syukur dan sukacita oleh pengasuh, pengurus, serta seluruh santri.</p>
-
-                <p>Kunjungan ini memiliki tujuan yang mulia, yaitu mengikuti kajian keagamaan yang rutin diselenggarakan di pondok pesantren. Semangat <em>thalabul 'ilmi</em> (menuntut ilmu) yang ditunjukkan para jamaah menjadi motivasi dan teladan bagi seluruh keluarga besar pondok untuk terus mencintai ilmu agama.</p>
-
-                <p>Selain mengikuti kajian, pertemuan ini juga menjadi momentum yang berharga untuk mempererat tali silaturahmi (ukhuwah Islamiyah) antara pondok pesantren dan masyarakat. Suasana penuh kehangatan, kebersamaan, dan saling berbagi nasihat semakin memperkuat hubungan yang telah terjalin.</p>
-
-                <div class="nu-hadits-box">
-                    <div class="nu-hadits-arabic">
-                        «مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ static. اللهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ»
-                    </div>
-                    <div class="nu-hadits-translation">
-                        "Barang siapa menempuh suatu jalan untuk mencari ilmu, maka Allah akan memudahkan baginya jalan menuju surga." (HR. Muslim)
-                    </div>
-                </div>
-
-                <p>Semoga ilmu yang telah dipelajari bersama menjadi ilmu yang bermanfaat, menambah keimanan, serta diamalkan dalam kehidupan sehari-hari.</p>
-
-                <p><em>Jazakumullāhu khairan katsīrā.</em> Sampai jumpa pada agenda kajian Pondok Pesantren berikutnya.</p>
-            </div>
+            <div id="modalBody" class="nu-body"></div>
         </div>
     </div>
 
@@ -297,9 +256,7 @@
         </div>
         
         <div class="maps-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.2544274719273!2d110.3951556!3d-7.762788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5975e5330e71%3A0x2a3e0f80879e83!2sCondongcatur%2C%20Sleman%20Regency%2C%20Special%20Region%20of%20Yogyakarta!5e0!3m2!1sen!2sid!4v1712800000000!5m2!1sen!2sid" 
-                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.2544274719273!2d110.3951556!3d-7.762788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5975e5330e71%3A0x2a3e0f80879e83!2sCondongcatur%2C%20Sleman%20Regency%2C%20Special%20Region%20of%20Yogyakarta!5e0!3m2!1sen!2sid!4v1712800000000!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
         
         <a href="https://www.google.com/maps/search/Takwinul+Muballighin+Gandok+Condongcatur" target="_blank" class="btn-maps-full">
@@ -309,52 +266,186 @@
 
     <footer>
         <img src="z-jukebox-bg-removed.png" alt="Logo" style="height: 60px; margin-bottom: 15px; filter: brightness(1.2);">
-        
         <div class="social-links">
-            <a href="https://instagram.com/takwinul_muballighin" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="https://youtube.com/@takwinulmuballighin" target="_blank" title="YouTube"><i class="bi bi-youtube"></i></a>
-            <a href="https://facebook.com/takwinulmuballighin" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com/takwinul_muballighin" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="https://youtube.com/@takwinulmuballighin" target="_blank"><i class="bi bi-youtube"></i></a>
+            <a href="https://facebook.com/takwinulmuballighin" target="_blank"><i class="bi bi-facebook"></i></a>
         </div>
-
         <p style="font-size: 14px; opacity: 0.8; margin-top: 15px;">© 2026 Pondok Pesantren Takwinul Muballighin Yogyakarta</p>
     </footer>
 
     <script>
-        // Fungsi Navigasi Mobile
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('menu-cb').checked = false;
-            });
-        });
+        // DATA DATABASE BERITA WARTA (Sangat mudah ditambah berita baru di sini nanti!)
+        const dataWarta = [
+            {
+                id: 1,
+                kategori: "Kegiatan",
+                judul: "Kunjungan Jamaah Patran dalam Agenda Kajian dan Silaturahmi Pondok Pesantren",
+                tanggal: "Ahad, 12 Juli 2026",
+                penulis: "Redaktur TM",
+                thumbnail: "IA.jpg",
+                ringkasan: "Pondok Pesantren Takwinul Muballighin mendapat kehormatan besar dengan kedatangan rombongan jamaah dari wilayah Patran. Rangkaian kunjungan ini diisi dengan kajian keagamaan bersama serta silaturahmi...",
+                
+                // ISI FOTO LENGKAP SAAT DIKLIK BACA FULL TEXT
+                images: [
+                    { src: "IA.jpg", caption: "Suasana penuh kekhusyukan para jamaah Patran saat menyimak penyampaian kajian keagamaan di aula Pondok Pesantren Takwinul Muballighin, Sleman, Yogyakarta." },
+                    { src: "IB.jpg", caption: "Momentum hangat dan penuh ukhuwah saat jajaran pengurus pondok pesantren menyambut dan bersilaturahmi langsung dengan rombongan jamaah Patran." }
+                ],
+                
+                // DATA HADITS (JIKA ADA)
+                hadits: {
+                    arab: "«مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ اللهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ»",
+                    arti: '"Barang siapa menempuh suatu jalan untuk mencari ilmu, maka Allah akan memudahkan baginya jalan menuju surga." (HR. Muslim)'
+                },
+                
+                // ISI PARAGRAF LENGKAP UTUH DI DALAM MODAL BACA
+                isiLengkap: [
+                    "<strong>Alhamdulillāhirabbil 'ālamīn.</strong> Segala puji bagi Allah SWT yang senantiasa melimpahkan rahmat, taufik, dan hidayah-Nya kepada kita semua.",
+                    "Pada hari Ahad, 12 Juli 2026, Pondok Pesantren kami mendapat kehormatan dengan kedatangan rombongan jamaah dari wilayah Patran. Kehadiran beliau-beliau disambut dengan penuh rasa syukur dan sukacita oleh pengasuh, pengurus, serta seluruh santri.",
+                    "Kunjungan ini memiliki tujuan yang mulia, yaitu mengikuti kajian keagamaan yang rutin diselenggarakan di pondok pesantren. Semangat thalabul 'ilmi (menuntut ilmu) yang ditunjukkan para jamaah menjadi motivasi dan teladan bagi seluruh keluarga besar pondok untuk terus mencintai ilmu agama.",
+                    "Selain mengikuti kajian, pertemuan ini juga menjadi momentum yang berharga untuk mempererat tali silaturahmi (ukhuwah Islamiyah) antara pondok pesantren dan masyarakat. Suasana penuh kehangatan, kebersamaan, dan saling berbagi nasihat semakin memperkuat hubungan yang telah terjalin.",
+                    "Semoga ilmu yang telah dipelajari bersama menjadi ilmu yang bermanfaat, menambah keimanan, serta diamalkan dalam kehidupan sehari-hari.",
+                    "<em>Jazakumullāhu khairan katsīrā.</em> Sampai jumpa pada agenda kajian Pondok Pesantren berikutnya."
+                ]
+            }
+            // Tambahkan data berita id: 2, id: 3 dengan format yang sama di sini nanti!
+        ];
 
-        // Kontrol Fungsi Modal Baca Full Teks Warta
-        function openWarta() {
+        let kategoriAktif = "Semua Warta";
+        let kataKunciCari = "";
+
+        // Fungsi me-render / memuat daftar ringkasan berita ke halaman depan
+        function renderWartaList() {
+            const container = document.getElementById("wartaNewsList");
+            container.innerHTML = "";
+
+            // Filter Berita berdasarkan status kategori & kolom pencarian navbar
+            const beritaTerfilter = dataWarta.filter(item => {
+                const cocokKategori = (kategoriAktif === "Semua Warta" || item.kategori === kategoriAktif);
+                const cocokPencarian = item.judul.toLowerCase().includes(kataKunciCari.toLowerCase()) || 
+                                       item.ringkasan.toLowerCase().includes(kataKunciCari.toLowerCase());
+                return cocokKategori && cocokPencarian;
+            });
+
+            if(beritaTerfilter.length === 0) {
+                container.innerHTML = `<p style="text-align:center; padding: 40px; color:#888;">Tidak ada warta berita yang ditemukan.</p>`;
+                return;
+            }
+
+            beritaTerfilter.forEach(berita => {
+                const itemHtml = `
+                    <div class="nu-news-item">
+                        <div class="nu-news-row">
+                            <div class="nu-news-col-text">
+                                <span class="nu-item-cat">${berita.kategori}</span>
+                                <h3 class="nu-item-title" onclick="openWarta(${berita.id})">${berita.judul}</h3>
+                                <span class="nu-item-meta">${berita.tanggal} | Oleh: ${berita.penulis}</span>
+                                <p class="nu-item-excerpt">${berita.ringkasan}</p>
+                                <span class="nu-btn-read" onclick="openWarta(${berita.id})">Baca Selengkapnya →</span>
+                            </div>
+                            <div class="nu-news-col-img">
+                                <img src="${berita.thumbnail}" alt="Thumbnail" class="nu-item-thumb" onclick="openWarta(${berita.id})">
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += itemHtml;
+            });
+        }
+
+        // Fungsi membuka Berita secara Penuh (Full Text) berdasarkan ID Berita yang diklik
+        function openWarta(id) {
+            const berita = dataWarta.find(item => item.id === id);
+            if(!berita) return;
+
+            document.getElementById("modalCategory").innerText = berita.kategori;
+            document.getElementById("modalTitle").innerText = berita.judul;
+            document.getElementById("modalAuthor").innerText = berita.penulis;
+            document.getElementById("modalDate").innerText = berita.tanggal;
+
+            // Render Foto-Foto Berita
+            const imgContainer = document.getElementById("modalImagesContainer");
+            imgContainer.innerHTML = "";
+            berita.images.forEach(imgData => {
+                imgContainer.innerHTML += `
+                    <div class="nu-modal-img-wrapper">
+                        <img src="${imgData.src}" alt="Gambar Berita">
+                        <div class="nu-modal-caption">${imgData.caption}</div>
+                    </div>
+                `;
+            });
+
+            // Render Hadits Box jika ada data hadits di objek berita
+            const haditsBox = document.getElementById("modalHaditsBox");
+            if(berita.hadits && berita.hadits.arab) {
+                haditsBox.style.display = "block";
+                document.getElementById("modalHaditsArabic").innerText = berita.hadits.arab;
+                document.getElementById("modalHaditsTranslation").innerText = berita.hadits.arti;
+            } else {
+                haditsBox.style.display = "none";
+            }
+
+            // Render Paragraf Isi Artikel Lengkap
+            const bodyContainer = document.getElementById("modalBody");
+            bodyContainer.innerHTML = "";
+            berita.isiLengkap.forEach(pText => {
+                bodyContainer.innerHTML += `<p>${pText}</p>`;
+            });
+
+            // Tampilkan Modal Popup
             var modal = document.getElementById("wartaModal");
             modal.style.display = "block";
-            document.body.style.overflow = "hidden";
+            document.body.style.overflow = "hidden"; // kunci scroll background
         }
 
         function closeWarta() {
-            var modal = document.getElementById("wartaModal");
-            modal.style.display = "none";
+            document.getElementById("wartaModal").style.display = "none";
             document.body.style.overflow = "auto";
         }
 
-        window.onclick = function(event) {
+        // Fungsi Filter lewat Status Bar Pilihan
+        function filterKategori(kategori) {
+            kategoriAktif = kategori;
+            document.querySelectorAll('.nu-status-item').forEach(item => {
+                if(item.innerText.trim() === kategori) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+            renderWartaList();
+        }
+
+        // Fungsi Input Pencarian di Navbar Atas
+        document.getElementById("globalSearch").addEventListener("input", function(e) {
+            kataKunciCari = e.target.value;
+            renderWartaList();
+        });
+
+        // Kontrol Menu Hamburger Mobile Toggle
+        const menuCb = document.getElementById('menu-cb');
+        const menuBtnIcon = document.getElementById('menuBtnIcon');
+        menuCb.addEventListener('change', function() {
+            menuBtnIcon.className = this.checked ? "bi bi-x-lg" : "bi bi-list";
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuCb.checked = false;
+                menuBtnIcon.className = "bi bi-list";
+            });
+        });
+
+        // Close modal klik sembarang area luar
+        window.onclick = function(e) {
             var modal = document.getElementById("wartaModal");
-            if (event.target == modal) {
+            if (e.target == modal) {
                 modal.style.display = "none";
                 document.body.style.overflow = "auto";
             }
         }
 
-        // Interaksi Sederhana Pada Status Bar Pilihan Kategori
-        document.querySelectorAll('.nu-status-item').forEach(item => {
-            item.addEventListener('click', function() {
-                document.querySelectorAll('.nu-status-item').forEach(i => i.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
+        // Load awal data berita ketika web dibuka pertama kali
+        window.onload = renderWartaList;
     </script>
 </body>
 </html>
