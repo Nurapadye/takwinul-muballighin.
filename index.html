@@ -17,8 +17,8 @@
             --white: #ffffff;
             --nu-green: #0d5c3a;
             --nu-dark: #111111;
-            --nu-gray: #555555;
-            --nu-light-gray: #eeeeee;
+            --nu-gray: #666666;
+            --nu-light-gray: #e5e7eb;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -60,26 +60,28 @@
         .drop-cap::first-letter { font-size: 65px; float: left; margin-right: 12px; color: var(--green-deep); font-family: 'Playfair Display'; font-weight: 900; line-height: 0.8; }
 
         /* --- WARTA STYLE NU ONLINE --- */
-        .warta-section { background: #ffffff; padding: 60px 0; }
-        .nu-container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
-        .nu-category { font-size: 13px; text-transform: uppercase; font-weight: 700; color: var(--nu-green); letter-spacing: 1px; margin-bottom: 10px; display: inline-block; }
-        .nu-title { font-family: 'Playfair Display', serif; font-size: clamp(26px, 4vw, 38px); color: var(--nu-dark); font-weight: 700; line-height: 1.3; margin-bottom: 15px; text-align: left; }
+        .warta-section { background: #ffffff; padding: 80px 0; border-top: 1px solid var(--nu-light-gray); border-bottom: 1px solid var(--nu-light-gray); }
+        .nu-container { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+        .nu-category { font-size: 12px; text-transform: uppercase; font-weight: 700; color: var(--nu-green); letter-spacing: 1.5px; margin-bottom: 12px; display: inline-block; position: relative; }
+        .nu-category::after { content: ''; display: block; width: 30px; height: 2px; background: var(--nu-green); margin-top: 4px; }
         
-        .nu-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 14px; color: var(--nu-gray); border-bottom: 1px solid var(--nu-light-gray); padding-bottom: 15px; margin-bottom: 25px; }
+        .nu-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4.5vw, 40px); color: var(--nu-dark); font-weight: 900; line-height: 1.25; margin-bottom: 15px; letter-spacing: -0.5px; text-align: left; }
+        
+        .nu-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 13px; color: var(--nu-gray); border-bottom: 1px solid var(--nu-light-gray); padding-bottom: 15px; margin-bottom: 30px; }
         .nu-meta span { display: flex; align-items: center; gap: 5px; }
-        .nu-meta .author { color: var(--nu-dark); font-weight: 700; }
+        .nu-meta .author { color: var(--nu-green); font-weight: 700; text-transform: uppercase; }
 
-        .nu-img-container { margin-bottom: 30px; }
-        .nu-img-container img { width: 100%; height: auto; border-radius: 4px; display: block; }
-        .nu-caption { font-size: 13px; color: var(--nu-gray); margin-top: 8px; text-align: left; line-height: 1.4; border-left: 3px solid var(--nu-green); padding-left: 10px; }
+        .nu-img-container { margin-bottom: 35px; }
+        .nu-img-container img { width: 100%; height: auto; border-radius: 4px; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .nu-caption { font-size: 13.5px; color: #555; margin-top: 10px; text-align: left; line-height: 1.5; border-left: 3px solid var(--nu-green); padding-left: 12px; font-style: italic; }
 
-        .nu-body { font-size: 17px; line-height: 1.85; color: #222222; text-align: justify; }
-        .nu-body p { margin-bottom: 20px; }
+        .nu-body { font-size: 17.5px; line-height: 1.9; color: #2c2c2c; text-align: justify; }
+        .nu-body p { margin-bottom: 22px; }
         .nu-body strong { color: var(--nu-dark); }
         
         /* NU Online Styled Blockquote / Hadits */
-        .nu-hadits-box { background: #f9f9f9; border-top: 2px solid var(--nu-green); border-bottom: 2px solid var(--nu-green); padding: 25px; margin: 30px 0; border-radius: 2px; }
-        .nu-hadits-arabic { font-family: 'Noto Naskh Arabic', serif; font-size: 24px; line-height: 2.2; text-align: right; color: var(--nu-dark); margin-bottom: 15px; direction: rtl; }
+        .nu-hadits-box { background: #fcfcfc; border-top: 1px solid var(--nu-green); border-bottom: 1px solid var(--nu-green); padding: 30px 25px; margin: 35px 0; position: relative; }
+        .nu-hadits-arabic { font-family: 'Noto Naskh Arabic', serif; font-size: 26px; line-height: 2.3; text-align: right; color: var(--nu-dark); margin-bottom: 15px; direction: rtl; }
         .nu-hadits-translation { font-family: 'DM Sans', sans-serif; font-style: italic; font-size: 15px; color: #444; line-height: 1.6; text-align: left; }
 
         /* --- MAPS --- */
@@ -103,7 +105,7 @@
             .nav-links li { margin: 15px 0; }
             .nav-links a { font-size: 22px; }
             .section-padding { padding: 60px 5%; }
-            .nu-body { font-size: 16px; }
+            .nu-body { font-size: 16.5px; }
         }
     </style>
 </head>
@@ -137,7 +139,7 @@
         <div class="text-content">
             <p class="drop-cap">Pondok Pesantren <strong>Takwinul Muballighin</strong> berdiri atas dasar keprihatinan terhadap dunia dakwah Islam. Semangat umat Islam untuk mempelajari, mengamalkan, dan memperjuangkan nilai-nilai Islam semakin meningkat, namun jumlah da’i/muballigh yang tersedia tidak seimbang dengan kebutuhan dakwah.</p>
             <p>Banyaknya pembangunan masjid, musholla, Islamic Center, serta maraknya majelis taklim dan forum kajian agama belum diimbangi dengan ketersediaan khotib dan penceramah yang berkualitas.</p>
-            <p>Melihat kondisi tersebut, diperlukan lembaga pengkaderan da’i yang serius and profesional. Jika selama ini para muballigh muncul secara alami, kini perlu disiapkan da’i-da’i profesional melalui proses pendidikan dan pembinaan yang terarah. Atas dasar inilah Yayasan Amal Ihsan Fisabilillah Yogyakarta (YAIFY) mendirikan Pondok Pesantren Takwinul Muballighin sebagai pusat pengkaderan muballigh yang siap berkiprah di tengah masyarakat.</p>
+            <p>Melihat kondisi tersebut, diperlukan lembaga pengkaderan da’i yang serius dan profesional. Jika selama ini para muballigh muncul secara alami, kini perlu disiapkan da’i-da’i profesional melalui proses pendidikan dan pembinaan yang terarah. Atas dasar inilah Yayasan Amal Ihsan Fisabilillah Yogyakarta (YAIFY) mendirikan Pondok Pesantren Takwinul Muballighin sebagai pusat pengkaderan muballigh yang siap berkiprah di tengah masyarakat.</p>
         </div>
     </section>
 
@@ -149,22 +151,22 @@
             <h2 class="nu-title">Kunjungan Jamaah Patran dalam Agenda Kajian dan Silaturahmi Pondok Pesantren</h2>
             
             <div class="nu-meta">
-                <span class="author"><i class="bi bi-person-fill"></i> Redaksi Takwinul Muballighin</span>
+                <span class="author">Redaktur TM</span>
                 <span><i class="bi bi-calendar3"></i> Ahad, 12 Juli 2026</span>
-                <span><i class="bi bi-clock"></i> 09:00 WIB</span>
+                <span><i class="bi bi-clock"></i> 18:00 WIB</span>
             </div>
 
             <div class="nu-img-container">
                 <img src="IA.jpg" alt="Kajian Jamaah Patran">
                 <div class="nu-caption">
-                    Suasana khidmat jamaah Patran saat mengikuti agenda kajian keagamaan di Pondok Pesantren Takwinul Muballighin, Yogyakarta.
+                    Suasana penuh kekhusyukan para jamaah Patran saat menyimak penyampaian kajian keagamaan di aula Pondok Pesantren Takwinul Muballighin, Sleman, Yogyakarta, Ahad (12/7/2026).
                 </div>
             </div>
 
             <div class="nu-img-container">
                 <img src="IB.jpg" alt="Silaturahmi Jamaah Patran">
                 <div class="nu-caption">
-                    Momentum hangat silaturahmi antara pengurus pondok pesantren dengan rombongan jamaah Patran pasca kajian.
+                    Momentum hangat dan penuh ukhuwah saat jajaran pengurus pondok pesantren menyambut dan bersilaturahmi langsung dengan rombongan jamaah Patran.
                 </div>
             </div>
 
