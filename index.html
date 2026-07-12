@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Takwinul Muballighin | YAIFY Yogyakarta</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;700&family=Noto+Naskh+Arabic:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&family=Noto+Naskh+Arabic:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     <style>
@@ -25,7 +25,7 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: #333; overflow-x: hidden; }
 
-        /* --- NAVIGATION --- */
+        /* --- NAVIGATION MUBALLIGHIN --- */
         nav {
             position: fixed; top: 0; width: 100%; height: 80px;
             background: var(--green-deep); display: flex; align-items: center;
@@ -59,30 +59,69 @@
         .text-content { line-height: 1.8; color: #444; text-align: justify; font-size: 16px; }
         .drop-cap::first-letter { font-size: 65px; float: left; margin-right: 12px; color: var(--green-deep); font-family: 'Playfair Display'; font-weight: 900; line-height: 0.8; }
 
-        /* --- WARTA STYLE PORTAL BERITA --- */
+        /* --- WARTA STYLE PORTAL BERITA MUBALLIGHIN --- */
         .warta-section { background: #ffffff; padding: 80px 0; border-top: 1px solid var(--nu-light-gray); border-bottom: 1px solid var(--nu-light-gray); }
-        .nu-container { max-width: 780px; margin: 0 auto; padding: 0 20px; }
-        .nu-category { font-size: 12px; text-transform: uppercase; font-weight: 700; color: var(--nu-green); letter-spacing: 1.5px; margin-bottom: 12px; display: inline-block; position: relative; }
-        .nu-category::after { content: ''; display: block; width: 30px; height: 2px; background: var(--nu-green); margin-top: 4px; }
+        .nu-list-container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
         
-        .nu-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4.5vw, 40px); color: var(--nu-dark); font-weight: 900; line-height: 1.25; margin-bottom: 15px; letter-spacing: -0.5px; text-align: left; }
+        /* Bar Atas: Pencarian dan Judul */
+        .warta-header-bar { display: table; width: 100%; margin-bottom: 25px; border-bottom: 2px solid var(--nu-green); padding-bottom: 15px; }
+        .warta-title-cell { display: table-cell; vertical-align: bottom; }
+        .warta-search-cell { display: table-cell; vertical-align: bottom; text-align: right; width: 280px; }
+        .section-title-nu { font-family: 'Playfair Display', serif; font-size: 30px; color: var(--nu-dark); font-weight: 900; }
         
-        .nu-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 13px; color: var(--nu-gray); border-bottom: 1px solid var(--nu-light-gray); padding-bottom: 15px; margin-bottom: 30px; }
-        .nu-meta span { display: flex; align-items: center; gap: 5px; }
-        .nu-meta .author { color: var(--nu-green); font-weight: 700; text-transform: uppercase; }
+        /* Input Kotak Pencarian */
+        .search-box-wrapper { display: inline-flex; align-items: center; background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 20px; padding: 6px 14px; width: 100%; }
+        .search-box-wrapper input { background: transparent; border: none; outline: none; font-size: 13px; width: 100%; color: #333; }
+        .search-box-wrapper i { color: #6b7280; font-size: 14px; margin-left: 5px; }
 
-        .nu-img-container { margin-bottom: 35px; }
-        .nu-img-container img { width: 100%; height: auto; border-radius: 4px; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .nu-caption { font-size: 13.5px; color: #555; margin-top: 10px; text-align: left; line-height: 1.5; border-left: 3px solid var(--nu-green); padding-left: 12px; font-style: italic; }
+        /* Status Bar Pilihan / Kategori */
+        .nu-status-bar { display: block; white-space: nowrap; overflow-x: auto; padding: 10px 0; margin-bottom: 30px; border-bottom: 1px solid var(--nu-light-gray); -webkit-overflow-scrolling: touch; }
+        .nu-status-bar::-webkit-scrollbar { display: none; } /* Menyembunyikan scrollbar di Chrome/Safari */
+        .nu-status-item { display: inline-block; padding: 8px 16px; font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--nu-gray); text-decoration: none; border-radius: 20px; margin-right: 8px; cursor: pointer; transition: 0.2s; }
+        .nu-status-item:hover { color: var(--nu-green); background: #f3f4f6; }
+        .nu-status-item.active { background: var(--nu-green); color: white; }
 
-        .nu-body { font-size: 17.5px; line-height: 1.9; color: #2c2c2c; text-align: justify; }
-        .nu-body p { margin-bottom: 22px; }
-        .nu-body strong { color: var(--nu-dark); }
+        /* Item Berita dalam List */
+        .nu-news-item { display: block; border-bottom: 1px solid var(--nu-light-gray); padding: 25px 0; }
+        .nu-news-item:last-child { border-bottom: none; }
         
-        /* Box Hadits Stylized */
-        .nu-hadits-box { background: #fcfcfc; border-top: 1px solid var(--nu-green); border-bottom: 1px solid var(--nu-green); padding: 30px 25px; margin: 35px 0; position: relative; }
-        .nu-hadits-arabic { font-family: 'Noto Naskh Arabic', serif; font-size: 26px; line-height: 2.3; text-align: right; color: var(--nu-dark); margin-bottom: 15px; direction: rtl; }
-        .nu-hadits-translation { font-family: 'DM Sans', sans-serif; font-style: italic; font-size: 15px; color: #444; line-height: 1.6; text-align: left; }
+        /* Layout Susunan Gambar di Samping */
+        .nu-news-row { display: table; width: 100%; table-layout: fixed; }
+        .nu-news-col-text { display: table-cell; width: 65%; vertical-align: top; padding-right: 25px; }
+        .nu-news-col-img { display: table-cell; width: 35%; vertical-align: top; }
+        
+        .nu-item-cat { font-size: 11px; text-transform: uppercase; font-weight: 700; color: var(--nu-green); letter-spacing: 1px; margin-bottom: 8px; display: block; }
+        .nu-item-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--nu-dark); font-weight: 700; line-height: 1.3; margin-bottom: 10px; text-decoration: none; display: block; cursor: pointer; }
+        .nu-item-title:hover { color: var(--nu-green); }
+        
+        .nu-item-meta { font-size: 12px; color: #888; margin-bottom: 12px; display: block; }
+        .nu-item-excerpt { font-size: 14.5px; line-height: 1.6; color: #555; text-align: justify; margin-bottom: 15px; }
+        
+        .nu-btn-read { font-size: 13px; color: var(--nu-green); text-decoration: none; font-weight: 700; display: inline-block; cursor: pointer; }
+        .nu-btn-read:hover { text-decoration: underline; }
+        
+        .nu-item-thumb { width: 100%; height: 160px; object-fit: cover; border-radius: 4px; display: block; cursor: pointer; }
+
+        /* --- MODAL POPUP MEMBACA FULL TEXT --- */
+        .nu-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 99999; display: none; overflow-y: auto; padding: 40px 20px; }
+        .nu-modal-content { background: #ffffff; max-width: 780px; margin: 0 auto; border-radius: 8px; padding: 40px; position: relative; box-shadow: 0 4px 25px rgba(0,0,0,0.2); }
+        
+        /* Tombol Cakra Keluar Melayang Tetap Konsisten */
+        .nu-modal-close-circle { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; background: #f3f4f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #333; cursor: pointer; border: none; transition: 0.2s; line-height: 1; font-weight: bold; }
+        .nu-modal-close-circle:hover { background: #e5e7eb; color: #000; transform: scale(1.05); }
+        
+        /* Style Detail Berita di dalam Modal */
+        .nu-modal .nu-category { font-size: 12px; text-transform: uppercase; font-weight: 700; color: var(--nu-green); letter-spacing: 1.5px; margin-bottom: 12px; display: inline-block; }
+        .nu-modal .nu-title { font-family: 'Playfair Display', serif; font-size: clamp(24px, 4vw, 36px); color: var(--nu-dark); font-weight: 900; line-height: 1.3; margin-bottom: 15px; text-align: left; padding-right: 30px; }
+        .nu-modal .nu-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 13px; color: var(--nu-gray); border-bottom: 1px solid var(--nu-light-gray); padding-bottom: 15px; margin-bottom: 30px; }
+        .nu-modal .nu-img-container { margin-bottom: 30px; }
+        .nu-modal .nu-img-container img { width: 100%; height: auto; border-radius: 4px; display: block; }
+        .nu-modal .nu-caption { font-size: 13px; color: #555; margin-top: 10px; text-align: left; line-height: 1.5; border-left: 3px solid var(--nu-green); padding-left: 12px; font-style: italic; }
+        .nu-modal .nu-body { font-size: 17px; line-height: 1.85; color: #2c2c2c; text-align: justify; }
+        .nu-modal .nu-body p { margin-bottom: 20px; }
+        .nu-modal .nu-hadits-box { background: #fcfcfc; border-top: 1px solid var(--nu-green); border-bottom: 1px solid var(--nu-green); padding: 25px; margin: 35px 0; }
+        .nu-modal .nu-hadits-arabic { font-family: 'Noto Naskh Arabic', serif; font-size: 24px; line-height: 2.2; text-align: right; color: var(--nu-dark); margin-bottom: 15px; direction: rtl; }
+        .nu-modal .nu-hadits-translation { font-family: 'DM Sans', sans-serif; font-style: italic; font-size: 15px; color: #444; line-height: 1.6; text-align: left; }
 
         /* --- MAPS --- */
         .maps-container { margin-top: 30px; border-radius: 20px; overflow: hidden; border: 1px solid #ddd; height: 350px; }
@@ -94,6 +133,7 @@
         .social-links a { color: white; font-size: 28px; transition: 0.3s; text-decoration: none; }
         .social-links a:hover { color: var(--gold); transform: translateY(-3px); display: inline-block; }
 
+        /* Responsive Mobile Layout */
         @media (max-width: 768px) {
             .menu-icon { display: block; }
             .nav-links {
@@ -105,7 +145,20 @@
             .nav-links li { margin: 15px 0; }
             .nav-links a { font-size: 22px; }
             .section-padding { padding: 60px 5%; }
-            .nu-body { font-size: 16.5px; }
+            
+            /* Penyesuaian Bar Judul & Cari di Mobile */
+            .warta-header-bar { display: block; }
+            .warta-title-cell { display: block; margin-bottom: 15px; }
+            .warta-search-cell { display: block; width: 100%; text-align: left; }
+            
+            .nu-news-row { display: block; }
+            .nu-news-col-text { display: block; width: 100%; padding-right: 0; margin-bottom: 15px; }
+            .nu-news-col-img { display: block; width: 100%; }
+            .nu-item-thumb { height: 200px; }
+            
+            .nu-modal { padding: 10px; }
+            .nu-modal-content { padding: 35px 15px 25px 15px; }
+            .nu-modal-close-circle { top: 10px; right: 10px; width: 35px; height: 35px; font-size: 20px; }
         }
     </style>
 </head>
@@ -144,10 +197,52 @@
     </section>
 
     <section class="warta-section" id="warta">
-        <div class="nu-container">
+        <div class="nu-list-container">
             
-            <span class="nu-category">Warta Pondok</span>
+            <div class="warta-header-bar">
+                <div class="warta-title-cell">
+                    <h2 class="section-title-nu">Warta Pondok</h2>
+                </div>
+                <div class="warta-search-cell">
+                    <div class="search-box-wrapper">
+                        <input type="text" placeholder="Cari warta berita pesantren...">
+                        <i class="bi bi-search"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nu-status-bar">
+                <span class="nu-status-item active">Semua Warta</span>
+                <span class="nu-status-item">Kegiatan</span>
+                <span class="nu-status-item">Kajian</span>
+                <span class="nu-status-item">Pengumuman</span>
+            </div>
+
+            <div class="nu-news-item">
+                <div class="nu-news-row">
+                    <div class="nu-news-col-text">
+                        <span class="nu-item-cat">Kegiatan</span>
+                        <h3 class="nu-item-title" onclick="openWarta()">Kunjungan Jamaah Patran dalam Agenda Kajian dan Silaturahmi Pondok Pesantren</h3>
+                        <span class="nu-item-meta">Ahad, 12 Juli 2026 | Oleh: Redaktur TM</span>
+                        <p class="nu-item-excerpt">
+                            Pondok Pesantren Takwinul Muballighin mendapat kehormatan besar dengan kedatangan rombongan jamaah dari wilayah Patran. Rangkaian kunjungan ini diisi dengan kajian keagamaan bersama serta silaturahmi...
+                        </p>
+                        <span class="nu-btn-read" onclick="openWarta()">Baca Selengkapnya →</span>
+                    </div>
+                    <div class="nu-news-col-img">
+                        <img src="IA.jpg" alt="Thumbnail Kajian" class="nu-item-thumb" onclick="openWarta()">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="wartaModal" class="nu-modal">
+        <div class="nu-modal-content">
+            <button class="nu-modal-close-circle" onclick="closeWarta()" title="Tutup Halaman Baca">×</button>
             
+            <span class="nu-category">Kegiatan</span>
             <h2 class="nu-title">Kunjungan Jamaah Patran dalam Agenda Kajian dan Silaturahmi Pondok Pesantren</h2>
             
             <div class="nu-meta">
@@ -181,7 +276,7 @@
 
                 <div class="nu-hadits-box">
                     <div class="nu-hadits-arabic">
-                        «مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ اللهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ»
+                        «مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ static. اللهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ»
                     </div>
                     <div class="nu-hadits-translation">
                         "Barang siapa menempuh suatu jalan untuk mencari ilmu, maka Allah akan memudahkan baginya jalan menuju surga." (HR. Muslim)
@@ -192,9 +287,8 @@
 
                 <p><em>Jazakumullāhu khairan katsīrā.</em> Sampai jumpa pada agenda kajian Pondok Pesantren berikutnya.</p>
             </div>
-            
         </div>
-    </section>
+    </div>
 
     <section class="section-padding" id="kontak">
         <h2 style="font-family: 'Playfair Display', serif; color: var(--green-deep); text-align: center;">Lokasi & Kontak</h2>
@@ -226,9 +320,39 @@
     </footer>
 
     <script>
+        // Fungsi Navigasi Mobile
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('menu-cb').checked = false;
+            });
+        });
+
+        // Kontrol Fungsi Modal Baca Full Teks Warta
+        function openWarta() {
+            var modal = document.getElementById("wartaModal");
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeWarta() {
+            var modal = document.getElementById("wartaModal");
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById("wartaModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        // Interaksi Sederhana Pada Status Bar Pilihan Kategori
+        document.querySelectorAll('.nu-status-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nu-status-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
             });
         });
     </script>
