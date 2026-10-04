@@ -1,651 +1,503 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Takwinul Muballighin | YAIFY Yogyakarta</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&family=Noto+Naskh+Arabic:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
-    <style>
-        :root {
-            --green-deep: #052e1c;
-            --green-mid: #0a5c38;
-            --green-pale: #eef6f0;
-            --gold: #c9a227;
-            --gold-soft: #e6c964;
-            --cream: #faf8f2;
-            --white: #ffffff;
-            --ink: #1c1c1a;
-            --line: #e6e2d6;
-            --nu-green: #0d5c3a;
-            --nu-dark: #16150f;
-            --nu-gray: #6b6b62;
-            --nu-light-gray: #e6e2d6;
-            --shadow-soft: 0 10px 30px rgba(5,46,28,0.08);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Takwinul Muballighin | YAIFY Yogyakarta</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&family=Noto+Naskh+Arabic:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+:root{--green-deep:#052e1c;--green-mid:#0a5c38;--green-pale:#eef6f0;--gold:#c9a227;--gold-soft:#e6c964;--cream:#faf8f2;--white:#fff;--ink:#1c1c1a;--line:#e6e2d6;--nu-green:#0d5c3a;--nu-dark:#16150f;--nu-gray:#6b6b62;--nu-light-gray:#e6e2d6;--shadow-soft:0 10px 30px rgba(5,46,28,.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+::selection{background:var(--gold-soft);color:var(--green-deep)}
+a{-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
-        ::selection { background: var(--gold-soft); color: var(--green-deep); }
-        a { -webkit-tap-highlight-color: transparent; }
-        :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+/* TOP BAR */
+.top-bar{position:fixed;top:0;width:100%;height:34px;background:var(--nu-dark);color:rgba(255,255,255,.75);display:flex;align-items:center;justify-content:space-between;padding:0 4%;font-size:11.5px;letter-spacing:.3px;z-index:10001}
+.top-bar .tb-date{display:flex;align-items:center;gap:8px}
+.top-bar .tb-date svg{color:var(--gold);flex-shrink:0}
+.top-bar .tb-tagline{font-style:italic;opacity:.85}
 
-        /* --- TOP UTILITY BAR (gaya portal berita) --- */
-        .top-bar {
-            position: fixed; top: 0; width: 100%; height: 34px;
-            background: var(--nu-dark); color: rgba(255,255,255,0.75);
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 4%; font-size: 11.5px; letter-spacing: 0.3px; z-index: 10001;
-        }
-        .top-bar .tb-date { display: flex; align-items: center; gap: 8px; }
-        .top-bar .tb-date svg { color: var(--gold); flex-shrink: 0; }
-        .top-bar .tb-tagline { font-style: italic; opacity: 0.85; }
+/* NAV */
+nav{position:fixed;top:34px;width:100%;height:76px;background:var(--green-deep);display:flex;align-items:center;justify-content:space-between;padding:0 4%;z-index:10000;box-shadow:0 2px 16px rgba(0,0,0,.28);border-bottom:1px solid rgba(201,162,39,.25);gap:12px}
+.nav-brand-area{display:flex;align-items:center;gap:12px;flex-shrink:0;min-width:0;cursor:pointer}
+.nav-brand-area img{height:42px;width:42px;object-fit:contain;position:relative;z-index:10002;flex-shrink:0;display:block}
+.nav-brand-name{font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:#4ade80;letter-spacing:.3px;line-height:1.25;position:relative;z-index:10002;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-search-container{display:flex;align-items:center;gap:10px;flex-shrink:0;background:rgba(255,255,255,.07);border:1px solid rgba(201,162,39,.35);border-radius:30px;padding:8px 8px 8px 18px;width:240px;transition:.35s cubic-bezier(.4,0,.2,1);position:relative}
+.nav-search-container:focus-within{background:rgba(255,255,255,.12);width:280px;border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,162,39,.12)}
+.nav-search-container input{background:transparent;border:none;outline:none;font-size:13px;color:#fff;width:100%;letter-spacing:.2px;min-width:0}
+.nav-search-container input::placeholder{color:rgba(255,255,255,.45)}
+.nav-search-btn{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--gold);color:var(--green-deep);display:flex;align-items:center;justify-content:center;font-size:13px;border:none;cursor:pointer;line-height:1;padding:0;transition:.25s}
+.nav-search-btn:hover{background:var(--gold-soft);transform:scale(1.08)}
+.nav-links{display:flex;list-style:none;align-items:center;gap:18px}
+.nav-links a{color:#fff;text-decoration:none;font-weight:700;font-size:13px;text-transform:uppercase;transition:.3s;position:relative;padding:5px 0;cursor:pointer}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:.3s}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.btn-wa{background:#16a34a;padding:10px 18px;border-radius:8px;display:flex;align-items:center;gap:8px;color:#fff!important}
+.btn-wa::after{display:none!important}
+.nav-menu-eyebrow{display:none}
+#menu-cb{display:none}
+.menu-icon{display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;z-index:10005;position:relative;width:36px;height:36px;flex-shrink:0;overflow:hidden}
+.menu-icon .bar{width:22px;height:2.5px;background:var(--white);border-radius:2px;transition:.3s cubic-bezier(.4,0,.2,1)}
+#menu-cb:checked ~ label.menu-icon .bar:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+#menu-cb:checked ~ label.menu-icon .bar:nth-child(2){opacity:0}
+#menu-cb:checked ~ label.menu-icon .bar:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 
-        /* --- NAVIGATION --- */
-        nav {
-            position: fixed; top: 34px; width: 100%; height: 76px;
-            background: var(--green-deep); display: flex; align-items: center;
-            justify-content: space-between; padding: 0 4%; z-index: 10000;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.28);
-            border-bottom: 1px solid rgba(201,162,39,0.25);
-            gap: 12px;
-        }
-        
-        .nav-brand-area { display: flex; align-items: center; gap: 12px; flex-shrink: 0; min-width: 0; }
-        .nav-brand-area img { height: 42px; width: 42px; object-fit: contain; position: relative; z-index: 10002; flex-shrink: 0; display: block; }
-        .nav-brand-name {
-            font-family: 'Playfair Display', serif; font-weight: 700; font-size: 18px;
-            color: #4ade80; letter-spacing: 0.3px; line-height: 1.25; position: relative; z-index: 10002;
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-        }
-        
-        /* Kotak Pencarian Global di Atas (Navbar) */
-        .nav-search-container {
-            display: flex; align-items: center; gap: 10px; flex-shrink: 0;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(201,162,39,0.35);
-            border-radius: 30px; padding: 8px 8px 8px 18px; width: 240px;
-            transition: 0.35s cubic-bezier(.4,0,.2,1);
-            position: relative;
-        }
-        .nav-search-container:focus-within {
-            background: rgba(255,255,255,0.12);
-            width: 280px;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 4px rgba(201,162,39,0.12);
-        }
-        .nav-search-container input {
-            background: transparent; border: none; outline: none;
-            font-size: 13px; color: white; width: 100%; letter-spacing: 0.2px;
-            min-width: 0;
-        }
-        .nav-search-container input::placeholder { color: rgba(255,255,255,0.45); }
-        .nav-search-btn {
-            flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
-            background: var(--gold); color: var(--green-deep);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 13px; border: none; cursor: pointer; line-height: 1; padding: 0;
-            transition: 0.25s;
-        }
-        .nav-search-btn:hover { background: var(--gold-soft); transform: scale(1.08); }
+/* PAGES (pindah fitur tanpa gulir) */
+.page{display:none;padding-top:110px;min-height:80vh}
+.page.active{display:block;animation:pageIn .45s ease}
+#page-home{padding-top:0}
+@keyframes pageIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-        /* Menu Links */
-        .nav-links { display: flex; list-style: none; align-items: center; gap: 20px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; transition: 0.3s; position: relative; padding: 5px 0; }
-        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold); transition: 0.3s; }
-        .nav-links a:hover::after { width: 100%; }
-        .nav-links a:hover { color: var(--gold); }
-        .btn-wa { background: #16a34a; padding: 10px 18px; border-radius: 8px; display: flex; align-items: center; gap: 8px; color: white !important; }
-        .btn-wa::after { display: none !important; }
-        .nav-menu-eyebrow { display: none; }
+/* HERO */
+header{min-height:82vh;background:linear-gradient(180deg,rgba(5,26,17,.55),rgba(5,26,17,.78)),url('AQ.jpeg') center/cover;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:150px 20px 60px;position:relative}
+header::after{content:'';position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(180deg,transparent,var(--cream))}
+.hero-badge{color:var(--gold);letter-spacing:3.5px;font-weight:700;margin-bottom:6px;text-transform:uppercase;font-size:13px}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(34px,8vw,60px);color:var(--white);line-height:1.15;text-shadow:0 4px 24px rgba(0,0,0,.35)}
 
-        /* Mobile Controls Toggle */
-        #menu-cb { display: none; }
-        .menu-icon {
-            display: none; flex-direction: column; align-items: center; justify-content: center;
-            gap: 5px; cursor: pointer; z-index: 10005; position: relative;
-            width: 36px; height: 36px; flex-shrink: 0; overflow: hidden;
-        }
-        /* Ikon hamburger digambar murni pakai CSS (bukan font-icon) supaya selalu tampil rapi di semua browser/HP */
-        .menu-icon .bar {
-            width: 22px; height: 2.5px; background: var(--white); border-radius: 2px;
-            transition: 0.3s cubic-bezier(.4,0,.2,1);
-        }
-        #menu-cb:checked ~ label.menu-icon .bar:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
-        #menu-cb:checked ~ label.menu-icon .bar:nth-child(2) { opacity: 0; }
-        #menu-cb:checked ~ label.menu-icon .bar:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+/* QUICK LINKS HOME */
 
-        /* --- HERO --- */
-        header {
-            min-height: 82vh; background: linear-gradient(180deg, rgba(5,26,17,0.55), rgba(5,26,17,0.78)), url('AQ.jpeg') center/cover;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; color: white; padding: 150px 20px 60px 20px; position: relative;
-        }
-        header::after {
-            content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 90px;
-            background: linear-gradient(180deg, transparent, var(--cream));
-        }
-        .hero-eyebrow-line { width: 46px; height: 2px; background: var(--gold); margin: 0 auto 16px; }
-        .hero-badge { color: var(--gold); letter-spacing: 3.5px; font-weight: 700; margin-bottom: 6px; text-transform: uppercase; font-size: 13px; }
-        .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(34px, 8vw, 60px); color: var(--white); line-height: 1.15; text-shadow: 0 4px 24px rgba(0,0,0,0.35); }
-        .hero-title em { color: var(--gold-soft); font-style: normal; }
-        .hero-sub { margin-top: 18px; font-style: italic; font-size: 18px; opacity: 0.92; font-weight: 400; }
-        .hero-scroll { position: relative; margin-top: 46px; color: rgba(255,255,255,0.75); font-size: 22px; animation: bounceDown 2.2s infinite; }
-        @keyframes bounceDown { 0%,100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(8px); opacity: 1; } }
+/* SEJARAH */
+.section-padding{padding:50px 10% 90px}
+.sejarah{background:var(--white)}
+.sejarah h2,.page-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,38px);color:var(--green-deep);margin-bottom:30px;text-align:center}
+.page-sub{text-align:center;color:var(--nu-gray);max-width:640px;margin:-18px auto 34px;line-height:1.6}
+.text-content{line-height:1.85;color:#3d3d38;text-align:justify;font-size:16.5px;max-width:900px;margin:0 auto}
+.drop-cap::first-letter{font-size:68px;float:left;margin-right:12px;margin-top:4px;color:var(--green-deep);font-family:'Playfair Display';font-weight:900;line-height:.8}
+.text-content p{margin-bottom:20px}
+.text-content p:last-child{margin-bottom:0}
 
-        /* Anchor offset agar tidak tertutup navbar fixed */
-        section[id], header[id] { scroll-margin-top: 112px; }
+/* WARTA */
+.warta-section{background:#fff;padding:50px 0 80px;border-top:1px solid var(--nu-light-gray);border-bottom:1px solid var(--nu-light-gray)}
+.nu-list-container{max-width:900px;margin:0 auto;padding:0 20px}
+.warta-header-bar{border-bottom:2px solid var(--nu-green);padding-bottom:15px;margin-bottom:25px}
+.section-title-nu{font-family:'Playfair Display',serif;font-size:30px;color:var(--nu-dark);font-weight:900}
+.nu-status-bar{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:10px;padding:6px;margin-bottom:32px;-webkit-overflow-scrolling:touch}
+.nu-status-bar::-webkit-scrollbar{display:none}
+.nu-status-item{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--nu-green);text-decoration:none;border-radius:30px;cursor:pointer;white-space:nowrap;border:1.5px solid rgba(13,92,58,.25);background:#f6f8f6;transition:.3s cubic-bezier(.4,0,.2,1)}
+.nu-status-item i{font-size:14px}
+.nu-status-item:hover{border-color:var(--nu-green);background:#eef5f0;transform:translateY(-1px)}
+.nu-status-item.active{background:linear-gradient(135deg,var(--nu-green),var(--green-deep));color:var(--gold-soft);border-color:var(--nu-green);box-shadow:0 4px 14px rgba(13,92,58,.28)}
+.nu-status-item.active i{color:var(--gold)}
+.nu-news-item{display:block;border-bottom:1px solid var(--nu-light-gray);padding:30px 0}
+.nu-news-item:first-child{padding-top:5px}
+.nu-news-item:last-child{border-bottom:none}
+.nu-news-row{display:table;width:100%;table-layout:fixed}
+.nu-news-col-text{display:table-cell;width:65%;vertical-align:top;padding-right:25px}
+.nu-news-col-img{display:table-cell;width:35%;vertical-align:top}
+.nu-item-cat{font-size:11px;text-transform:uppercase;font-weight:700;color:var(--nu-green);letter-spacing:1px;margin-bottom:8px;display:block}
+.nu-item-title{font-family:'Playfair Display',serif;font-size:21px;color:var(--nu-dark);font-weight:700;line-height:1.35;margin-bottom:10px;text-decoration:none;display:block;cursor:pointer}
+.nu-item-title:hover{color:var(--nu-green)}
+.nu-item-meta{font-size:12px;color:#888;margin-bottom:12px;display:block}
+.nu-item-excerpt{font-size:14.5px;line-height:1.6;color:#555;text-align:justify;margin-bottom:15px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.nu-news-item.open .nu-item-excerpt{display:none}
+.nu-btn-read{font-size:13px;color:var(--nu-green);text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:5px;cursor:pointer}
+.nu-btn-read:hover{text-decoration:underline}
+.nu-btn-read i{transition:.3s;font-size:12px}
+.nu-news-item.open .nu-btn-read i{transform:rotate(180deg)}
+.nu-item-thumb{width:100%;height:160px;object-fit:cover;border-radius:4px;display:block;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.nu-detail{display:none;margin-top:25px;padding-top:25px;border-top:1px dashed var(--nu-light-gray);animation:nuFadeSlide .45s ease}
+.nu-news-item.open .nu-detail{display:block}
+@keyframes nuFadeSlide{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.nu-detail-meta{display:flex;align-items:center;flex-wrap:wrap;gap:15px;font-size:13px;color:var(--nu-gray);margin-bottom:25px}
+.nu-detail-images{margin-bottom:25px}
+.nu-detail-img-wrapper{margin-bottom:18px}
+.nu-detail-img-wrapper img{width:100%;height:auto;border-radius:8px;display:block}
+.nu-detail-caption{font-size:13px;color:#555;margin-top:10px;text-align:left;line-height:1.5;border-left:3px solid var(--nu-green);padding-left:12px;font-style:italic}
+.nu-detail-body{font-size:16px;line-height:1.8;color:#2c2c2c;text-align:justify}
+.nu-detail-body p{margin-bottom:18px}
+.nu-hadits-box{background:#fcfcfc;border-top:1px solid var(--nu-green);border-bottom:1px solid var(--nu-green);padding:25px;margin:25px 0;display:none}
+.nu-hadits-arabic{font-family:'Noto Naskh Arabic',serif;font-size:23px;line-height:2.2;text-align:right;color:var(--nu-dark);margin-bottom:15px;direction:rtl}
+.nu-hadits-translation{font-style:italic;font-size:14.5px;color:#444;line-height:1.6;text-align:left}
+.nu-btn-close-detail{display:inline-flex;align-items:center;gap:6px;margin-top:20px;font-size:13px;font-weight:700;color:var(--nu-gray);cursor:pointer;text-transform:uppercase;letter-spacing:.4px}
+.nu-btn-close-detail:hover{color:var(--nu-green)}
 
-        /* --- SEJARAH --- */
-        .section-padding { padding: 90px 10%; }
-        .sejarah { background: var(--white); position: relative; }
-        .sejarah-inner { max-width: 900px; margin: 0 auto; }
-        .sejarah-eyebrow { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 14px; }
-        .sejarah-eyebrow span { font-size: 12.5px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--nu-green); }
-        .sejarah-eyebrow::before, .sejarah-eyebrow::after { content: ''; width: 34px; height: 1.5px; background: var(--gold); }
-        .sejarah h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 38px); color: var(--green-deep); margin-bottom: 30px; text-align: center; }
-        .sejarah-arabic { display: block; text-align: center; font-family: 'Noto Naskh Arabic', serif; font-size: 22px; color: var(--gold); margin-bottom: 6px; direction: rtl; }
-        .text-content { line-height: 1.85; color: #3d3d38; text-align: justify; font-size: 16.5px; }
-        .drop-cap::first-letter { font-size: 68px; float: left; margin-right: 12px; margin-top: 4px; color: var(--green-deep); font-family: 'Playfair Display'; font-weight: 900; line-height: 0.8; }
-        .text-content p { margin-bottom: 20px; }
-        .text-content p:last-child { margin-bottom: 0; }
+/* ALUMNI */
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px 90px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:34px}
+.stat{background:linear-gradient(135deg,var(--green-deep),var(--green-mid));color:#fff;border-radius:16px;padding:22px 12px;text-align:center}
+.stat b{display:block;font-family:'Playfair Display',serif;font-size:34px;color:var(--gold-soft)}
+.stat span{font-size:12.5px;letter-spacing:.5px;text-transform:uppercase;opacity:.85}
+.box{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;margin-bottom:30px;box-shadow:var(--shadow-soft)}
+.box h3{font-family:'Playfair Display',serif;color:var(--green-deep);font-size:20px;margin-bottom:16px}
+.bar-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;font-size:14px;cursor:pointer;padding:4px 6px;border-radius:8px;transition:.2s}
+.bar-row:hover,.bar-row.sel{background:var(--green-pale)}
+.bar-row .nm{width:140px;flex-shrink:0;font-weight:500}
+.bar-row .tr{flex:1;height:10px;background:var(--green-pale);border-radius:10px;overflow:hidden}
+.bar-row .tr i{display:block;height:100%;background:linear-gradient(90deg,var(--green-mid),var(--gold));border-radius:10px;transition:width .6s}
+.bar-row .ct{width:28px;text-align:right;font-weight:700;color:var(--green-mid)}
+.alumni-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.al-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--shadow-soft);transition:.3s}
+.al-card:hover{transform:translateY(-3px);border-color:var(--gold)}
+.avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--green-mid),var(--green-deep));color:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;flex-shrink:0}
+.al-card h4{font-size:16px;color:var(--nu-dark);margin-bottom:3px}
+.al-card .prof{color:var(--nu-green);font-weight:700;font-size:13.5px}
+.al-card .meta{font-size:12.5px;color:var(--nu-gray);margin-top:6px;line-height:1.5}
+.al-card .meta i{color:var(--gold);margin-right:4px}
+.note{text-align:center;font-size:12.5px;color:var(--nu-gray);margin-top:22px;font-style:italic}
+.reset-link{color:var(--nu-green);font-weight:700;font-size:13px;cursor:pointer;margin-left:8px}
 
-        /* --- WARTA PORTAL STYLE --- */
-        .warta-section { background: #ffffff; padding: 80px 0; border-top: 1px solid var(--nu-light-gray); border-bottom: 1px solid var(--nu-light-gray); }
-        .nu-list-container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-        
-        .warta-header-bar { border-bottom: 2px solid var(--nu-green); padding-bottom: 15px; margin-bottom: 25px; }
-        .section-title-nu { font-family: 'Playfair Display', serif; font-size: 30px; color: var(--nu-dark); font-weight: 900; }
-        
-        /* Status Bar Filter Kategori */
-        .nu-status-bar {
-            display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 10px;
-            padding: 6px 6px; margin-bottom: 32px;
-            border: none; -webkit-overflow-scrolling: touch;
-        }
-        .nu-status-bar::-webkit-scrollbar { display: none; }
-        .nu-status-item {
-            display: inline-flex; align-items: center; gap: 7px;
-            padding: 10px 20px; font-size: 12.5px; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 0.4px; color: var(--nu-green); text-decoration: none;
-            border-radius: 30px; cursor: pointer; white-space: nowrap;
-            border: 1.5px solid rgba(13,92,58,0.25); background: #f6f8f6;
-            transition: 0.3s cubic-bezier(.4,0,.2,1);
-        }
-        .nu-status-item i { font-size: 14px; }
-        .nu-status-item:hover { border-color: var(--nu-green); background: #eef5f0; transform: translateY(-1px); }
-        .nu-status-item.active {
-            background: linear-gradient(135deg, var(--nu-green), var(--green-deep));
-            color: var(--gold-soft); border-color: var(--nu-green);
-            box-shadow: 0 4px 14px rgba(13,92,58,0.28);
-        }
-        .nu-status-item.active i { color: var(--gold); }
+/* KESAN & MANFAAT */
+.benefit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-bottom:50px}
+.benefit{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:var(--shadow-soft);transition:.3s}
+.benefit:hover{transform:translateY(-4px);border-color:var(--gold)}
+.benefit i{font-size:28px;color:var(--gold);display:block;margin-bottom:12px}
+.benefit h4{font-family:'Playfair Display',serif;color:var(--green-deep);font-size:19px;margin-bottom:8px}
+.benefit p{font-size:14.5px;line-height:1.7;color:#4a4a44}
+.sub-title{font-family:'Playfair Display',serif;font-size:26px;color:var(--green-deep);text-align:center;margin-bottom:24px}
 
-        /* Item Berita dalam List Halaman Depan — bukan kartu, gaya list editorial dengan garis pemisah */
-        .nu-news-item { display: block; border-bottom: 1px solid var(--nu-light-gray); padding: 30px 0; }
-        .nu-news-item:first-child { padding-top: 5px; }
-        .nu-news-item:last-child { border-bottom: none; }
-        
-        .nu-news-row { display: table; width: 100%; table-layout: fixed; }
-        .nu-news-col-text { display: table-cell; width: 65%; vertical-align: top; padding-right: 25px; }
-        .nu-news-col-img { display: table-cell; width: 35%; vertical-align: top; }
-        
-        .nu-item-cat { font-size: 11px; text-transform: uppercase; font-weight: 700; color: var(--nu-green); letter-spacing: 1px; margin-bottom: 8px; display: block; }
-        .nu-item-title { font-family: 'Playfair Display', serif; font-size: 21px; color: var(--nu-dark); font-weight: 700; line-height: 1.35; margin-bottom: 10px; text-decoration: none; display: block; cursor: pointer; }
-        .nu-item-title:hover { color: var(--nu-green); }
-        
-        .nu-item-meta { font-size: 12px; color: #888; margin-bottom: 12px; display: block; }
-        .nu-item-excerpt {
-            font-size: 14.5px; line-height: 1.6; color: #555; text-align: justify; margin-bottom: 15px;
-            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-        }
-        /* Saat berita dibuka, ringkasan disembunyikan supaya langsung lanjut ke teks lengkap (tidak dobel) */
-        .nu-news-item.open .nu-item-excerpt { display: none; }
-        
-        .nu-btn-read { font-size: 13px; color: var(--nu-green); text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; cursor: pointer; }
-        .nu-btn-read:hover { text-decoration: underline; }
-        .nu-btn-read i { transition: 0.3s; font-size: 12px; }
-        .nu-news-item.open .nu-btn-read i { transform: rotate(180deg); }
-        
-        .nu-item-thumb { width: 100%; height: 160px; object-fit: cover; border-radius: 4px; display: block; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+.kesan{margin-top:12px;font-size:13.5px;line-height:1.65;font-style:italic;color:#4a4a44;border-left:3px solid var(--gold);padding-left:10px}
+/* MAPS */
+.maps-container{margin:30px auto 0;max-width:900px;border-radius:20px;overflow:hidden;border:1px solid #ddd;height:350px}
+.btn-maps-full{display:block;width:100%;max-width:900px;margin:15px auto 0;background:var(--green-mid);color:#fff;text-align:center;padding:15px;border-radius:12px;text-decoration:none;font-weight:700}
 
-        /* --- DETAIL ARTIKEL: TAMPIL LANGSUNG DI DALAM LIST (BUKAN KARTU/MODAL) --- */
-        .nu-detail {
-            display: none; margin-top: 25px; padding-top: 25px;
-            border-top: 1px dashed var(--nu-light-gray);
-            animation: nuFadeSlide 0.45s ease;
-        }
-        .nu-news-item.open .nu-detail { display: block; }
-        @keyframes nuFadeSlide {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+/* FOOTER */
+footer{background:var(--green-deep);color:#fff;padding:50px 20px;text-align:center}
+.social-links{display:flex;justify-content:center;gap:25px;margin:20px 0}
+.social-links a{color:#fff;font-size:28px;transition:.3s;text-decoration:none}
+.social-links a:hover{color:var(--gold);transform:translateY(-3px);display:inline-block}
 
-        .nu-detail-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 13px; color: var(--nu-gray); margin-bottom: 25px; }
+@media (max-width:1100px){.nav-links{gap:12px}.nav-links a{font-size:11.5px}.nav-search-container{width:170px}.nav-search-container:focus-within{width:200px}.btn-wa{padding:9px 12px}}
 
-        .nu-detail-images { margin-bottom: 25px; }
-        .nu-detail-img-wrapper { margin-bottom: 18px; }
-        .nu-detail-img-wrapper img { width: 100%; height: auto; border-radius: 8px; display: block; }
-        .nu-detail-caption { font-size: 13px; color: #555; margin-top: 10px; text-align: left; line-height: 1.5; border-left: 3px solid var(--nu-green); padding-left: 12px; font-style: italic; }
-
-        .nu-detail-body { font-size: 16px; line-height: 1.8; color: #2c2c2c; text-align: justify; }
-        .nu-detail-body p { margin-bottom: 18px; }
-
-        /* Box Hadits */
-        .nu-hadits-box { background: #fcfcfc; border-top: 1px solid var(--nu-green); border-bottom: 1px solid var(--nu-green); padding: 25px; margin: 25px 0; display: none; }
-        .nu-hadits-arabic { font-family: 'Noto Naskh Arabic', serif; font-size: 23px; line-height: 2.2; text-align: right; color: var(--nu-dark); margin-bottom: 15px; direction: rtl; }
-        .nu-hadits-translation { font-family: 'DM Sans', sans-serif; font-style: italic; font-size: 14.5px; color: #444; line-height: 1.6; text-align: left; }
-
-        .nu-btn-close-detail {
-            display: inline-flex; align-items: center; gap: 6px;
-            margin-top: 20px; font-size: 13px; font-weight: 700; color: var(--nu-gray);
-            cursor: pointer; text-transform: uppercase; letter-spacing: 0.4px;
-        }
-        .nu-btn-close-detail:hover { color: var(--nu-green); }
-
-        /* --- MAPS --- */
-        .maps-container { margin-top: 30px; border-radius: 20px; overflow: hidden; border: 1px solid #ddd; height: 350px; }
-        .btn-maps-full { display: block; width: 100%; background: var(--green-mid); color: white; text-align: center; padding: 15px; margin-top: 15px; border-radius: 12px; text-decoration: none; font-weight: 700; }
-
-        /* --- FOOTER --- */
-        footer { background: var(--green-deep); color: white; padding: 50px 20px; text-align: center; }
-        .social-links { display: flex; justify-content: center; gap: 25px; margin: 20px 0; }
-        .social-links a { color: white; font-size: 28px; transition: 0.3s; text-decoration: none; }
-        .social-links a:hover { color: var(--gold); transform: translateY(-3px); display: inline-block; }
-
-        /* --- MOBILE RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .top-bar { padding: 0 4%; font-size: 10.5px; }
-            .tb-tagline { display: none; }
-            .menu-icon { display: flex; }
-            .nav-brand-name {
-                display: block; font-size: 12px; max-width: 118px;
-                overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-            }
-            /* Panel menu mobile — didesain khas: gradasi hijau tua, aksen emas, tipografi serif, item muncul bertahap */
-            .nav-links {
-                position: fixed; top: 0; right: -100%; width: 84%; max-width: 340px; height: 100vh;
-                background:
-                    radial-gradient(circle at 85% 12%, rgba(201,162,39,0.16), transparent 45%),
-                    linear-gradient(165deg, var(--green-deep) 0%, #03170e 100%);
-                backdrop-filter: blur(15px);
-                flex-direction: column; justify-content: flex-start; gap: 0;
-                transition: right 0.45s cubic-bezier(.4,0,.2,1); z-index: 10004;
-                box-shadow: -12px 0 40px rgba(0,0,0,0.4);
-                padding: 130px 9% 40px; align-items: flex-start;
-                border-left: 1px solid rgba(201,162,39,0.3);
-            }
-            #menu-cb:checked ~ .nav-links { right: 0; }
-
-            .nav-menu-eyebrow {
-                display: flex; align-items: center; gap: 10px; width: 100%;
-                margin-bottom: 22px; opacity: 0; transform: translateY(10px);
-            }
-            .nav-menu-eyebrow::before { content: ''; width: 22px; height: 1.5px; background: var(--gold); }
-            .nav-menu-eyebrow span { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold-soft); font-weight: 700; }
-
-            .nav-links li { width: 100%; opacity: 0; transform: translateY(14px); transition: 0.4s ease; }
-            .nav-links li:not(:last-child):not(.nav-menu-eyebrow) { border-bottom: 1px solid rgba(255,255,255,0.08); }
-            #menu-cb:checked ~ .nav-links .nav-menu-eyebrow,
-            #menu-cb:checked ~ .nav-links li { opacity: 1; transform: translateY(0); }
-            #menu-cb:checked ~ .nav-links .nav-menu-eyebrow { transition-delay: 0.05s; }
-            #menu-cb:checked ~ .nav-links li:nth-child(2) { transition-delay: 0.10s; }
-            #menu-cb:checked ~ .nav-links li:nth-child(3) { transition-delay: 0.16s; }
-            #menu-cb:checked ~ .nav-links li:nth-child(4) { transition-delay: 0.22s; }
-            #menu-cb:checked ~ .nav-links li:nth-child(5) { transition-delay: 0.28s; }
-            #menu-cb:checked ~ .nav-links li:nth-child(6) { transition-delay: 0.34s; }
-
-            .nav-links a {
-                font-family: 'Playfair Display', serif; font-size: 25px; font-weight: 700;
-                width: 100%; display: flex; align-items: center; gap: 14px;
-                padding: 15px 0; text-transform: none; letter-spacing: 0;
-            }
-            .nav-links a::before {
-                content: ''; width: 7px; height: 7px; background: var(--gold);
-                transform: rotate(45deg); flex-shrink: 0; transition: 0.3s;
-            }
-            .nav-links a:active::before { background: var(--gold-soft); transform: rotate(45deg) scale(1.4); }
-            .nav-links a::after { display: none; }
-
-            .nav-wa-item { margin-top: 20px; border-bottom: none !important; }
-            .nav-wa-item .btn-wa {
-                background: linear-gradient(135deg, #16a34a, #0d7a37);
-                padding: 15px 22px; border-radius: 12px; width: 100%;
-                font-family: 'DM Sans', sans-serif; font-size: 15px; text-transform: uppercase;
-                letter-spacing: 1px; box-shadow: 0 8px 22px rgba(22,163,74,0.3);
-            }
-            .nav-wa-item .btn-wa::before { display: none; }
-
-            .nav-links a { color: white; }
-            .nav-links a:hover { color: var(--gold-soft); }
-
-            /* Kotak pencarian diperkecil & dipindah ke kanan (dekat tombol menu) supaya nama pondok tetap terlihat di kiri */
-            .nav-search-container {
-                position: absolute; top: 50%; left: auto; right: 50px; transform: translateY(-50%);
-                width: 26%; max-width: 96px; height: 30px; padding: 3px 3px 3px 10px;
-            }
-            .nav-search-container:focus-within { width: 32%; max-width: 116px; }
-            .nav-search-container input { font-size: 10px; }
-            .nav-search-btn { width: 22px; height: 22px; font-size: 10px; }
-
-            .section-padding { padding: 60px 5%; }
-            .nu-news-row { display: block; }
-            .nu-news-col-text { display: block; width: 100%; padding-right: 0; margin-bottom: 15px; }
-            .nu-news-col-img { display: block; width: 100%; }
-            .nu-item-thumb { height: 200px; }
-            .nu-status-item { padding: 9px 16px; font-size: 11.5px; }
-        }
-
-        @media (max-width: 380px) {
-            .nav-brand-name { max-width: 88px; font-size: 11px; }
-            .nav-search-container { right: 48px; max-width: 84px; }
-            .nav-search-container:focus-within { max-width: 100px; }
-        }
-    </style>
+/* MOBILE */
+@media (max-width:768px){
+.top-bar{padding:0 4%;font-size:10.5px}
+.tb-tagline{display:none}
+.menu-icon{display:flex}
+.nav-brand-name{display:block;font-size:12px;max-width:118px}
+.nav-links{position:fixed;top:0;right:-100%;width:84%;max-width:340px;height:100vh;background:radial-gradient(circle at 85% 12%,rgba(201,162,39,.16),transparent 45%),linear-gradient(165deg,var(--green-deep) 0%,#03170e 100%);backdrop-filter:blur(15px);flex-direction:column;justify-content:flex-start;gap:0;transition:right .45s cubic-bezier(.4,0,.2,1);z-index:10004;box-shadow:-12px 0 40px rgba(0,0,0,.4);padding:120px 9% 40px;align-items:flex-start;border-left:1px solid rgba(201,162,39,.3);overflow-y:auto}
+#menu-cb:checked ~ .nav-links{right:0}
+.nav-menu-eyebrow{display:flex;align-items:center;gap:10px;width:100%;margin-bottom:16px;opacity:0;transform:translateY(10px)}
+.nav-menu-eyebrow::before{content:'';width:22px;height:1.5px;background:var(--gold)}
+.nav-menu-eyebrow span{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-soft);font-weight:700}
+.nav-links li{width:100%;opacity:0;transform:translateY(14px);transition:.4s ease}
+.nav-links li:not(:last-child):not(.nav-menu-eyebrow){border-bottom:1px solid rgba(255,255,255,.08)}
+#menu-cb:checked ~ .nav-links .nav-menu-eyebrow,#menu-cb:checked ~ .nav-links li{opacity:1;transform:translateY(0)}
+#menu-cb:checked ~ .nav-links .nav-menu-eyebrow{transition-delay:.05s}
+#menu-cb:checked ~ .nav-links li:nth-child(2){transition-delay:.10s}
+#menu-cb:checked ~ .nav-links li:nth-child(3){transition-delay:.15s}
+#menu-cb:checked ~ .nav-links li:nth-child(4){transition-delay:.20s}
+#menu-cb:checked ~ .nav-links li:nth-child(5){transition-delay:.25s}
+#menu-cb:checked ~ .nav-links li:nth-child(6){transition-delay:.30s}
+#menu-cb:checked ~ .nav-links li:nth-child(7){transition-delay:.35s}
+#menu-cb:checked ~ .nav-links li:nth-child(8){transition-delay:.40s}
+.nav-links a{font-family:'Playfair Display',serif;font-size:23px;font-weight:700;width:100%;display:flex;align-items:center;gap:14px;padding:13px 0;text-transform:none;letter-spacing:0;color:#fff}
+.nav-links a::before{content:'';width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;transition:.3s}
+.nav-links a:active::before{background:var(--gold-soft);transform:rotate(45deg) scale(1.4)}
+.nav-links a::after{display:none}
+.nav-wa-item{margin-top:20px;border-bottom:none!important}
+.nav-wa-item .btn-wa{background:linear-gradient(135deg,#16a34a,#0d7a37);padding:15px 22px;border-radius:12px;width:100%;font-family:'DM Sans',sans-serif;font-size:15px;text-transform:uppercase;letter-spacing:1px;box-shadow:0 8px 22px rgba(22,163,74,.3)}
+.nav-wa-item .btn-wa::before{display:none}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-soft)}
+.nav-search-container{position:absolute;top:50%;left:auto;right:50px;transform:translateY(-50%);width:26%;max-width:96px;height:30px;padding:3px 3px 3px 10px}
+.nav-search-container:focus-within{width:32%;max-width:116px}
+.nav-search-container input{font-size:10px}
+.nav-search-btn{width:22px;height:22px;font-size:10px}
+.section-padding{padding:40px 5% 60px}
+.nu-news-row{display:block}
+.nu-news-col-text{display:block;width:100%;padding-right:0;margin-bottom:15px}
+.nu-news-col-img{display:block;width:100%}
+.nu-item-thumb{height:200px}
+.nu-status-item{padding:9px 16px;font-size:11.5px}
+.bar-row .nm{width:96px;font-size:13px}
+.stat b{font-size:26px}
+}
+@media (max-width:380px){.nav-brand-name{max-width:88px;font-size:11px}.nav-search-container{right:48px;max-width:84px}.nav-search-container:focus-within{max-width:100px}}
+</style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <div class="tb-date">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"></rect><line x1="16" y1="3" x2="16" y2="7"></line><line x1="8" y1="3" x2="8" y2="7"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            <span id="tbTanggal">Memuat tanggal...</span>
-        </div>
-        <div class="tb-tagline">Pondok Pesantren Takwinul Muballighin — YAIFY Yogyakarta</div>
+<div class="top-bar">
+  <div class="tb-date">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"></rect><line x1="16" y1="3" x2="16" y2="7"></line><line x1="8" y1="3" x2="8" y2="7"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+    <span id="tbTanggal">Memuat tanggal...</span>
+  </div>
+  <div class="tb-tagline">Pondok Pesantren Takwinul Muballighin — YAIFY Yogyakarta</div>
+</div>
+
+<nav>
+  <div class="nav-brand-area" data-go="home">
+    <img src="z-jukebox-bg-removed.png" alt="Logo">
+    <span class="nav-brand-name">Takwinul Muballighin</span>
+  </div>
+  <div class="nav-search-container">
+    <input type="text" id="globalSearch" placeholder="Cari warta...">
+    <button class="nav-search-btn" type="button" aria-label="Cari">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    </button>
+  </div>
+  <input type="checkbox" id="menu-cb">
+  <label for="menu-cb" class="menu-icon" aria-label="Buka menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></label>
+  <ul class="nav-links">
+    <li class="nav-menu-eyebrow" aria-hidden="true"><span>Menu Navigasi</span></li>
+    <li><a data-go="home" href="#home">Home</a></li>
+    <li><a data-go="sejarah" href="#sejarah">Sejarah</a></li>
+    <li><a data-go="warta" href="#warta">Warta</a></li>
+    <li><a data-go="alumni" href="#alumni">Alumni</a></li>
+    <li><a data-go="kontak" href="#kontak">Kontak</a></li>
+    <li class="nav-wa-item"><a href="https://wa.me/6285171720040" class="btn-wa">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.04 2m0 1.67a8.2 8.2 0 0 1 5.83 2.42 8.19 8.19 0 0 1 2.41 5.82c0 4.55-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.37c0-4.55 3.7-8.25 8.25-8.25M8.53 6.87c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03 0 1.19.87 2.34.99 2.5.12.16 1.7 2.72 4.2 3.7 2.08.82 2.5.66 2.95.62.45-.04 1.46-.6 1.66-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.16-.46-.28-.24-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.12-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.24-.12-1.02-.38-1.94-1.2-.72-.63-1.2-1.42-1.35-1.66-.14-.24-.02-.37.1-.5.11-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.56-1.36-.78-1.86-.2-.48-.4-.42-.56-.43-.14-.01-.3-.01-.46-.01"/></svg>
+      <span>WhatsApp</span></a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<main>
+<div class="page active" id="page-home">
+  <header>
+    <p class="hero-badge">YAIFY Yogyakarta</p>
+    <h1 class="hero-title">Takwinul Muballighin</h1>
+    <p style="margin-top:15px;font-style:italic;font-size:18px;opacity:.9">"Mencetak Kader Muballigh Profesional"</p>
+  </header>
+</div>
+
+<!-- SEJARAH -->
+<section class="page" id="page-sejarah">
+  <div class="section-padding sejarah">
+    <h2>Sejarah Berdirinya</h2>
+    <div class="text-content">
+      <p class="drop-cap">Pondok Pesantren <strong>Takwinul Muballighin</strong> berdiri atas dasar keprihatinan terhadap dunia dakwah Islam. Semangat umat Islam untuk mempelajari, mengamalkan, dan memperjuangkan nilai-nilai Islam semakin meningkat, namun jumlah da’i/muballigh yang tersedia tidak seimbang dengan kebutuhan dakwah.</p>
+      <p>Banyaknya pembangunan masjid, musholla, Islamic Center, serta maraknya majelis taklim dan forum kajian agama belum diimbangi dengan ketersediaan khotib dan penceramah yang berkualitas.</p>
+      <p>Melihat kondisi tersebut, diperlukan lembaga pengkaderan da’i yang serius dan profesional. Jika selama ini para muballigh muncul secara alami, kini perlu disiapkan da’i-da’i profesional melalui proses pendidikan dan pembinaan yang terarah. Atas dasar inilah Yayasan Amal Ihsan Fisabilillah Yogyakarta (YAIFY) mendirikan Pondok Pesantren Takwinul Muballighin sebagai pusat pengkaderan muballigh yang siap berkiprah di tengah masyarakat.</p>
     </div>
+  </div>
+</section>
 
-    <nav>
-        <div class="nav-brand-area">
-            <img src="z-jukebox-bg-removed.png" alt="Logo">
-            <span class="nav-brand-name">Takwinul Muballighin</span>
+<!-- WARTA -->
+<section class="page" id="page-warta">
+  <div class="warta-section">
+    <div class="nu-list-container">
+      <div class="warta-header-bar"><h2 class="section-title-nu">Warta Pondok</h2></div>
+      <div class="nu-status-bar" id="statusBar">
+        <span class="nu-status-item active" onclick="filterKategori('Semua Warta')"><i class="bi bi-grid"></i> Semua Warta</span>
+        <span class="nu-status-item" onclick="filterKategori('Kegiatan')"><i class="bi bi-calendar-event"></i> Kegiatan</span>
+        <span class="nu-status-item" onclick="filterKategori('Kajian')"><i class="bi bi-book"></i> Kajian</span>
+        <span class="nu-status-item" onclick="filterKategori('Pengumuman')"><i class="bi bi-megaphone"></i> Pengumuman</span>
+      </div>
+      <div id="wartaNewsList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ALUMNI -->
+<section class="page" id="page-alumni">
+  <h2 class="page-title">Alumni Takwinul Muballighin</h2>
+  <p class="page-sub">Para alumni berkiprah di berbagai daerah dengan beragam profesi. Klik daerah atau kategori profesi untuk menyaring. Kesan & pesan tiap alumni tertera langsung di kartunya.</p>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b id="stTotal">0</b><span>Alumni</span></div>
+      <div class="stat"><b id="stDaerah">0</b><span>Daerah</span></div>
+      <div class="stat"><b id="stProf">0</b><span>Profesi</span></div>
+    </div>
+    <div class="box">
+      <h3><i class="bi bi-geo-alt-fill" style="color:var(--gold)"></i> Persebaran Alumni</h3>
+      <div id="sebaranList"></div>
+    </div>
+    <div class="nu-status-bar" id="profBar"></div>
+    <div class="alumni-grid" id="alumniGrid"></div>
+    <h3 class="sub-title" style="margin-top:50px">Manfaat Mondok di Takwinul Muballighin</h3>
+    <div class="benefit-grid">
+      <div class="benefit"><i class="bi bi-mic"></i><h4>Terlatih Berdakwah</h4><p>Latihan khutbah, ceramah, dan public speaking secara rutin membentuk percaya diri dan kemampuan menyampaikan Islam dengan baik.</p></div>
+      <div class="benefit"><i class="bi bi-book"></i><h4>Ilmu Agama yang Kokoh</h4><p>Kajian Al-Qur’an, hadits, fikih, dan akidah bersama para asatidz sebagai bekal dakwah yang berdasar ilmu.</p></div>
+      <div class="benefit"><i class="bi bi-heart"></i><h4>Akhlak & Kedisiplinan</h4><p>Kehidupan berasrama menumbuhkan adab, tanggung jawab, kejujuran, dan disiplin waktu dalam keseharian.</p></div>
+      <div class="benefit"><i class="bi bi-person-check"></i><h4>Kemandirian</h4><p>Santri belajar mengatur diri, hidup sederhana, dan bekerja sama sehingga siap hidup di tengah masyarakat.</p></div>
+      <div class="benefit"><i class="bi bi-people"></i><h4>Ukhuwah & Jejaring</h4><p>Persaudaraan sesama santri dan alumni di banyak daerah menjadi jaringan dakwah dan silaturahmi seumur hidup.</p></div>
+      <div class="benefit"><i class="bi bi-geo-alt"></i><h4>Lingkungan Yogyakarta</h4><p>Belajar di kota pelajar dengan suasana ilmiah, budaya yang santun, dan akses ke berbagai majelis ilmu.</p></div>
+    </div>
+    <p class="note">* Data alumni beserta kesan & pesannya adalah contoh. Ganti pada array <code>dataAlumni</code> (kolom <code>kesan</code>) di bagian script.</p>
+  </div>
+</section>
+
+<!-- KONTAK -->
+<section class="page" id="page-kontak">
+  <div class="section-padding">
+    <h2 class="page-title" style="margin-bottom:20px">Lokasi & Kontak</h2>
+    <div style="margin:20px 0;text-align:center">
+      <p><i class="bi bi-geo-alt-fill" style="color:var(--green-mid)"></i> Gg. Masjid, Gandok, Condongcatur, Sleman, Yogyakarta</p>
+    </div>
+    <div class="maps-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.2544274719273!2d110.3951556!3d-7.762788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5975e5330e71%3A0x2a3e0f80879e83!2sCondongcatur%2C%20Sleman%20Regency%2C%20Special%20Region%20of%20Yogyakarta!5e0!3m2!1sen!2sid!4v1712800000000!5m2!1sen!2sid" width="100%" height="100%" style="border:0" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <a href="https://www.google.com/maps/search/Takwinul+Muballighin+Gandok+Condongcatur" target="_blank" class="btn-maps-full"><i class="bi bi-signpost-2"></i> Buka Petunjuk Jalan (Google Maps)</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <img src="z-jukebox-bg-removed.png" alt="Logo" style="height:60px;margin-bottom:15px;filter:brightness(1.2)">
+  <div class="social-links">
+    <a href="https://instagram.com/takwinul_muballighin" target="_blank"><i class="bi bi-instagram"></i></a>
+    <a href="https://youtube.com/@takwinulmuballighin" target="_blank"><i class="bi bi-youtube"></i></a>
+    <a href="https://facebook.com/takwinulmuballighin" target="_blank"><i class="bi bi-facebook"></i></a>
+  </div>
+  <p style="font-size:14px;opacity:.8;margin-top:15px">© 2026 Pondok Pesantren Takwinul Muballighin Yogyakarta</p>
+</footer>
+
+<script>
+/* ===== NAVIGASI ANTAR FITUR (tanpa gulir) ===== */
+const halaman = ["home","sejarah","warta","alumni","kontak"];
+function showPage(nama){
+  if(!halaman.includes(nama)) nama = "home";
+  document.querySelectorAll(".page").forEach(p => p.classList.toggle("active", p.id === "page-"+nama));
+  document.querySelectorAll(".nav-links a[data-go]").forEach(a => a.classList.toggle("active", a.dataset.go === nama));
+  document.getElementById("menu-cb").checked = false;
+  if(location.hash !== "#"+nama) history.pushState(null,"","#"+nama);
+  window.scrollTo({top:0,behavior:"instant"});
+}
+document.addEventListener("click", e => {
+  const el = e.target.closest("[data-go]");
+  if(el){ e.preventDefault(); showPage(el.dataset.go); }
+});
+window.addEventListener("popstate", () => showPage(location.hash.replace("#","")));
+
+/* ===== DATA WARTA ===== */
+const dataWarta = [
+  {
+    id: 1, kategori: "Kegiatan",
+    judul: "Kunjungan Jamaah Patran dalam Agenda Kajian dan Silaturahmi Pondok Pesantren",
+    tanggal: "Ahad, 12 Juli 2026", penulis: "Redaktur TM", thumbnail: "IA.jpg",
+    ringkasan: "Pondok Pesantren Takwinul Muballighin mendapat kehormatan besar dengan kedatangan rombongan jamaah dari wilayah Patran. Rangkaian kunjungan ini diisi dengan kajian keagamaan bersama serta silaturahmi...",
+    images: [
+      { src: "IA.jpg", caption: "Suasana penuh kekhusyukan para jamaah Patran saat menyimak penyampaian kajian keagamaan di aula Pondok Pesantren Takwinul Muballighin, Sleman, Yogyakarta." },
+      { src: "IB.jpg", caption: "Momentum hangat dan penuh ukhuwah saat jajaran pengurus pondok pesantren menyambut dan bersilaturahmi langsung dengan rombongan jamaah Patran." }
+    ],
+    hadits: {
+      arab: "«مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ اللهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ»",
+      arti: '"Barang siapa menempuh suatu jalan untuk mencari ilmu, maka Allah akan memudahkan baginya jalan menuju surga." (HR. Muslim)'
+    },
+    isiLengkap: [
+      "<strong>Alhamdulillāhirabbil 'ālamīn.</strong> Segala puji bagi Allah SWT yang senantiasa melimpahkan rahmat, taufik, dan hidayah-Nya kepada kita semua.",
+      "Pada hari Ahad, 12 Juli 2026, Pondok Pesantren kami mendapat kehormatan dengan kedatangan rombongan jamaah dari wilayah Patran. Kehadiran beliau-beliau disambut dengan penuh rasa syukur dan sukacita oleh pengasuh, pengurus, serta seluruh santri.",
+      "Kunjungan ini memiliki tujuan yang mulia, yaitu mengikuti kajian keagamaan yang rutin diselenggarakan di pondok pesantren. Semangat thalabul 'ilmi (menuntut ilmu) yang ditunjukkan para jamaah menjadi motivasi dan teladan bagi seluruh keluarga besar pondok untuk terus mencintai ilmu agama.",
+      "Selain mengikuti kajian, pertemuan ini juga menjadi momentum yang berharga untuk mempererat tali silaturahmi (ukhuwah Islamiyah) antara pondok pesantren dan masyarakat. Suasana penuh kehangatan, kebersamaan, dan saling berbagi nasihat semakin memperkuat hubungan yang telah terjalin.",
+      "Semoga ilmu yang telah dipelajari bersama menjadi ilmu yang bermanfaat, menambah keimanan, serta diamalkan dalam kehidupan sehari-hari.",
+      "<em>Jazakumullāhu khairan katsīrā.</em> Sampai jumpa pada agenda kajian Pondok Pesantren berikutnya."
+    ]
+  }
+  // Tambahkan berita id: 2, 3, dst. dengan format yang sama
+];
+
+/* ===== DATA ALUMNI (CONTOH — ganti dengan data asli) =====
+   kategori: Dai & Muballigh | Pendidik | Wirausaha | Profesional | Pengurus Masjid
+   kesan: kesan & pesan alumni (opsional). Jika diisi, otomatis tampil di halaman "Kesan". */
+const dataAlumni = [
+  { nama:"Ahmad Fauzi", angkatan:2012, daerah:"Sleman, DIY", profesi:"Muballigh", lembaga:"Takmir Masjid Condongcatur", kategori:"Dai & Muballigh",
+    kesan:"Di pondok saya belajar berani berdiri di mimbar. Dulu gugup bicara di depan orang, sekarang terbiasa mengisi kajian di kampung. Pesan saya: manfaatkan setiap latihan ceramah dengan sungguh-sungguh." },
+  { nama:"Muhammad Rizki", angkatan:2014, daerah:"Bantul, DIY", profesi:"Khotib & Penceramah", lembaga:"Majelis Taklim Bantul", kategori:"Dai & Muballigh", kesan:"" },
+  { nama:"Abdul Hakim", angkatan:2013, daerah:"Lampung", profesi:"Guru Pondok", lembaga:"Pesantren di Lampung Tengah", kategori:"Pendidik",
+    kesan:"Yang paling berkesan adalah kebersamaannya. Teman-teman santri sudah seperti saudara, sampai sekarang kami saling mendukung dakwah di daerah masing-masing. Pesan saya: jaga ukhuwah." },
+  { nama:"Yusuf Maulana", angkatan:2015, daerah:"Sleman, DIY", profesi:"Dosen", lembaga:"Perguruan Tinggi Swasta", kategori:"Pendidik",
+    kesan:"Bekal ilmu agama dan kebiasaan belajar di pondok sangat membantu saya saat kuliah lanjut hingga menjadi pengajar." },
+  { nama:"Hasan Basri", angkatan:2016, daerah:"Kalimantan Timur", profesi:"Pengusaha Kuliner", lembaga:"Usaha Mandiri", kategori:"Wirausaha",
+    kesan:"Disiplin dan kemandirian dari pondok sangat membantu saya merintis usaha. Ilmu agama jadi pegangan agar tetap amanah dalam berdagang." },
+  { nama:"Ilham Prasetyo", angkatan:2017, daerah:"Jawa Tengah", profesi:"Pengusaha Konveksi", lembaga:"Usaha Mandiri", kategori:"Wirausaha", kesan:"" },
+  { nama:"Zainal Arifin", angkatan:2011, daerah:"Jawa Timur", profesi:"Perawat", lembaga:"Rumah Sakit Daerah", kategori:"Profesional",
+    kesan:"Akhlak yang ditanamkan di pondok terbawa sampai ke tempat kerja: sabar, jujur, dan melayani dengan ikhlas." },
+  { nama:"Fikri Ramadhan", angkatan:2018, daerah:"Lampung", profesi:"Imam & Takmir Masjid", lembaga:"Masjid Jami’ setempat", kategori:"Pengurus Masjid", kesan:"" },
+  { nama:"Dimas Anwar", angkatan:2019, daerah:"Kalimantan Timur", profesi:"Da’i Pedalaman", lembaga:"Program Dakwah Daerah", kategori:"Dai & Muballigh",
+    kesan:"Pondok membekali saya mental dan ilmu untuk berdakwah di daerah yang jauh. Jangan takut ditempatkan di mana pun, Allah yang memudahkan." }
+];
+
+let kategoriAktif = "Semua Warta", kataKunciCari = "", beritaTerbuka = null;
+
+/* ===== WARTA ===== */
+function renderWartaList(){
+  const c = document.getElementById("wartaNewsList");
+  c.innerHTML = "";
+  const q = kataKunciCari.toLowerCase();
+  const hasil = dataWarta.filter(i => (kategoriAktif === "Semua Warta" || i.kategori === kategoriAktif) && (i.judul.toLowerCase().includes(q) || i.ringkasan.toLowerCase().includes(q)));
+  if(!hasil.length){ c.innerHTML = `<p style="text-align:center;padding:40px;color:#888">Tidak ada warta berita yang ditemukan.</p>`; return; }
+  hasil.forEach(b => {
+    const open = beritaTerbuka === b.id;
+    c.innerHTML += `
+      <div class="nu-news-item ${open?'open':''}" id="nu-item-${b.id}">
+        <div class="nu-news-row">
+          <div class="nu-news-col-text">
+            <span class="nu-item-cat">${b.kategori}</span>
+            <h3 class="nu-item-title" onclick="toggleWarta(${b.id})">${b.judul}</h3>
+            <span class="nu-item-meta">${b.tanggal} | Oleh: ${b.penulis}</span>
+            <span class="nu-btn-read" onclick="toggleWarta(${b.id})">${open?'Tutup Berita':'Baca Selengkapnya'} <i class="bi bi-chevron-down"></i></span>
+          </div>
+          <div class="nu-news-col-img"><img src="${b.thumbnail}" alt="Thumbnail" class="nu-item-thumb" onclick="toggleWarta(${b.id})"></div>
         </div>
+        <div class="nu-detail" id="nu-detail-${b.id}"></div>
+      </div>`;
+  });
+  if(beritaTerbuka !== null) renderDetailContent(beritaTerbuka);
+}
+function renderDetailContent(id){
+  const b = dataWarta.find(i => i.id === id), d = document.getElementById(`nu-detail-${id}`);
+  if(!b || !d) return;
+  let h = `<div class="nu-detail-meta"><span><i class="bi bi-person"></i> ${b.penulis}</span><span><i class="bi bi-calendar3"></i> ${b.tanggal}</span></div><div class="nu-detail-images">`;
+  b.images.forEach(m => h += `<div class="nu-detail-img-wrapper"><img src="${m.src}" alt="Gambar Berita"><div class="nu-detail-caption">${m.caption}</div></div>`);
+  h += `</div>`;
+  if(b.hadits && b.hadits.arab) h += `<div class="nu-hadits-box" style="display:block"><div class="nu-hadits-arabic">${b.hadits.arab}</div><div class="nu-hadits-translation">${b.hadits.arti}</div></div>`;
+  h += `<div class="nu-detail-body">` + b.isiLengkap.map(p => `<p>${p}</p>`).join("") + `</div>`;
+  h += `<span class="nu-btn-close-detail" onclick="toggleWarta(${b.id})"><i class="bi bi-chevron-up"></i> Tutup Berita</span>`;
+  d.innerHTML = h;
+}
+function toggleWarta(id){
+  if(beritaTerbuka === id){ beritaTerbuka = null; renderWartaList(); }
+  else {
+    beritaTerbuka = id; renderWartaList();
+    setTimeout(() => { const el = document.getElementById(`nu-item-${id}`); if(el) el.scrollIntoView({behavior:"smooth",block:"start"}); }, 50);
+  }
+}
+function filterKategori(k){
+  kategoriAktif = k; beritaTerbuka = null;
+  document.querySelectorAll("#statusBar .nu-status-item").forEach(i => i.classList.toggle("active", i.textContent.trim() === k));
+  renderWartaList();
+}
 
-        <div class="nav-search-container">
-            <input type="text" id="globalSearch" placeholder="Cari warta...">
-            <button class="nav-search-btn" type="button" aria-label="Cari">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            </button>
-        </div>
+/* ===== ALUMNI ===== */
+let fProf = "Semua", fDaerah = "";
+const iniAwal = n => n.split(" ").slice(0,2).map(s => s[0]).join("").toUpperCase();
+function hitung(arr, key){ const m = {}; arr.forEach(a => m[a[key]] = (m[a[key]]||0)+1); return Object.entries(m).sort((x,y) => y[1]-x[1]); }
+function renderAlumni(){
+  const daerah = hitung(dataAlumni,"daerah"), kat = hitung(dataAlumni,"kategori"), maks = daerah[0] ? daerah[0][1] : 1;
+  document.getElementById("stTotal").textContent = dataAlumni.length;
+  document.getElementById("stDaerah").textContent = daerah.length;
+  document.getElementById("stProf").textContent = new Set(dataAlumni.map(a => a.profesi)).size;
+  document.getElementById("sebaranList").innerHTML = daerah.map(([n,c]) =>
+    `<div class="bar-row ${fDaerah===n?'sel':''}" data-daerah="${n}"><span class="nm">${n}</span><span class="tr"><i style="width:${c/maks*100}%"></i></span><span class="ct">${c}</span></div>`).join("")
+    + (fDaerah ? `<span class="reset-link" data-daerah="">× Hapus filter daerah</span>` : "");
+  const chips = ["Semua", ...kat.map(k => k[0])];
+  document.getElementById("profBar").innerHTML = chips.map(k => `<span class="nu-status-item ${fProf===k?'active':''}" data-prof="${k}">${k}</span>`).join("");
+  const list = dataAlumni.filter(a => (fProf==="Semua"||a.kategori===fProf) && (!fDaerah||a.daerah===fDaerah));
+  document.getElementById("alumniGrid").innerHTML = list.length ? list.map(a => `
+    <div class="al-card"><div class="avatar">${iniAwal(a.nama)}</div><div>
+      <h4>${a.nama}</h4><div class="prof">${a.profesi}</div>
+      <div class="meta"><i class="bi bi-building"></i>${a.lembaga}<br><i class="bi bi-geo-alt-fill"></i>${a.daerah}<br><i class="bi bi-mortarboard-fill"></i>Angkatan ${a.angkatan}</div>
+      ${a.kesan ? `<p class="kesan">“${a.kesan}”</p>` : ""}
+    </div></div>`).join("") : `<p style="grid-column:1/-1;text-align:center;color:#888;padding:30px">Belum ada alumni pada filter ini.</p>`;
+}
+document.getElementById("page-alumni").addEventListener("click", e => {
+  const d = e.target.closest("[data-daerah]"), p = e.target.closest("[data-prof]");
+  if(d){ fDaerah = (fDaerah === d.dataset.daerah) ? "" : d.dataset.daerah; renderAlumni(); }
+  if(p){ fProf = p.dataset.prof; renderAlumni(); }
+});
 
-        <input type="checkbox" id="menu-cb">
-        <label for="menu-cb" class="menu-icon" aria-label="Buka menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </label>
+/* ===== PENCARIAN NAVBAR (otomatis pindah ke halaman Warta) ===== */
+document.getElementById("globalSearch").addEventListener("input", e => {
+  kataKunciCari = e.target.value;
+  if(kataKunciCari) showPage("warta");
+  renderWartaList();
+});
+document.querySelector(".nav-search-btn").addEventListener("click", () => { showPage("warta"); document.getElementById("globalSearch").focus(); });
 
-        <ul class="nav-links">
-            <li class="nav-menu-eyebrow" aria-hidden="true"><span>Menu Navigasi</span></li>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#sejarah">Sejarah</a></li>
-            <li><a href="#warta">Warta</a></li>
-            <li><a href="#kontak">Kontak</a></li>
-            <li class="nav-wa-item"><a href="https://wa.me/6285171720040" class="btn-wa">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.04 2m0 1.67a8.2 8.2 0 0 1 5.83 2.42 8.19 8.19 0 0 1 2.41 5.82c0 4.55-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.37c0-4.55 3.7-8.25 8.25-8.25M8.53 6.87c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03 0 1.19.87 2.34.99 2.5.12.16 1.7 2.72 4.2 3.7 2.08.82 2.5.66 2.95.62.45-.04 1.46-.6 1.66-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.16-.46-.28-.24-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.12-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.24-.12-1.02-.38-1.94-1.2-.72-.63-1.2-1.42-1.35-1.66-.14-.24-.02-.37.1-.5.11-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.56-1.36-.78-1.86-.2-.48-.4-.42-.56-.43-.14-.01-.3-.01-.46-.01"/></svg>
-                <span>WhatsApp</span>
-            </a></li>
-        </ul>
-    </nav>
+function renderTanggalTopBar(){
+  const el = document.getElementById("tbTanggal");
+  if(el) el.textContent = new Date().toLocaleDateString("id-ID",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+}
 
-    <header id="home">
-        <p class="hero-badge">YAIFY Yogyakarta</p>
-        <h1 class="hero-title">Takwinul Muballighin</h1>
-        <p style="margin-top: 15px; font-style: italic; font-size: 18px; opacity: 0.9;">"Mencetak Kader Muballigh Profesional"</p>
-    </header>
-
-    <section class="section-padding sejarah" id="sejarah">
-        <h2>Sejarah Berdirinya</h2>
-        <div class="text-content">
-            <p class="drop-cap">Pondok Pesantren <strong>Takwinul Muballighin</strong> berdiri atas dasar keprihatinan terhadap dunia dakwah Islam. Semangat umat Islam untuk mempelajari, mengamalkan, dan memperjuangkan nilai-nilai Islam semakin meningkat, namun jumlah da’i/muballigh yang tersedia tidak seimbang dengan kebutuhan dakwah.</p>
-            <p>Banyaknya pembangunan masjid, musholla, Islamic Center, serta maraknya majelis taklim dan forum kajian agama belum diimbangi dengan ketersediaan khotib dan penceramah yang berkualitas.</p>
-            <p>Melihat kondisi tersebut, diperlukan lembaga pengkaderan da’i yang serius dan profesional. Jika selama ini para muballigh muncul secara alami, kini perlu disiapkan da’i-da’i profesional melalui proses pendidikan dan pembinaan yang terarah. Atas dasar inilah Yayasan Amal Ihsan Fisabilillah Yogyakarta (YAIFY) mendirikan Pondok Pesantren Takwinul Muballighin sebagai pusat pengkaderan muballigh yang siap berkiprah di tengah masyarakat.</p>
-        </div>
-    </section>
-
-    <section class="warta-section" id="warta">
-        <div class="nu-list-container">
-            <div class="warta-header-bar">
-                <h2 class="section-title-nu">Warta Pondok</h2>
-            </div>
-
-            <div class="nu-status-bar" id="statusBar">
-                <span class="nu-status-item active" onclick="filterKategori('Semua Warta')"><i class="bi bi-grid"></i> Semua Warta</span>
-                <span class="nu-status-item" onclick="filterKategori('Kegiatan')"><i class="bi bi-calendar-event"></i> Kegiatan</span>
-                <span class="nu-status-item" onclick="filterKategori('Kajian')"><i class="bi bi-book"></i> Kajian</span>
-                <span class="nu-status-item" onclick="filterKategori('Pengumuman')"><i class="bi bi-megaphone"></i> Pengumuman</span>
-            </div>
-
-            <div id="wartaNewsList"></div>
-        </div>
-    </section>
-
-    <section class="section-padding" id="kontak">
-        <h2 style="font-family: 'Playfair Display', serif; color: var(--green-deep); text-align: center;">Lokasi & Kontak</h2>
-        <div style="margin: 20px 0; text-align: center;">
-            <p><i class="bi bi-geo-alt-fill" style="color: var(--green-mid);"></i> Gg. Masjid, Gandok, Condongcatur, Sleman, Yogyakarta</p>
-        </div>
-        
-        <div class="maps-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.2544274719273!2d110.3951556!3d-7.762788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5975e5330e71%3A0x2a3e0f80879e83!2sCondongcatur%2C%20Sleman%20Regency%2C%20Special%20Region%20of%20Yogyakarta!5e0!3m2!1sen!2sid!4v1712800000000!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-        
-        <a href="https://www.google.com/maps/search/Takwinul+Muballighin+Gandok+Condongcatur" target="_blank" class="btn-maps-full">
-            <i class="bi bi-signpost-2"></i> Buka Petunjuk Jalan (Google Maps)
-        </a>
-    </section>
-
-    <footer>
-        <img src="z-jukebox-bg-removed.png" alt="Logo" style="height: 60px; margin-bottom: 15px; filter: brightness(1.2);">
-        <div class="social-links">
-            <a href="https://instagram.com/takwinul_muballighin" target="_blank"><i class="bi bi-instagram"></i></a>
-            <a href="https://youtube.com/@takwinulmuballighin" target="_blank"><i class="bi bi-youtube"></i></a>
-            <a href="https://facebook.com/takwinulmuballighin" target="_blank"><i class="bi bi-facebook"></i></a>
-        </div>
-        <p style="font-size: 14px; opacity: 0.8; margin-top: 15px;">© 2026 Pondok Pesantren Takwinul Muballighin Yogyakarta</p>
-    </footer>
-
-    <script>
-        // DATA DATABASE BERITA WARTA (Sangat mudah ditambah berita baru di sini nanti!)
-        const dataWarta = [
-            {
-                id: 1,
-                kategori: "Kegiatan",
-                judul: "Kunjungan Jamaah Patran dalam Agenda Kajian dan Silaturahmi Pondok Pesantren",
-                tanggal: "Ahad, 12 Juli 2026",
-                penulis: "Redaktur TM",
-                thumbnail: "IA.jpg",
-                // RINGKASAN SAJA yang tampil di halaman depan (bukan teks lengkap)
-                ringkasan: "Pondok Pesantren Takwinul Muballighin mendapat kehormatan besar dengan kedatangan rombongan jamaah dari wilayah Patran. Rangkaian kunjungan ini diisi dengan kajian keagamaan bersama serta silaturahmi...",
-                
-                // ISI FOTO LENGKAP SAAT DIKLIK BACA FULL TEXT
-                images: [
-                    { src: "IA.jpg", caption: "Suasana penuh kekhusyukan para jamaah Patran saat menyimak penyampaian kajian keagamaan di aula Pondok Pesantren Takwinul Muballighin, Sleman, Yogyakarta." },
-                    { src: "IB.jpg", caption: "Momentum hangat dan penuh ukhuwah saat jajaran pengurus pondok pesantren menyambut dan bersilaturahmi langsung dengan rombongan jamaah Patran." }
-                ],
-                
-                // DATA HADITS (JIKA ADA)
-                hadits: {
-                    arab: "«مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ اللهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ»",
-                    arti: '"Barang siapa menempuh suatu jalan untuk mencari ilmu, maka Allah akan memudahkan baginya jalan menuju surga." (HR. Muslim)'
-                },
-                
-                // ISI PARAGRAF LENGKAP UTUH — hanya dirender saat berita dibuka (klik "Baca Selengkapnya")
-                isiLengkap: [
-                    "<strong>Alhamdulillāhirabbil 'ālamīn.</strong> Segala puji bagi Allah SWT yang senantiasa melimpahkan rahmat, taufik, dan hidayah-Nya kepada kita semua.",
-                    "Pada hari Ahad, 12 Juli 2026, Pondok Pesantren kami mendapat kehormatan dengan kedatangan rombongan jamaah dari wilayah Patran. Kehadiran beliau-beliau disambut dengan penuh rasa syukur dan sukacita oleh pengasuh, pengurus, serta seluruh santri.",
-                    "Kunjungan ini memiliki tujuan yang mulia, yaitu mengikuti kajian keagamaan yang rutin diselenggarakan di pondok pesantren. Semangat thalabul 'ilmi (menuntut ilmu) yang ditunjukkan para jamaah menjadi motivasi dan teladan bagi seluruh keluarga besar pondok untuk terus mencintai ilmu agama.",
-                    "Selain mengikuti kajian, pertemuan ini juga menjadi momentum yang berharga untuk mempererat tali silaturahmi (ukhuwah Islamiyah) antara pondok pesantren dan masyarakat. Suasana penuh kehangatan, kebersamaan, dan saling berbagi nasihat semakin memperkuat hubungan yang telah terjalin.",
-                    "Semoga ilmu yang telah dipelajari bersama menjadi ilmu yang bermanfaat, menambah keimanan, serta diamalkan dalam kehidupan sehari-hari.",
-                    "<em>Jazakumullāhu khairan katsīrā.</em> Sampai jumpa pada agenda kajian Pondok Pesantren berikutnya."
-                ]
-            }
-            // Tambahkan data berita id: 2, id: 3 dengan format yang sama di sini nanti!
-            // Ingat: "ringkasan" tampil di halaman depan, "isiLengkap" hanya tampil saat berita dibuka.
-        ];
-
-        let kategoriAktif = "Semua Warta";
-        let kataKunciCari = "";
-        let beritaTerbuka = null; // id berita yang sedang terbuka (hanya 1 dalam satu waktu)
-
-        // Fungsi me-render / memuat daftar RINGKASAN berita ke halaman depan (bukan teks lengkap)
-        function renderWartaList() {
-            const container = document.getElementById("wartaNewsList");
-            container.innerHTML = "";
-
-            // Filter Berita berdasarkan status kategori & kolom pencarian navbar
-            const beritaTerfilter = dataWarta.filter(item => {
-                const cocokKategori = (kategoriAktif === "Semua Warta" || item.kategori === kategoriAktif);
-                const cocokPencarian = item.judul.toLowerCase().includes(kataKunciCari.toLowerCase()) || 
-                                       item.ringkasan.toLowerCase().includes(kataKunciCari.toLowerCase());
-                return cocokKategori && cocokPencarian;
-            });
-
-            if(beritaTerfilter.length === 0) {
-                container.innerHTML = `<p style="text-align:center; padding: 40px; color:#888;">Tidak ada warta berita yang ditemukan.</p>`;
-                return;
-            }
-
-            beritaTerfilter.forEach(berita => {
-                const isOpen = (beritaTerbuka === berita.id);
-                const itemHtml = `
-                    <div class="nu-news-item ${isOpen ? 'open' : ''}" id="nu-item-${berita.id}">
-                        <div class="nu-news-row">
-                            <div class="nu-news-col-text">
-                                <span class="nu-item-cat">${berita.kategori}</span>
-                                <h3 class="nu-item-title" onclick="toggleWarta(${berita.id})">${berita.judul}</h3>
-                                <span class="nu-item-meta">${berita.tanggal} | Oleh: ${berita.penulis}</span>
-                                <span class="nu-btn-read" onclick="toggleWarta(${berita.id})">${isOpen ? 'Tutup Berita' : 'Baca Selengkapnya'} <i class="bi bi-chevron-down"></i></span>
-                            </div>
-                            <div class="nu-news-col-img">
-                                <img src="${berita.thumbnail}" alt="Thumbnail" class="nu-item-thumb" onclick="toggleWarta(${berita.id})">
-                            </div>
-                        </div>
-
-                        <div class="nu-detail" id="nu-detail-${berita.id}"></div>
-                    </div>
-                `;
-                container.innerHTML += itemHtml;
-            });
-
-            // Isi konten lengkap untuk berita yang sedang terbuka (dirender langsung di dalam list, bukan kartu/modal)
-            if(beritaTerbuka !== null) {
-                renderDetailContent(beritaTerbuka);
-            }
-        }
-
-        // Merender isi lengkap berita LANGSUNG di dalam item list (bukan popup kartu)
-        function renderDetailContent(id) {
-            const berita = dataWarta.find(item => item.id === id);
-            const detailContainer = document.getElementById(`nu-detail-${id}`);
-            if(!berita || !detailContainer) return;
-
-            let html = `
-                <div class="nu-detail-meta">
-                    <span><i class="bi bi-person"></i> ${berita.penulis}</span>
-                    <span><i class="bi bi-calendar3"></i> ${berita.tanggal}</span>
-                </div>
-                <div class="nu-detail-images">
-            `;
-
-            berita.images.forEach(imgData => {
-                html += `
-                    <div class="nu-detail-img-wrapper">
-                        <img src="${imgData.src}" alt="Gambar Berita">
-                        <div class="nu-detail-caption">${imgData.caption}</div>
-                    </div>
-                `;
-            });
-            html += `</div>`;
-
-            if(berita.hadits && berita.hadits.arab) {
-                html += `
-                    <div class="nu-hadits-box" style="display:block;">
-                        <div class="nu-hadits-arabic">${berita.hadits.arab}</div>
-                        <div class="nu-hadits-translation">${berita.hadits.arti}</div>
-                    </div>
-                `;
-            }
-
-            html += `<div class="nu-detail-body">`;
-            berita.isiLengkap.forEach(pText => {
-                html += `<p>${pText}</p>`;
-            });
-            html += `</div>`;
-
-            html += `<span class="nu-btn-close-detail" onclick="toggleWarta(${berita.id})"><i class="bi bi-chevron-up"></i> Tutup Berita</span>`;
-
-            detailContainer.innerHTML = html;
-        }
-
-        // Buka/tutup berita LANGSUNG di dalam list (accordion), bukan popup kartu terpisah
-        function toggleWarta(id) {
-            if(beritaTerbuka === id) {
-                // Sedang terbuka -> tutup
-                beritaTerbuka = null;
-                renderWartaList();
-            } else {
-                // Buka berita ini, tutup berita lain (satu per satu)
-                beritaTerbuka = id;
-                renderWartaList();
-                // Scroll halus ke posisi berita yang baru dibuka
-                setTimeout(() => {
-                    const el = document.getElementById(`nu-item-${id}`);
-                    if(el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-                }, 50);
-            }
-        }
-
-        // Fungsi Filter lewat Status Bar Pilihan
-        function filterKategori(kategori) {
-            kategoriAktif = kategori;
-            beritaTerbuka = null; // tutup berita yang terbuka saat ganti kategori
-            document.querySelectorAll('.nu-status-item').forEach(item => {
-                const label = item.textContent.trim();
-                if(label === kategori) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-            renderWartaList();
-        }
-
-        // Fungsi Input Pencarian di Navbar Atas
-        document.getElementById("globalSearch").addEventListener("input", function(e) {
-            kataKunciCari = e.target.value;
-            renderWartaList();
-        });
-
-        // Tombol kaca pembesar di navbar: scroll ke bagian Warta lalu fokuskan input pencarian
-        document.querySelector(".nav-search-btn").addEventListener("click", function() {
-            document.getElementById("warta").scrollIntoView({ behavior: "smooth" });
-            document.getElementById("globalSearch").focus();
-        });
-
-        // Kontrol Menu Hamburger Mobile Toggle (animasi ikon jadi X ditangani otomatis oleh CSS)
-        const menuCb = document.getElementById('menu-cb');
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuCb.checked = false;
-            });
-        });
-
-        // Mengisi tanggal Masehi otomatis di strip atas
-        function renderTanggalTopBar() {
-            const el = document.getElementById("tbTanggal");
-            if (!el) return;
-            const hariIni = new Date();
-            const opsi = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-            el.textContent = hariIni.toLocaleDateString('id-ID', opsi);
-        }
-
-        // Load awal data berita ketika web dibuka pertama kali
-        window.onload = function() {
-            renderWartaList();
-            renderTanggalTopBar();
-        };
-    </script>
+window.onload = function(){
+  renderWartaList(); renderAlumni(); renderTanggalTopBar();
+  showPage(location.hash.replace("#",""));
+};
+</script>
 </body>
 </html>
