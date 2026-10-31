@@ -61,12 +61,10 @@ nav{position:fixed;top:34px;width:100%;height:76px;background:var(--green-deep);
 @keyframes pageIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* HERO */
-header{min-height:82vh;background:linear-gradient(180deg,rgba(5,26,17,.55),rgba(5,26,17,.78)),url('AQ.jpeg') center/cover;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:150px 20px 60px;position:relative}
+header{min-height:82vh;background:linear-gradient(180deg,rgba(5,26,17,.55),rgba(5,26,17,.78)),url('profil.jpeg') center/cover;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:150px 20px 60px;position:relative}
 header::after{content:'';position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(180deg,transparent,var(--cream))}
 .hero-badge{color:var(--gold);letter-spacing:3.5px;font-weight:700;margin-bottom:6px;text-transform:uppercase;font-size:13px}
 .hero-title{font-family:'Playfair Display',serif;font-size:clamp(34px,8vw,60px);color:var(--white);line-height:1.15;text-shadow:0 4px 24px rgba(0,0,0,.35)}
-
-/* QUICK LINKS HOME */
 
 /* SEJARAH */
 .section-padding{padding:50px 10% 90px}
@@ -138,9 +136,10 @@ header::after{content:'';position:absolute;left:0;right:0;bottom:0;height:90px;b
 .bar-row .tr i{display:block;height:100%;background:linear-gradient(90deg,var(--green-mid),var(--gold));border-radius:10px;transition:width .6s}
 .bar-row .ct{width:28px;text-align:right;font-weight:700;color:var(--green-mid)}
 .alumni-grid{align-items:start;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
-.al-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--shadow-soft);transition:.3s}
-.al-card:hover{transform:translateY(-3px);border-color:var(--gold)}
-.avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--green-mid),var(--green-deep));color:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;flex-shrink:0}
+.al-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow-soft)}
+.avatar{position:relative;overflow:hidden;width:100%;aspect-ratio:1/1;background:var(--green-mid);color:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:48px}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.al-body{padding:18px 20px 22px}
 .al-card h4{font-size:16px;color:var(--nu-dark);margin-bottom:3px}
 .al-card .prof{color:var(--nu-green);font-weight:700;font-size:13.5px}
 .al-card .meta{font-size:12.5px;color:var(--nu-gray);margin-top:6px;line-height:1.5}
@@ -157,14 +156,7 @@ header::after{content:'';position:absolute;left:0;right:0;bottom:0;height:90px;b
 .benefit p{font-size:14.5px;line-height:1.7;color:#4a4a44}
 .sub-title{font-family:'Playfair Display',serif;font-size:26px;color:var(--green-deep);text-align:center;margin-bottom:24px}
 
-.kesan{margin-top:12px;font-size:13.5px;line-height:1.65;font-style:italic;color:#4a4a44;border-left:3px solid var(--gold);padding-left:10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.al-body{min-width:0;flex:1}
-.al-card:has(.al-more[open]) .kesan{display:none}
-.al-more{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
-.al-more summary{cursor:pointer;list-style:none;display:flex;align-items:center;font-size:13px;font-weight:700;color:var(--nu-green)}
-.al-more summary::-webkit-details-marker{display:none}
-.al-more summary::after{content:"+";margin-left:auto;font-size:19px;line-height:1;color:var(--gold)}
-.al-more[open] summary::after{content:"–"}
+.al-desc{margin-top:12px;border-top:1px solid var(--line);padding-top:4px}
 .kp{margin-top:12px}.kp b{display:block;font-size:12.5px;color:var(--green-deep);margin-bottom:3px}.kp p{font-size:13.5px;line-height:1.65;color:#4a4a44}
 /* MAPS */
 .maps-container{margin:30px auto 0;max-width:900px;border-radius:20px;overflow:hidden;border:1px solid #ddd;height:350px}
@@ -401,45 +393,47 @@ const dataWarta = [
 ];
 
 /* ===== DATA ALUMNI — dari formulir pendataan, HANYA yang menjawab "Ya" (boleh dipublikasikan) =====
-   Tanpa nomor WhatsApp/kontak. kategori: Pendidik | Profesional | Pemerintahan */
+   Tanpa nomor WhatsApp/kontak. kategori: Pendidik | Profesional | Pemerintahan
+   foto: nama file foto (satu folder dengan index.html), sesuai nama file aslinya. Kosongkan ("") jika belum ada foto.
+   Jika file tidak ada, kartu menampilkan inisial nama. */
 const dataAlumni = [
-  { nama:"Nurhadi Bambang Handoko, S.Pd.I", angkatan:1, periode:"masuk 2004", daerah:"DI Yogyakarta", kota:"Sleman, Yogyakarta", kategori:"Pendidik",
+  { nama:"Nurhadi Bambang Handoko, S.Pd.I", foto:"IMG-20260413-WA0175_-_Nurhadi.jpg", angkatan:1, periode:"masuk 2004", daerah:"DI Yogyakarta", kota:"Sleman, Yogyakarta", kategori:"Pendidik",
     profesi:"Pengasuh Rumah Tahfidz", jabatan:"Owner", tempat:"Rumah Tahfidz Al Ihsan, Balong, Donoharjo, Ngaglik", kuliah:"",
     kesan:"Kajian langsung dengan Ustadz Didik.", manfaat:"Bersemangat berdakwah.", pesan:"Terus belajar untuk lillah." },
-  { nama:"Gusmanto", angkatan:1, periode:"2004–2006", daerah:"Jawa Tengah", kota:"Banyumas, Jawa Tengah", kategori:"Profesional",
+  { nama:"Gusmanto", foto:"foto_gusmanto__-_Gusmanto_bin_Tarmidi.jpeg", angkatan:1, periode:"2004–2006", daerah:"Jawa Tengah", kota:"Banyumas, Jawa Tengah", kategori:"Profesional",
     profesi:"Apoteker", jabatan:"Kasie Penunjang Non Medis", tempat:"RSUD Ajibarang, Banyumas", kuliah:"UGM, Fakultas Farmasi",
     kesan:"Menjadi khotib Jumat pertama kali.", manfaat:"Belajar agama dengan para ustadz yang luar biasa dan mendapatkan rekan-rekan yang hebat.", pesan:"Semangat dan tetaplah untuk terus berkarya." },
-  { nama:"Feri Cahyanto", angkatan:2, periode:"2005–2006", daerah:"Jawa Barat", kota:"Bogor Selatan, Kota Bogor", kategori:"Pendidik",
+  { nama:"Feri Cahyanto", foto:"20220808_153223_-_feri_cahyanto.jpg", angkatan:2, periode:"2005–2006", daerah:"Jawa Barat", kota:"Bogor Selatan, Kota Bogor", kategori:"Pendidik",
     profesi:"Pengajar Pesantren", jabatan:"Wakil Direktur", tempat:"Pesantren Bina Madani Putra, Bogor", kuliah:"Ma'had Ali bin Abi Tholib UMY, Bahasa Arab",
     kesan:"Belajar mandiri dan pengalaman belajar yang menarik.", manfaat:"Belajar public speaking dan wirausaha.", pesan:"Carilah ilmu dan pengalaman sebanyak-banyaknya karena akan bermanfaat pada waktu yang tepat." },
-  { nama:"Agus Haeruman", angkatan:2, periode:"2005–2006", daerah:"Arab Saudi", kota:"Dammam, Arab Saudi", kategori:"Profesional",
+  { nama:"Agus Haeruman", foto:"Photo_Agus_-_06_-_Agus_Haeruman.jpg", angkatan:2, periode:"2005–2006", daerah:"Arab Saudi", kota:"Dammam, Arab Saudi", kategori:"Profesional",
     profesi:"Karyawan", jabatan:"Customer Relations Specialist", tempat:"Saudi Engines Manufacturing Company (MAKEEN)", kuliah:"UGM, Fisika (Elektronika dan Instrumentasi); S2 Teknik Mesin, KFUPM Arab Saudi",
     kesan:"Dibangunkan untuk shalat tahajud setiap malam.", manfaat:"Sikap zuhud dan bersyukur.", pesan:"Lakukan yang terbaik, kapan pun dan di mana pun." },
-  { nama:"M. Rohmad", angkatan:2, periode:"2003–2005", daerah:"DI Yogyakarta", kota:"Sleman, DIY", kategori:"Pendidik",
+  { nama:"M. Rohmad", foto:"20260301_154952_-_Rohmad_Faza.jpg", angkatan:2, periode:"2003–2005", daerah:"DI Yogyakarta", kota:"Sleman, DIY", kategori:"Pendidik",
     profesi:"Guru SD", jabatan:"Waka Kesiswaan", tempat:"SDIT Salsabila Klaseman", kuliah:"UIN Sunan Kalijaga, Dakwah / KPI",
     kesan:"Berkumpul dengan orang-orang sholih.", manfaat:"Sederhana dan senang belajar.", pesan:"Nikmati dengan penuh kesyukuran setiap episode kehidupan." },
-  { nama:"Tedy Kartono", angkatan:2, periode:"2006–2007", daerah:"Jawa Tengah", kota:"Pekalongan, Jawa Tengah", kategori:"Profesional",
+  { nama:"Tedy Kartono", foto:"", angkatan:2, periode:"2006–2007", daerah:"Jawa Tengah", kota:"Pekalongan, Jawa Tengah", kategori:"Profesional",
     profesi:"Montir Bengkel", jabatan:"Mekanik", tempat:"Bengkel Mobil Modern JP Performance, Tulis, Batang", kuliah:"",
     kesan:"Pas pengajian sehabis subuh terjadi gempa besar yang berpusat di Bantul. Waktu itu jadi relawan pasca gempa, dan menjadi relawan di Klaten. Saya jadi khotib Jumat, groginya luar biasa.", manfaat:"Merintis UUS (Unit Usaha Santri).", pesan:"Yang serius dan rajin, kalau sekarang kan bayar ya." },
-  { nama:"Ahmad Rifai", angkatan:3, periode:"2007–2009", daerah:"Sumatera Selatan", kota:"Ogan Komering Ilir, Sumatera Selatan", kategori:"Pemerintahan",
+  { nama:"Ahmad Rifai", foto:"FB_IMG_1790683358261_-_Ahmad_Rifai.jpg", angkatan:3, periode:"2007–2009", daerah:"Sumatera Selatan", kota:"Ogan Komering Ilir, Sumatera Selatan", kategori:"Pemerintahan",
     profesi:"ASN Pemkab OKI & Dai Coach Pemuda", jabatan:"Kasi Pemerintahan", tempat:"Kantor Camat Lempuing Jaya", kuliah:"UGM, Ilmu Pemerintahan FISIP",
     kesan:"Dilatih berceramah dan menjadi khotib.", manfaat:"Berani tampil di depan umum.", pesan:"Nilai lebih sebagai mahasiswa dan nyantri adalah kita menjadi dai sekaligus profesional." },
-  { nama:"Muslihudin, S.Sos., M.Pd", angkatan:6, periode:"2013–2016", daerah:"Jawa Tengah", kota:"Kebumen, Jawa Tengah", kategori:"Pendidik",
+  { nama:"Muslihudin, S.Sos., M.Pd", foto:"1000684904_-_Gus_Muslih.jpg", angkatan:6, periode:"2013–2016", daerah:"Jawa Tengah", kota:"Kebumen, Jawa Tengah", kategori:"Pendidik",
     profesi:"Guru", jabatan:"Guru Mata Pelajaran dan Tahfidz", tempat:"SDIT Lukmanul Hakim Puring, Kebumen", kuliah:"UIN Sunan Kalijaga Yogyakarta, Sosiologi Agama",
     kesan:"Memiliki Kyai yang super sabar dan super baik. Sampai sekarang masih terngiang kata-kata yang selalu diucapkan saat membangunkan santri, “Quum maas quum tahajjud”. Saya juga kerap ditunjuk menjadi model jenazah saat Kyai Dudu Ridwanulhaq mengadakan pelatihan jenazah. Tidak kalah berkesan, punya teman yang super unik.",
     manfaat:"Mental dakwah yang tak pernah luntur; siap kapan pun jika diminta berdakwah; siap sigap membantu masyarakat; istiqomah mengajar ngaji santri; dan selalu siap bergabung bersama masyarakat dalam program kebaikan.",
     pesan:"Selalu jadi santri di mana pun kau berada, dan kalau sudah lulus jangan pernah lupa menengok pondok, minimal menemui Kyai untuk meminta restu dan doa agar diberi keistiqomahan di jalan dakwah." },
-  { nama:"Abdul Muin", angkatan:6, periode:"2012–2014", daerah:"DI Yogyakarta", kota:"Yogyakarta", kategori:"Profesional",
+  { nama:"Abdul Muin", foto:"AbdulMuin_-_Harmoni_Pikiran.png", angkatan:6, periode:"2012–2014", daerah:"DI Yogyakarta", kota:"Yogyakarta", kategori:"Profesional",
     profesi:"Digital Marketing Specialist", jabatan:"", tempat:"Freshnel Haji & Umroh", kuliah:"UNY, Pendidikan Ekonomi",
     kesan:"Hafalan Juz 30.", manfaat:"Ilmu yang bermanfaat.", pesan:"Akhirat butuh ilmu, dunia pun juga begitu." },
-  { nama:"Agus Fajar Santoso", angkatan:7, periode:"2014–2016", daerah:"DI Yogyakarta", kota:"Prambanan, Sleman, Yogyakarta", kategori:"Pendidik",
+  { nama:"Agus Fajar Santoso", foto:"IMG_20250911_041027_-_fajar_santoso.jpg", angkatan:7, periode:"2014–2016", daerah:"DI Yogyakarta", kota:"Prambanan, Sleman, Yogyakarta", kategori:"Pendidik",
     profesi:"Guru", jabatan:"Guru Agama (ASN)", tempat:"SMPN 1 Prambanan, Sleman", kuliah:"STAI Masjid Syuhada Yogyakarta, Pendidikan Agama Islam",
     kesan:"Disuruh mengaji pas lagi ngantuk-ngantuknya.", manfaat:"Jadi guru agama.", pesan:"Perbaiki agama dan belajar untuk menjadi lebih baik serta amanah. Ingat pesan dari guru dan ustadz." },
-  { nama:"Miftakhul Khanan", angkatan:7, periode:"2014–2016", daerah:"Lampung", kota:"Metro, Lampung", kategori:"Pendidik",
+  { nama:"Miftakhul Khanan", foto:"pas_4x6_pec_-_Miftakhul_Khanan.jpg", angkatan:7, periode:"2014–2016", daerah:"Lampung", kota:"Metro, Lampung", kategori:"Pendidik",
     profesi:"Guru Ngaji di Pondok", jabatan:"Wakil Mudir Bidang Kesantrian", tempat:"Pondok Pesantren Darul Muttaqin Al Islami", kuliah:"UGM, Elektronika dan Instrumentasi",
     kesan:"Dauroh TM di pantai, disuruh pulang sendiri, baksos, sering mengisi khotib, jadi pengurus, masak-masak di pondok, banyak kesan.", manfaat:"Public speaking dan bisa jadi khotib dadakan.",
     pesan:"Jangan malas, kuasai apa pun ilmu yang ada di depanmu karena pasti bermanfaat. Mumpung belum menikah, banyak baca, dengarkan kajian, dan banyak menghafal. Belum menikah saja tidak bisa, apalagi kalau sudah." },
-  { nama:"Noor Rahmansyah", angkatan:7, periode:"2014–2016", daerah:"Kalimantan Selatan", kota:"Hulu Sungai Utara, Kalimantan Selatan", kategori:"Profesional",
+  { nama:"Noor Rahmansyah", foto:"pp_-_Rahman_Plan.png", angkatan:7, periode:"2014–2016", daerah:"Kalimantan Selatan", kota:"Hulu Sungai Utara, Kalimantan Selatan", kategori:"Profesional",
     profesi:"Programmer Web", jabatan:"Karyawan Outsourcing", tempat:"Adaro, Tanjung, Kalimantan Selatan", kuliah:"Universitas Amikom Yogyakarta, Informatika",
     kesan:"Menjadi panitia qurban.", manfaat:"Alhamdulillah saya bisa menghafal hadits-hadits yang mengubah prinsip hidup dan membuat selalu percaya diri.", pesan:"Lakukan yang terbaik untuk diri sendiri. Pondok adalah milik kita juga, jaga baik-baik." }
 ].sort((a,b) => a.angkatan - b.angkatan);
@@ -500,6 +494,10 @@ let fProf = "Semua", fDaerah = "";
 const iniAwal = n => n.split(" ").filter(w => !(w.includes(".") && w.length > 2)).slice(0,2).map(w => w[0]).join("").toUpperCase();
 const kp = (t,v) => v ? `<div class="kp"><b>${t}</b><p>${v}</p></div>` : "";
 function hitung(arr, key){ const m = {}; arr.forEach(a => m[a[key]] = (m[a[key]]||0)+1); return Object.entries(m).sort((x,y) => y[1]-x[1]); }
+
+/* Foto alumni: dipanggil langsung dari nama file (satu folder dengan index.html). Jika file tidak ada, inisial nama tampil. */
+const avatarHtml = a => `<div class="avatar">${iniAwal(a.nama)}${a.foto ? `<img src="${a.foto}" alt="Foto ${a.nama.replace(/"/g,'')}" onerror="this.remove()">` : ""}</div>`;
+
 function renderAlumni(){
   const daerah = hitung(dataAlumni,"daerah"), kat = hitung(dataAlumni,"kategori"), maks = daerah[0] ? daerah[0][1] : 1;
   document.getElementById("stTotal").textContent = dataAlumni.length;
@@ -512,11 +510,10 @@ function renderAlumni(){
   document.getElementById("profBar").innerHTML = chips.map(k => `<span class="nu-status-item ${fProf===k?'active':''}" data-prof="${k}">${k}</span>`).join("");
   const list = dataAlumni.filter(a => (fProf==="Semua"||a.kategori===fProf) && (!fDaerah||a.daerah===fDaerah));
   document.getElementById("alumniGrid").innerHTML = list.length ? list.map(a => `
-    <div class="al-card"><div class="avatar">${iniAwal(a.nama)}</div><div class="al-body">
+    <div class="al-card">${avatarHtml(a)}<div class="al-body">
       <h4>${a.nama}</h4><div class="prof">${a.profesi}</div>
       <div class="meta"><i class="bi bi-briefcase-fill"></i>${[a.jabatan,a.tempat].filter(Boolean).join(", ")}<br><i class="bi bi-geo-alt-fill"></i>${a.kota}<br><i class="bi bi-mortarboard-fill"></i>Angkatan ${a.angkatan}${a.periode ? ` (${a.periode})` : ""}${a.kuliah ? `<br><i class="bi bi-book-fill"></i>${a.kuliah}` : ""}</div>
-      ${a.pesan ? `<p class="kesan">“${a.pesan}”</p>` : ""}
-      <details class="al-more"><summary>Kesan & pesan lengkap</summary>${kp("Pengalaman paling berkesan",a.kesan)}${kp("Manfaat mondok yang dirasakan",a.manfaat)}${kp("Pesan untuk santri",a.pesan)}</details>
+      <div class="al-desc">${kp("Pengalaman paling berkesan",a.kesan)}${kp("Manfaat mondok yang dirasakan",a.manfaat)}${kp("Pesan untuk santri",a.pesan)}</div>
     </div></div>`).join("") : `<p style="grid-column:1/-1;text-align:center;color:#888;padding:30px">Belum ada alumni pada filter ini.</p>`;
 }
 document.getElementById("page-alumni").addEventListener("click", e => {
